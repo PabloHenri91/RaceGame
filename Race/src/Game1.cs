@@ -43,8 +43,9 @@ namespace MyGame.src
         //Aux
         internal static Texture2D voidTexture;
         internal static MemoryCard memoryCard;
+        static Random random = new Random();
 
-        //Sleep
+        //Sleep Server para economizar bateria no XNA, é desnecessário no MonoGame.
 #if XNA
         private int lastMilliseconds;
         private int elapsedMilliseconds;
@@ -155,7 +156,7 @@ namespace MyGame.src
                 this.Exit();
 
 #if DEBUG
-            countFPSUpdate(gameTime);
+            countFPS(gameTime);
 #endif
             frameCount++;
 
@@ -202,7 +203,7 @@ namespace MyGame.src
             spriteBatch.End();
 
 #if DEBUG
-            countFPSDraw(gameTime);
+            countDPS(gameTime);
 #endif
             base.Draw(gameTime);
 #if XNA
@@ -276,7 +277,10 @@ namespace MyGame.src
         }
 
 #if DEBUG
-        private void countFPSUpdate(GameTime gameTime)
+        /// <summary>
+        /// Contar o número de updates por segundo.
+        /// </summary>
+        private void countFPS(GameTime gameTime)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             timeSinceLastDraw += elapsed;
@@ -290,7 +294,10 @@ namespace MyGame.src
             updateCount++;
         }
 
-        private void countFPSDraw(GameTime gameTime)
+        /// <summary>
+        /// Contar o número de vezes que a tela é redesenhado por segundo.
+        /// </summary>
+        private void countDPS(GameTime gameTime)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             timeSinceLastUpdate += elapsed;
@@ -304,5 +311,10 @@ namespace MyGame.src
             drawCount++;
         }
 #endif
+
+        internal static float randomBetween(float min, float max)
+        {
+            return min + (float)random.NextDouble() * (max - min);
+        }
     }
 }

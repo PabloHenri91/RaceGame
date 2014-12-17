@@ -1,4 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FarseerPhysics;
+using FarseerPhysics.Collision.Shapes;
+using FarseerPhysics.Common;
+using FarseerPhysics.Common.Decomposition;
+using FarseerPhysics.Dynamics;
+using FarseerPhysics.Dynamics.Joints;
+using FarseerPhysics.Factories;
+using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
 
 namespace MyGame.src
 {
@@ -7,6 +16,27 @@ namespace MyGame.src
         public enum states { mainMenu, loading, newGame, loadGame, options, help, credits };
         states state;
         states nextState;
+
+        //New Game
+        int newCarIndex;
+
+        //Física
+        World world;
+        Body ground;
+        Body car, wheel1, wheel2;
+
+        //Auxiliares Física
+        private Vector2 scale;
+        private uint[] data;
+        private Vertices vertices;
+        private float zeta;
+        private float hz;
+        private WheelJoint spring1;
+        private WheelJoint spring2;
+        private CircleShape circle;
+        private Vector2 axis;
+        private PolygonShape polygonShape;
+
         public MainMenu()
             : base()
         {
@@ -34,6 +64,11 @@ namespace MyGame.src
             textures2Dlocations.Add("buttonLeftPressed");
             textures2Dlocations.Add("buttonRight");
             textures2Dlocations.Add("buttonRightPressed");
+            for (int i = 1; i <= 6; i++)//Carregar texturas dos carros que o jogador vai poder escolher para começar o jogo.
+            {
+                textures2Dlocations.Add("nave" + i);
+            }
+            textures2Dlocations.Add("wheel");
         }
 
         new internal bool load()
@@ -60,6 +95,31 @@ namespace MyGame.src
             textures2D["buttonRight"].setPosition(688, 405);
             textures2D["buttonRightPressed"].setPosition(688, 405);
 
+            //Física
+            world = new World(new Vector2(0, -9.807f)); // 9,807 = gravidade da Terra =P
+
+            //Chão
+            vertices = new Vertices();
+            vertices.Add(new Vector2(ConvertUnits.ToSimUnits(0), -ConvertUnits.ToSimUnits(0)));
+            vertices.Add(new Vector2(ConvertUnits.ToSimUnits(299), -ConvertUnits.ToSimUnits(0)));
+            vertices.Add(new Vector2(ConvertUnits.ToSimUnits(299), -ConvertUnits.ToSimUnits(10)));
+            vertices.Add(new Vector2(ConvertUnits.ToSimUnits(0), -ConvertUnits.ToSimUnits(10)));
+            polygonShape = new PolygonShape(vertices, 1f);
+            ground = new Body(world);
+            ground.BodyType = BodyType.Static;
+            ground.Position = new Vector2(ConvertUnits.ToSimUnits(449), -ConvertUnits.ToSimUnits(375));
+            ground.CreateFixture(polygonShape);
+
+            //Carros
+            //Auxiliares
+            scale = new Vector2(ConvertUnits.ToSimUnits(1), -ConvertUnits.ToSimUnits(1));
+            hz = 4.0f;//suspensão
+            zeta = 0f;//suspensão
+            circle = new CircleShape(ConvertUnits.ToSimUnits(27f / 2f), 2f);
+            axis = new Vector2(0.0f, -1.0f);
+            newCarIndex = 1;
+            loadCar();
+            
             return true;
         }
         internal void doLogic()
@@ -114,10 +174,47 @@ namespace MyGame.src
                     #region case states.newGame:
                     case states.newGame: 
                         {
-                            if (Game1.input.click0)
+                            world.Step(1f / 60f);
+
+                            if (Game1.input.backButtonClick)
                             {
                                 nextState = states.mainMenu;
+                                return;
                             }
+
+                            if (Game1.input.click0)
+                            {
+                                if (textures2D["buttonCancel"].intersectsWithMouseClick())
+                                {
+                                    nextState = states.mainMenu;
+                                    return;
+                                }
+                                if (textures2D["buttonOk"].intersectsWithMouseClick())
+                                {
+                                    Game1.memoryCard = new MemoryCard();
+                                    Game1.memoryCard.newGame(newCarIndex);
+                                    Game1.nextState = Game1.states.hangar;
+                                    return;
+                                }
+                                if (textures2D["buttonLeft"].intersectsWithMouseClick())
+                                {
+                                    newCarIndex--;
+                                    if (newCarIndex < 1) newCarIndex = 6;
+                                    loadCar();
+
+                                    return;
+                                }
+                                if (textures2D["buttonRight"].intersectsWithMouseClick())
+                                {
+                                    newCarIndex++;
+                                    if (newCarIndex > 6) newCarIndex = 1;
+                                    loadCar();
+                                    
+                                    return;
+                                }
+                            }
+
+                            textures2D["nave" + newCarIndex].setPosition(ConvertUnits.ToDisplayUnits(car.Position.X), -ConvertUnits.ToDisplayUnits(car.Position.Y), -car.Rotation);
                         }
                         break;
                     #endregion
@@ -265,6 +362,11 @@ namespace MyGame.src
                             textures2D["buttonLeft"].drawOnScreen();
                             textures2D["buttonRight"].drawOnScreen();
                         }
+
+                        textures2D["nave" + newCarIndex].drawOnScreen();
+
+                        textures2D["wheel"].drawOnScreen(new Vector2(ConvertUnits.ToDisplayUnits(wheel1.Position.X), -ConvertUnits.ToDisplayUnits(wheel1.Position.Y)), -wheel1.Rotation);
+                        textures2D["wheel"].drawOnScreen(new Vector2(ConvertUnits.ToDisplayUnits(wheel2.Position.X), -ConvertUnits.ToDisplayUnits(wheel2.Position.Y)), -wheel2.Rotation);
                     }
                     break;
                 #endregion
@@ -298,5 +400,53 @@ namespace MyGame.src
                 #endregion
             }
         }
+
+#region New Game
+        /// <summary>
+        /// Carrega um carro com suspensao e rodas, baseado no valor de newCarIndex
+        /// </summary>
+        private void loadCar()
+        {
+            //Create an array to hold the data from the texture
+            data = new uint[textures2D["nave" + newCarIndex].width * textures2D["nave" + newCarIndex].height];
+
+            //Transfer the texture data to the array
+            textures2D["nave" + newCarIndex].texture.GetData(data);
+
+            vertices.Clear();
+            vertices = PolygonTools.CreatePolygon(data, textures2D["nave" + newCarIndex].width);
+            vertices.Scale(ref scale);
+
+            if (car != null) world.RemoveBody(car);
+            car = BodyFactory.CreateCompoundPolygon(world, Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Bayazit), 2f);
+            car.BodyType = BodyType.Dynamic;
+            car.Position = new Vector2(ConvertUnits.ToSimUnits(560), -ConvertUnits.ToSimUnits(0));
+            car.AngularVelocity = Game1.randomBetween(-2f, 2f);
+
+            if (wheel1 != null) world.RemoveBody(wheel1);
+            wheel1 = new Body(world);
+            wheel1.BodyType = BodyType.Dynamic;
+            wheel1.Position = new Vector2(ConvertUnits.ToSimUnits(561 + (27f / 2f)), -ConvertUnits.ToSimUnits(50 + (27f / 2f)));
+            wheel1.CreateFixture(circle);
+
+            if (wheel2 != null) world.RemoveBody(wheel2);
+            wheel2 = new Body(world);
+            wheel2.BodyType = BodyType.Dynamic;
+            wheel2.Position = new Vector2(ConvertUnits.ToSimUnits(610 + (27f / 2f)), -ConvertUnits.ToSimUnits(50 + (27f / 2f)));
+            wheel2.CreateFixture(circle);
+
+            spring1 = new WheelJoint(car, wheel1, wheel1.Position, axis, true);
+            spring1.Frequency = hz;
+            spring1.DampingRatio = zeta;
+            world.AddJoint(spring1);
+
+            spring2 = new WheelJoint(car, wheel2, wheel2.Position, axis, true);
+            spring2.Frequency = hz;
+            spring2.DampingRatio = zeta;
+            world.AddJoint(spring2);
+
+            textures2D["nave" + newCarIndex].setPosition(ConvertUnits.ToDisplayUnits(car.Position.X), -ConvertUnits.ToDisplayUnits(car.Position.Y), -car.Rotation);
+        }
+#endregion
     }
 }

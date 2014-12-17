@@ -8,7 +8,28 @@ namespace MyGame.src
 {
     class MemoryCard
     {
+        //Auxiliar
         private string line;
+
+        //Dados do jogador
+        private int carIndex;
+        private int score;
+        private int level;
+        private int race;
+        private int raceUnlocked;
+        private int stageIndex;
+
+        internal void newGame(int newCarIndex)
+        {
+            carIndex = newCarIndex;//grava o carro que foi escolhido
+            score = 10000;//Jogo inicia com 10000 pontos
+            level = 1;//Primeiro carro inicia level 1
+            race = 0;
+            raceUnlocked = 1;
+            stageIndex = 0;
+        }
+
+        //TODO função para salvar o jogo no arquivo data
 
         internal bool loadGame()
         {
@@ -27,12 +48,13 @@ namespace MyGame.src
                     {
                         line = streamReader.ReadLine();
 
+                        //Exemplo
                         if (line.StartsWith("aux="))
                         {
                             int aux = Convert.ToInt32(line.Split('=')[1]);
                         }
 
-                        //TODO Genérico
+                        //TO DO Fazer um método genérico para setar os valores desta classe
                         //fieldInfo = this.GetType().GetField(line.Split('=')[0]);
                         //fieldInfo.SetValue(this, Convert.ChangeType(line.Split('=')[1], fieldInfo.FieldType));
                     }
@@ -40,6 +62,7 @@ namespace MyGame.src
             }
             catch (Exception)
             {
+                //Retorna falso se o arquivo não foi encontrado ou por algum outro motivo o arquivo de dados não pode ser carregado
                 return false;
             }
             return true;

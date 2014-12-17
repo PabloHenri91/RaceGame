@@ -68,6 +68,13 @@ namespace MyGame.src
             Game1.spriteBatch.Draw(texture, destinationRectangle, null, Color.White, rotation, Vector2.Zero, SpriteEffects.None, 0f);
         }
 
+        internal void drawOnScreen(Vector2 vector2, float rotation)
+        {
+            destinationRectangle.X = (int)vector2.X;
+            destinationRectangle.Y = (int)vector2.Y;
+            Game1.spriteBatch.Draw(texture, destinationRectangle, null, Color.White, rotation, origin, SpriteEffects.None, 0f);
+        }
+
         public void drawOnScreen2()
         {
             destinationRectangle.X = (int)position.X;
