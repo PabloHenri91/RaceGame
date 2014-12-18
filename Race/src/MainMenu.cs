@@ -113,9 +113,9 @@ namespace MyGame.src
             //Carros
             //Auxiliares
             scale = new Vector2(ConvertUnits.ToSimUnits(1), -ConvertUnits.ToSimUnits(1));
-            hz = 4.0f;//suspensão
-            zeta = 0f;//suspensão
-            circle = new CircleShape(ConvertUnits.ToSimUnits(27f / 2f), 2f);
+            hz = 5.0f;//suspensão
+            zeta = 0.1f;//suspensão
+            circle = new CircleShape(ConvertUnits.ToSimUnits(25f / 2f), 2f);
             axis = new Vector2(0.0f, -1.0f);
             newCarIndex = 1;
             loadCar();
@@ -420,19 +420,19 @@ namespace MyGame.src
             if (car != null) world.RemoveBody(car);
             car = BodyFactory.CreateCompoundPolygon(world, Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Bayazit), 2f);
             car.BodyType = BodyType.Dynamic;
-            car.Position = new Vector2(ConvertUnits.ToSimUnits(560), -ConvertUnits.ToSimUnits(0));
-            car.AngularVelocity = Game1.randomBetween(-2f, 2f);
+            car.Position = new Vector2(ConvertUnits.ToSimUnits(560), -ConvertUnits.ToSimUnits(-100));
+            car.AngularVelocity = Game1.randomBetween(-1f, 1f);
 
             if (wheel1 != null) world.RemoveBody(wheel1);
             wheel1 = new Body(world);
             wheel1.BodyType = BodyType.Dynamic;
-            wheel1.Position = new Vector2(ConvertUnits.ToSimUnits(561 + (27f / 2f)), -ConvertUnits.ToSimUnits(50 + (27f / 2f)));
+            wheel1.Position = new Vector2(ConvertUnits.ToSimUnits(561 + (25f / 2f)), -ConvertUnits.ToSimUnits(-50 + (25f / 2f)));
             wheel1.CreateFixture(circle);
 
             if (wheel2 != null) world.RemoveBody(wheel2);
             wheel2 = new Body(world);
             wheel2.BodyType = BodyType.Dynamic;
-            wheel2.Position = new Vector2(ConvertUnits.ToSimUnits(610 + (27f / 2f)), -ConvertUnits.ToSimUnits(50 + (27f / 2f)));
+            wheel2.Position = new Vector2(ConvertUnits.ToSimUnits(610 + (25f / 2f)), -ConvertUnits.ToSimUnits(-50 + (25f / 2f)));
             wheel2.CreateFixture(circle);
 
             spring1 = new WheelJoint(car, wheel1, wheel1.Position, axis, true);
@@ -444,6 +444,9 @@ namespace MyGame.src
             spring2.Frequency = hz;
             spring2.DampingRatio = zeta;
             world.AddJoint(spring2);
+
+            //Freio de mão =}
+            wheel1.AngularDamping = 100f;
 
             textures2D["nave" + newCarIndex].setPosition(ConvertUnits.ToDisplayUnits(car.Position.X), -ConvertUnits.ToDisplayUnits(car.Position.Y), -car.Rotation);
         }

@@ -26,6 +26,8 @@ namespace MyGame.src
         internal static states state;
         internal static states nextState;
         private MainMenu mainMenu;
+        private Race race;
+        private Hangar hangar;
 
         //Load
         private LoadScreen loadScreen;
@@ -62,6 +64,7 @@ namespace MyGame.src
         private int dps;
         private float timeSinceLastUpdate;
         private int ups;
+        private Hangar hangar;
 #endif
 
         public Game1()
@@ -128,6 +131,12 @@ namespace MyGame.src
                     case states.mainMenu:
                         mainMenu.doLogic();
                         break;
+                    case states.race:
+                        race.doLogic();
+                        break;
+                    case states.hangar:
+                        hangar.doLogic();
+                        break;
                 }
             }
             else if (loadScreenLoaded)
@@ -140,6 +149,18 @@ namespace MyGame.src
                         if (mainMenu == null)
                             mainMenu = new MainMenu();
                         if (mainMenu.load())
+                            changeState();
+                        break;
+                    case states.race:
+                        if (race == null)
+                            race = new Race();
+                        if (race.load())
+                            changeState();
+                        break;
+                    case states.hangar:
+                        if (hangar == null)
+                            hangar = new Hangar();
+                        if (hangar.load())
                             changeState();
                         break;
                 }
@@ -191,6 +212,12 @@ namespace MyGame.src
                 {
                     case states.mainMenu:
                         mainMenu.draw();
+                        break;
+                    case states.race:
+                        race.draw();
+                        break;
+                    case states.hangar:
+                        hangar.draw();
                         break;
                 }
             }
@@ -249,7 +276,7 @@ namespace MyGame.src
         private void changeState()
         {
             IsFixedTimeStep = true;
-            graphicsDeviceManager.SynchronizeWithVerticalRetrace = true;
+            graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
 
             state = nextState;
             Game1.needToDraw = true;
@@ -271,6 +298,12 @@ namespace MyGame.src
                 {
                     case states.mainMenu:
                         mainMenu = null;
+                        break;
+                    case states.race:
+                        race = null;
+                        break;
+                    case states.hangar:
+                        hangar = null;
                         break;
                 }
             }

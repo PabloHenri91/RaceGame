@@ -19,6 +19,7 @@
 * misrepresented as being the original software. 
 * 3. This notice may not be removed or altered from any source distribution. 
 */
+#pragma warning disable 0162
 
 using System.Diagnostics;
 using FarseerPhysics.Common;

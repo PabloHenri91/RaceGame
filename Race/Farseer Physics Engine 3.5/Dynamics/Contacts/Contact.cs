@@ -21,6 +21,8 @@
 */
 //#define USE_ACTIVE_CONTACT_SET
 
+#pragma warning disable 0162
+
 using System.Collections.Generic;
 using System.Diagnostics;
 using FarseerPhysics.Collision;

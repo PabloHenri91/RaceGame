@@ -158,6 +158,7 @@
     <Compile Include="src\Display.cs" />
     <Compile Include="src\Entity.cs" />
     <Compile Include="src\Game1.cs" />
+    <Compile Include="src\Hangar.cs" />
     <Compile Include="src\Input.cs" />
     <Compile Include="src\LoadScreen.cs" />
     <Compile Include="src\MainMenu.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="src\PlayerType.cs" />
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Race.cs" />
     <Compile Include="src\Sprite.cs" />
     <Compile Include="src\State.cs" />
   </ItemGroup>
@@ -217,6 +219,9 @@
     <None Include="Content\buttonLeftPressed.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\buttonLevelUp.xnb" />
+    <None Include="Content\buttonMinus.xnb" />
+    <None Include="Content\buttonMinusPressed.xnb" />
     <None Include="Content\buttonOk.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -235,16 +240,25 @@
     <None Include="Content\buttonPlayPressed.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\buttonPlus.xnb" />
+    <None Include="Content\buttonPlusPressed.xnb" />
+    <None Include="Content\buttonRace.xnb" />
+    <None Include="Content\buttonRacePressed.xnb" />
     <None Include="Content\buttonRight.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\buttonRightPressed.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\buttonSupplyRoom.xnb" />
+    <None Include="Content\buttonSupplyRoomPressed.xnb" />
     <None Include="Content\chassis.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\ground.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\hangarBackground.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\mainMenuBackground.xnb">

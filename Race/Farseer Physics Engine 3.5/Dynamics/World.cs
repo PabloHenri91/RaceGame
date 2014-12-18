@@ -24,6 +24,7 @@
 //#define USE_ISLAND_SET
 //#define OPTIMIZE_TOI
 //#define USE_IGNORE_CCD_CATEGORIES
+#pragma warning disable 0162
 
 using System;
 using System.Collections.Generic;

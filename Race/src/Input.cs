@@ -212,11 +212,11 @@ namespace MyGame.src
             float auxY = mouseState.Y;
 #endif
 
-            mouseX = (int)(((auxX / Game1.display.scale) - Game1.display.displayWidthOver2 + Game1.display.translate.X) - Game1.matrix.X + Game1.display.displayWidthOver2);
-            mouseY = (int)(-((auxY / Game1.display.scale) - Game1.display.displayHeightOver2 + Game1.display.translate.Y) - Game1.matrix.Y - Game1.display.displayHeightOver2);
+            mouseX = (int)(((auxX / Game1.display.scale) - Game1.display.displayWidthOver2 + -Game1.display.translate.X) - Game1.matrix.X + Game1.display.displayWidthOver2);
+            mouseY = (int)(-((auxY / Game1.display.scale) - Game1.display.displayHeightOver2 + -Game1.display.translate.Y) - Game1.matrix.Y - Game1.display.displayHeightOver2);
 
-            onScreenMouseX = (int)((auxX / Game1.display.scale) + Game1.display.translate.X);
-            onScreenMouseY = (int)((auxY / Game1.display.scale) + Game1.display.translate.Y);
+            onScreenMouseX = (int)((auxX / Game1.display.scale) + -Game1.display.translate.X);
+            onScreenMouseY = (int)((auxY / Game1.display.scale) + -Game1.display.translate.Y);
 
             mouseRectangle.X = onScreenMouseX;
             mouseRectangle.Y = onScreenMouseY;
