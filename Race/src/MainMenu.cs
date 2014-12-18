@@ -113,8 +113,8 @@ namespace MyGame.src
             //Carros
             //Auxiliares
             scale = new Vector2(ConvertUnits.ToSimUnits(1), -ConvertUnits.ToSimUnits(1));
-            hz = 5.0f;//suspensão
-            zeta = 0.1f;//suspensão
+            hz = 5f;//4.0f;//suspensão
+            zeta = 0.1f;//0.6f;//suspensão
             circle = new CircleShape(ConvertUnits.ToSimUnits(25f / 2f), 2f);
             axis = new Vector2(0.0f, -1.0f);
             newCarIndex = 1;
@@ -201,7 +201,6 @@ namespace MyGame.src
                                     newCarIndex--;
                                     if (newCarIndex < 1) newCarIndex = 6;
                                     loadCar();
-
                                     return;
                                 }
                                 if (textures2D["buttonRight"].intersectsWithMouseClick())
@@ -209,7 +208,6 @@ namespace MyGame.src
                                     newCarIndex++;
                                     if (newCarIndex > 6) newCarIndex = 1;
                                     loadCar();
-                                    
                                     return;
                                 }
                             }
@@ -221,6 +219,7 @@ namespace MyGame.src
                     #region case states.loadGame:
                     case states.loadGame: 
                         {
+                            //TODO carregar dados do arquivo data e ir para a garagem
                             if (Game1.input.click0)
                             {
                                 nextState = states.mainMenu;
@@ -304,8 +303,7 @@ namespace MyGame.src
                         break;
                     #endregion
                 }
-                state = nextState;
-                Game1.needToDraw = true;
+                state = nextState;;
             }
         }
 

@@ -11,7 +11,6 @@ namespace MyGame.src
         internal static Display display;
         internal static GraphicsDeviceManager graphicsDeviceManager;
         internal static SpriteBatch spriteBatch;
-        public static bool needToDraw;
         internal static Vector2 matrix;
 
         //Input
@@ -64,7 +63,6 @@ namespace MyGame.src
         private int dps;
         private float timeSinceLastUpdate;
         private int ups;
-        private Hangar hangar;
 #endif
 
         public Game1()
@@ -98,8 +96,6 @@ namespace MyGame.src
 
             //Translate
             matrix = Vector2.Zero;
-
-            needToDraw = true;
 
             base.Initialize();
         }
@@ -141,7 +137,6 @@ namespace MyGame.src
             }
             else if (loadScreenLoaded)
             {
-                needToDraw = true;
                 unloadContent(state);
                 switch (nextState)
                 {
@@ -181,27 +176,11 @@ namespace MyGame.src
 #endif
             frameCount++;
 
-            if (state == nextState)
-            {
-                if (!needToDraw)
-                {
-#if !DEBUG
-#if XNA
-                    Sleep();
-#endif
-                    this.SuppressDraw();
-#else
-                    drawCount--;
-#endif
-                }
-            }
-
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            if (needToDraw) { needToDraw = false; }
 #if DEBUG
             GraphicsDevice.Clear(Color.CornflowerBlue);
 #endif
@@ -279,7 +258,6 @@ namespace MyGame.src
             graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
 
             state = nextState;
-            Game1.needToDraw = true;
             contentIsEmpty = false;
             GC.Collect();
         }

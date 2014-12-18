@@ -194,10 +194,6 @@ namespace MyGame.src
             }
             #endregion
 #endif
-            if (mouse0 || click0 || backButtonPressed)
-            {
-                Game1.needToDraw = true;
-            }
         }
 
         private void updateMousePosition()

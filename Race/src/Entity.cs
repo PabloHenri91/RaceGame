@@ -35,45 +35,22 @@ namespace MyGame.src
 
         internal void setPosition(float x, float y)
         {
-            if (position.X == x && position.Y == y)
-            {
-                return;
-            }
-            Game1.needToDraw = true;
             this.position.X = x;
             this.position.Y = y;
         }
 
         internal void setPosition(Vector2 vector2)
         {
-            if (position == vector2)
-            {
-                return;
-            }
-            Game1.needToDraw = true;
             this.position = vector2;
         }
 
         internal void setRotation(float rotation)
         {
-            if (this.rotation == rotation)
-            {
-                return;
-            }
-            Game1.needToDraw = true;
             this.rotation = rotation;
         }
 
         internal void setPosition(float x, float y, float rotation)
         {
-            if (this.rotation == rotation)
-            {
-                if (position.X == x && position.Y == y)
-                {
-                    return;
-                }
-            }
-            Game1.needToDraw = true;
             position.X = x;
             position.Y = y;
             this.rotation = rotation;

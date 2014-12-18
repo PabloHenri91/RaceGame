@@ -53,6 +53,7 @@ namespace MyGame.src
                 OpenTK.GameWindow window = (OpenTK.GameWindow)typeof(OpenTKGameWindow).GetField("window", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(Window);
                 window.X = 0;
                 window.Y = 0;
+                window.Title = Config.title;
 
                 Window.IsBorderless = true;
 
@@ -78,6 +79,7 @@ namespace MyGame.src
                 OpenTK.GameWindow window = (OpenTK.GameWindow)typeof(OpenTKGameWindow).GetField("window", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(Window);
                 window.X = graphicsDeviceManager.GraphicsDevice.DisplayMode.Width / 2 - displayWidthOver2;
                 window.Y = 0;// graphicsDeviceManager.GraphicsDevice.DisplayMode.Height / 2 - displayHeightOver2;
+                window.Title = Config.title;
 
                 Window.IsBorderless = false;
 
