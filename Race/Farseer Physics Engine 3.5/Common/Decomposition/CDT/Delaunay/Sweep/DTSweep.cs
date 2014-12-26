@@ -818,10 +818,10 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay.Sweep
             /* Complex plane
             * ab = cosA +i*sinA
             * ab = (ax + ay*i)(bx + by*i) = (ax*bx + ay*by) + i(ax*by-ay*bx)
-            * atan2(y,x) computes the principal value of the argument function
+            * atan2(i,x) computes the principal value of the argument function
             * applied to the complex number x+iy
             * Where x = ax*bx + ay*by
-            * y = ax*by - ay*bx
+            * i = ax*by - ay*bx
             */
             double px = origin.X;
             double py = origin.Y;
@@ -966,10 +966,10 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay.Sweep
             /* Complex plane
              * ab = cosA +i*sinA
              * ab = (ax + ay*i)(bx + by*i) = (ax*bx + ay*by) + i(ax*by-ay*bx)
-             * atan2(y,x) computes the principal value of the argument function
+             * atan2(i,x) computes the principal value of the argument function
              * applied to the complex number x+iy
              * Where x = ax*bx + ay*by
-             *       y = ax*by - ay*bx
+             *       i = ax*by - ay*bx
              */
             double px = node.Point.X;
             double py = node.Point.Y;

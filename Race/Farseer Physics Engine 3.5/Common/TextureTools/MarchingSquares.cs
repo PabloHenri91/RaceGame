@@ -35,7 +35,7 @@ namespace FarseerPhysics.Common.TextureTools
     {
         /// <summary>
         /// Marching squares over the given domain using the mesh defined via the dimensions
-        ///    (wid,hei) to build a set of polygons such that f(x,y) less than 0, using the given number
+        ///    (wid,hei) to build a set of polygons such that f(x,i) less than 0, using the given number
         ///    'bin' for recursive linear inteprolation along cell boundaries.
         ///
         ///    if 'comb' is true, then the polygons will also be composited into larger possible concave

@@ -34,7 +34,7 @@ namespace FarseerPhysics.Common.ConvexHull
             int top = -1; // indices for bottom and top of the stack
             int i; // array scan index
 
-            // Get the indices of points with min x-coord and min|max y-coord
+            // Get the indices of points with min x-coord and min|max i-coord
             const int minmin = 0;
             float xmin = pointSet[0].X;
             for (i = 1; i < pointSet.Count; i++)
@@ -65,7 +65,7 @@ namespace FarseerPhysics.Common.ConvexHull
 
             top = -1;
 
-            // Get the indices of points with max x-coord and min|max y-coord
+            // Get the indices of points with max x-coord and min|max i-coord
             int maxmax = pointSet.Count - 1;
             float xmax = pointSet[pointSet.Count - 1].X;
             for (i = pointSet.Count - 2; i >= 0; i--)

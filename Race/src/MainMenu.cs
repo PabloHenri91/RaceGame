@@ -174,7 +174,7 @@ namespace MyGame.src
                     #region case states.newGame:
                     case states.newGame: 
                         {
-                            world.Step(1f / 60f);
+                            world.Step(1f / Config.fps);
 
                             if (Game1.input.backButtonClick)
                             {
@@ -262,8 +262,6 @@ namespace MyGame.src
             else
             {
                 //Reload nextState
-                positions.Clear();
-
                 switch (nextState)
                 {
                     #region case states.mainMenu:

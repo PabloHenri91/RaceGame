@@ -13,17 +13,17 @@ namespace MyGame.src
         internal Vector2 translate;
         internal Matrix camera;
         private GameWindow Window;
+        private GraphicsDeviceManager graphicsDeviceManager;
 
         public Display(GameWindow Window)
         {
+            graphicsDeviceManager = Game1.graphicsDeviceManager;
             this.Window = Window;
             this.setup();
         }
 
         internal void setup()
         {
-            var graphicsDeviceManager = Game1.graphicsDeviceManager;
-
             //Resolução virtual
             width = Config.displayWidth;
             height = Config.displayHeight;
@@ -59,16 +59,7 @@ namespace MyGame.src
 
                 graphicsDeviceManager.ApplyChanges();
 
-                scale = Math.Min((graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferWidth / (float)width),
-                             (graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferHeight / (float)height));
-
-                translate = new Vector2((graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferWidth - (width * scale)) / 2f,
-                                        (graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferHeight - (height * scale)) / 2f);
-
-                camera = new Matrix();
-                camera = Matrix.CreateRotationZ(MathHelper.ToRadians(0f)) *
-                         Matrix.CreateScale(scale, scale, 1f) *
-                         Matrix.CreateTranslation(new Vector3(translate.X, translate.Y, 0f));
+                setCamera();
 
             }
             else
@@ -85,18 +76,25 @@ namespace MyGame.src
 
                 graphicsDeviceManager.ApplyChanges();
 
-                scale = Math.Min((graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferWidth / (float)width),
-                             (graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferHeight / (float)height));
-
-                translate = new Vector2((graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferWidth - (width * scale)) / 2f,
-                                        (graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferHeight - (height * scale)) / 2f);
-
-                camera = new Matrix();
-                camera = Matrix.CreateRotationZ(MathHelper.ToRadians(0f)) *
-                         Matrix.CreateScale(scale, scale, 1f) *
-                         Matrix.CreateTranslation(new Vector3(translate.X, translate.Y, 0f));
+                setCamera();
 #endif
             }
+        }
+
+        private void setCamera()
+        {
+            scale = Math.Min((graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferWidth / (float)width),
+                         (graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferHeight / (float)height));
+
+            translate = new Vector2((graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferWidth - (width * scale)) / 2f,
+                                    (graphicsDeviceManager.GraphicsDevice.PresentationParameters.BackBufferHeight - (height * scale)) / 2f);
+
+            camera = new Matrix();
+            camera = Matrix.CreateRotationZ(MathHelper.ToRadians(0f)) *
+                     Matrix.CreateScale(scale, scale, 1f) *
+                     Matrix.CreateTranslation(new Vector3(translate.X, translate.Y, 0f));
+
+            translate = translate / scale;
         }
     }
 }

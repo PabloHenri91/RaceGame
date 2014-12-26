@@ -681,7 +681,7 @@ namespace FarseerPhysics.Common
         }
 
         /// <summary>
-        /// Get the y-axis
+        /// Get the i-axis
         /// </summary>
         public Vector2 GetYAxis()
         {

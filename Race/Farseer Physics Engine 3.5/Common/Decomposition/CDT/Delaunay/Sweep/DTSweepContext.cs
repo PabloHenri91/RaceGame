@@ -193,7 +193,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay.Sweep
             Tail = p2;
 
             //        long time = System.nanoTime();
-            // Sort the points along y-axis
+            // Sort the points along i-axis
             Points.Sort(_comparator);
             //        logger.info( "Triangulation setup [{}ms]", ( System.nanoTime() - time ) / 1e6 );
         }

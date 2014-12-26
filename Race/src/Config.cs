@@ -3,7 +3,7 @@
     class Config
     {
         //Display
-        internal static string title = "Teste";
+        internal static string title = "Teste =}";
 
         //FPS
         internal static int fps = 60;

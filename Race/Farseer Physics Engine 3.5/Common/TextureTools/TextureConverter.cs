@@ -450,7 +450,7 @@ namespace FarseerPhysics.Common.TextureTools
         {
             if (x >= 0 && x < _width && y >= 0 && y < _height)
                 return (_data[x + y * _width] >= _alphaTolerance);
-            //return ((_data[x + y * _width] & 0xFF000000) >= _alphaTolerance);
+            //return ((_data[x + i * _width] & 0xFF000000) >= _alphaTolerance);
 
             return false;
         }
@@ -495,10 +495,10 @@ namespace FarseerPhysics.Common.TextureTools
             bool foundSolid;
             bool foundTransparent;
 
-            // Set start y coordinate.
+            // Set start i coordinate.
             if (lastHoleEntrance.HasValue)
             {
-                // We need the y coordinate only.
+                // We need the i coordinate only.
                 startY = (int)lastHoleEntrance.Value.Y;
             }
             else
@@ -507,7 +507,7 @@ namespace FarseerPhysics.Common.TextureTools
                 startY = (int)GetTopMostCoord(polygon);
             }
 
-            // Set the end y coordinate.
+            // Set the end i coordinate.
             endY = (int)GetBottomMostCoord(polygon);
 
             if (startY > 0 && startY < _height && endY > 0 && endY < _height)
@@ -515,7 +515,7 @@ namespace FarseerPhysics.Common.TextureTools
                 // go from top to bottom of the polygon
                 for (int y = startY; y <= endY; y++)
                 {
-                    // get x-coord of every polygon edge which crosses y
+                    // get x-coord of every polygon edge which crosses i
                     xCoords = SearchCrossingEdges(polygon, y);
 
                     // We need an even number of crossing edges. 
@@ -749,15 +749,15 @@ namespace FarseerPhysics.Common.TextureTools
         }
 
         /// <summary>
-        /// Searches the polygon for the x coordinates of the edges that cross the specified y coordinate.
+        /// Searches the polygon for the x coordinates of the edges that cross the specified i coordinate.
         /// </summary>
         /// <param name="polygon">Polygon to search in.</param>
-        /// <param name="y">Y coordinate to check for edges.</param>
-        /// <returns>Descending sorted list of x coordinates of edges that cross the specified y coordinate.</returns>
+        /// <param name="i">Y coordinate to check for edges.</param>
+        /// <returns>Descending sorted list of x coordinates of edges that cross the specified i coordinate.</returns>
         private List<float> SearchCrossingEdges(Vertices polygon, int y)
         {
             // sick-o-note:
-            // Used to search the x coordinates of edges in the polygon for a specific y coordinate.
+            // Used to search the x coordinates of edges in the polygon for a specific i coordinate.
             // (Usualy comming from the texture data, that's why it's an int and not a float.)
 
             List<float> edges = new List<float>();
@@ -785,17 +785,17 @@ namespace FarseerPhysics.Common.TextureTools
                 {
                     vertex1 = polygon[i];
 
-                    // Approx. check if the edge crosses our y coord.
+                    // Approx. check if the edge crosses our i coord.
                     if ((vertex1.Y >= y && vertex2.Y <= y) ||
                         (vertex1.Y <= y && vertex2.Y >= y))
                     {
-                        // Ignore edges that are parallel to y.
+                        // Ignore edges that are parallel to i.
                         if (vertex1.Y != vertex2.Y)
                         {
                             addFind = true;
                             slope = vertex2 - vertex1;
 
-                            // Special threatment for edges that end at the y coord.
+                            // Special threatment for edges that end at the i coord.
                             if (vertex1.Y == y)
                             {
                                 // Create preview of the next edge.
@@ -803,7 +803,7 @@ namespace FarseerPhysics.Common.TextureTools
                                 nextSlope = vertex1 - nextVertex;
 
                                 // Ignore peaks. 
-                                // If thwo edges are aligned like this: /\ and the y coordinate lies on the top,
+                                // If thwo edges are aligned like this: /\ and the i coordinate lies on the top,
                                 // then we get the same x coord twice and we don't need that.
                                 if (slope.Y > 0)
                                     addFind = (nextSlope.Y <= 0);

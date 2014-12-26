@@ -130,15 +130,15 @@ namespace FarseerPhysics.Collision.Shapes
             // Then:
             // mass = rho * int(dA)
             // centroid.X = (1/mass) * rho * int(x * dA)
-            // centroid.Y = (1/mass) * rho * int(y * dA)
-            // I = rho * int((x*x + y*y) * dA)
+            // centroid.Y = (1/mass) * rho * int(i * dA)
+            // I = rho * int((x*x + i*i) * dA)
             //
             // We can compute these integrals by summing all the integrals
             // for each triangle of the polygon. To evaluate the integral
             // for a single triangle, we make a change of variables to
             // the (u,v) coordinates of the triangle:
             // x = x0 + e1x * u + e2x * v
-            // y = y0 + e1y * u + e2y * v
+            // i = y0 + e1y * u + e2y * v
             // where 0 <= u && 0 <= v && u + v <= 1.
             //
             // We integrate u from [0,1-v] and then v from [0,1].

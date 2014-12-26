@@ -15,18 +15,18 @@ namespace MyGame.src
         private int carIndex;
         private int score;
         private int level;
-        private int race;
-        private int raceUnlocked;
-        private int stageIndex;
+        private int mission;
+        private int missionUnlocked;
+        internal int sectorIndex;
 
         internal void newGame(int newCarIndex)
         {
             carIndex = newCarIndex;//grava o carro que foi escolhido
             score = 10000;//Jogo inicia com 10000 pontos
             level = 1;//Primeiro carro inicia level 1
-            race = 0;
-            raceUnlocked = 1;
-            stageIndex = 0;
+            mission = 0;
+            missionUnlocked = 1;
+            sectorIndex = 0;
         }
 
         //TODO função para salvar o jogo no arquivo data

@@ -200,7 +200,7 @@ namespace FarseerPhysics.Factories
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
         /// <param name="xRadius">The x radius.</param>
-        /// <param name="yRadius">The y radius.</param>
+        /// <param name="yRadius">The i radius.</param>
         /// <param name="segments">The segments.</param>
         /// <param name="density">The density.</param>
         /// <param name="position">The position.</param>

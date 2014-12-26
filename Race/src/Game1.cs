@@ -45,9 +45,10 @@ namespace MyGame.src
         internal static Texture2D voidTexture;
         internal static MemoryCard memoryCard;
         static Random random = new Random();
-
-        //Sleep Server para economizar bateria no XNA, é desnecessário no MonoGame.
+        
 #if XNA
+        //Sleep Server para economizar bateria no XNA, é desnecessário no MonoGame.
+
         private int lastMilliseconds;
         private int elapsedMilliseconds;
         private int oversleep;
@@ -69,6 +70,8 @@ namespace MyGame.src
             : base()
         {
             graphicsDeviceManager = new GraphicsDeviceManager(this);
+            graphicsDeviceManager.GraphicsProfile = GraphicsProfile.Reach;
+            graphicsDeviceManager.ApplyChanges();
             Content.RootDirectory = "Content";
 
             IsMouseVisible = true;
@@ -255,7 +258,7 @@ namespace MyGame.src
         private void changeState()
         {
             IsFixedTimeStep = true;
-            graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
+            graphicsDeviceManager.SynchronizeWithVerticalRetrace = true;
 
             state = nextState;
             contentIsEmpty = false;
