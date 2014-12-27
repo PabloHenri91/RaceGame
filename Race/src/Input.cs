@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 #if WINDOWS_PHONE
 using Microsoft.Xna.Framework.Input.Touch;
@@ -156,7 +157,7 @@ namespace MyGame.src
 
             if (click0)
             {
-                click0 = (Game1.frameCount - last0Touch < Config.fps);
+                click0 = (Game1.frameCount - last0Touch < Config.fps / 2);
                 mouse0 = false;
                 updateMousePosition();
             }

@@ -15,8 +15,8 @@ namespace MyGame.src
         private int carIndex;
         private int score;
         private int level;
-        private int mission;
-        private int missionUnlocked;
+        private int race;
+        internal int raceUnlocked;
         internal int sectorIndex;
 
         internal void newGame(int newCarIndex)
@@ -24,8 +24,8 @@ namespace MyGame.src
             carIndex = newCarIndex;//grava o carro que foi escolhido
             score = 10000;//Jogo inicia com 10000 pontos
             level = 1;//Primeiro carro inicia level 1
-            mission = 0;
-            missionUnlocked = 1;
+            race = 0;
+            raceUnlocked = 1;
             sectorIndex = 0;
         }
 

@@ -12,6 +12,9 @@ namespace MyGame.src
         states state;
         states nextState;
 
+        //Choose Sector
+        private Dictionary<int, string> sectors;
+
         public Hangar()
             : base()
         {
@@ -39,9 +42,9 @@ namespace MyGame.src
 
             //Choose Mission
             //textures2Dlocations.Add("background");
-            textures2Dlocations.Add("mission");
-            textures2Dlocations.Add("missionLocked");
-            textures2Dlocations.Add("missionPressed");
+            textures2Dlocations.Add("race");
+            textures2Dlocations.Add("raceLocked");
+            textures2Dlocations.Add("racePressed");
 
         }
         new internal bool load()
@@ -81,16 +84,28 @@ namespace MyGame.src
                 positions.Add("sector" + i, new Vector2(300 + (500 * i) + ((Game1.memoryCard.sectorIndex) * -500), 150));
             }
 
+            sectors = new Dictionary<int, string>();
+            sectors.Add(0, "1. Sector A");
+            sectors.Add(1, "2. Sector B");
+            sectors.Add(2, "3. Sector C");
+            sectors.Add(3, "4. Sector D");
+            sectors.Add(4, "5. Sector E");
+            sectors.Add(5, "6. Sector F");
+            sectors.Add(6, "7. Sector G");
+            sectors.Add(7, "8. Sector H");
+            sectors.Add(8, "9. Sector I");
+            sectors.Add(9, "10. Sector J");
+
             //Choose Mission
             for (int i = 0; i < 10; i++)
             {
                 if (i < 5)
                 {
-                    positions.Add("mission" + i, new Vector2(100 + (163 * i), 100));
+                    positions.Add("race" + i, new Vector2(100 + (163 * i), 100));
                 }
                 else
                 {
-                    positions.Add("mission" + i, new Vector2(100 + (163 * (i - 5)), 275));
+                    positions.Add("race" + i, new Vector2(100 + (163 * (i - 5)), 275));
                 }
             }
 
@@ -151,6 +166,28 @@ namespace MyGame.src
                                 nextState = states.hangar;
                                 return;
                             }
+
+                            updateSectorPositions();
+
+                            if (Game1.input.click0)
+                            {
+                                if (Math.Abs(Game1.input.totalDx) < 10)  
+                                {
+                                    for (int i = 0; i < 10; i++)
+                                    {
+                                        if (textures2D["sector"].intersectsWithMouseClick(positions["sector" + i]))
+                                        {
+                                            if ((Game1.memoryCard.raceUnlocked) / 10 >= i)
+                                            {
+                                                nextState = states.chooseMisson;
+                                                Game1.memoryCard.sectorIndex = i;
+                                                return;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+   
                         }
                         break;
                     #endregion
@@ -296,7 +333,17 @@ namespace MyGame.src
                         textures2D["background"].drawOnScreen();
                         for (int i = 0; i < 10; i++)
                         {
-                            textures2D["sector"].drawOnScreen(positions["sector" + i]);
+                            if ((Game1.memoryCard.raceUnlocked) / 10 >= i)
+                            {
+                                textures2D["sector"].drawOnScreen(positions["sector" + i]);
+                                Game1.spriteBatch.DrawString(Game1.verdana20, sectors[i], new Vector2(positions["sector" + i].X + 10, positions["sector" + i].Y + 10), Color.White);
+                            }
+                            else
+                            {
+                                textures2D["sectorLocked"].drawOnScreen(positions["sector" + i]);
+                                Game1.spriteBatch.DrawString(Game1.verdana20, sectors[i], new Vector2(positions["sector" + i].X + 10, positions["sector" + i].Y + 10), Color.Black);
+                            }
+                            
                         }
                         
                     }
@@ -309,7 +356,7 @@ namespace MyGame.src
                         textures2D["background"].drawOnScreen();
                         for (int i = 0; i < 10; i++)
                         {
-                            textures2D["mission"].drawOnScreen(positions["mission" + i]);
+                            textures2D["race"].drawOnScreen(positions["race" + i]);
                         }
                     }
                     break;
@@ -322,5 +369,54 @@ namespace MyGame.src
                 #endregion
             }
         }
+
+        //Choose Sector
+        private void updateSectorPositions()
+        {
+            //Se moveu o mouse mais de 10 pixels
+            if (Math.Abs(Game1.input.totalDx) > 10)
+            {
+                if (Game1.input.dx < 0)
+                {//Moveu o mouse para a esquerda
+
+                    if (positions["sector" + (10 - 1)].X + (Game1.input.dx * 2) > 300)
+                    {
+                        for (int i = 0; i < 10; i++)
+                        {
+                            positions["sector" + i] = new Vector2((int)(positions["sector" + i].X + Game1.input.dx * 2), 150);
+                        }
+                    }
+                    else
+                    {
+                        int auxMove = (int)(Game1.display.width - textures2D["sector"].width - positions["sector" + (10 - 1)].X - 300);
+                        for (int i = 0; i < 10; i++)
+                        {
+                            positions["sector" + i] = new Vector2((int)(positions["sector" + i].X + auxMove), 150);
+                        }
+                    }
+                }
+                else
+                {//Moveu o mouse para a esquerda
+                    //Game1.input.dx > 0
+
+                    if (positions["sector" + 0].X + Game1.input.dx * 2 < 300)
+                    {
+                        for (int i = 0; i < 10; i++)
+                        {
+                            positions["sector" + i] = new Vector2((int)(positions["sector" + i].X + Game1.input.dx * 2), 150);
+                        }
+                    }
+                    else
+                    {
+                        int auxMove = (int)(positions["sector" + 0].X - 300);
+                        for (int i = 0; i < 10; i++)
+                        {
+                            positions["sector" + i] = new Vector2((int)(positions["sector" + i].X - auxMove), 150);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

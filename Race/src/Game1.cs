@@ -33,8 +33,7 @@ namespace MyGame.src
         private bool loadScreenLoaded;
 
         //FPS
-        private static int fps = Config.fps;
-        internal static float frameDurationSeconds = 1f / (float)fps;
+        internal static float frameDurationSeconds = 1f / (float)Config.fps;
         public static int frameCount;
 
         //Fonts
@@ -79,7 +78,7 @@ namespace MyGame.src
             //FPS
             IsFixedTimeStep = false;
             graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
-            TargetElapsedTime = TimeSpan.FromTicks(10000000 / fps);
+            TargetElapsedTime = TimeSpan.FromTicks(10000000 / Config.fps);
 
             //Extend battery life under lock.
             InactiveSleepTime = TimeSpan.FromMilliseconds(1000);
