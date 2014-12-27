@@ -15,7 +15,7 @@ namespace MyGame.src
         private int carIndex;
         private int score;
         private int level;
-        private int race;
+        internal int race;
         internal int raceUnlocked;
         internal int sectorIndex;
 
@@ -25,7 +25,7 @@ namespace MyGame.src
             score = 10000;//Jogo inicia com 10000 pontos
             level = 1;//Primeiro carro inicia level 1
             race = 0;
-            raceUnlocked = 1;
+            raceUnlocked = 0;
             sectorIndex = 0;
         }
 

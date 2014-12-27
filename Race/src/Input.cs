@@ -195,6 +195,10 @@ namespace MyGame.src
             }
             #endregion
 #endif
+            if ((totalDx * totalDx) + (totalDy * totalDy) > 100)
+            {
+                click0 = false;
+            }
         }
 
         private void updateMousePosition()

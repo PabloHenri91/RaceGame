@@ -43,7 +43,7 @@ namespace MyGame.src
         //Aux
         internal static Texture2D voidTexture;
         internal static MemoryCard memoryCard;
-        static Random random = new Random();
+        static Random random = new Random(Environment.TickCount);
         
 #if XNA
         //Sleep Server para economizar bateria no XNA, é desnecessário no MonoGame.

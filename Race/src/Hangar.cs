@@ -8,12 +8,12 @@ namespace MyGame.src
 {
     class Hangar : State
     {
-        public enum states { hangar, loading, supplyRoom, chooseSector, chooseMisson, saveGame };
+        public enum states { hangar, loading, supplyRoom, chooseSector, chooseRace, saveGame };
         states state;
         states nextState;
-
+        
         //Choose Sector
-        private Dictionary<int, string> sectors;
+        private List<string> sectors;
 
         public Hangar()
             : base()
@@ -40,7 +40,7 @@ namespace MyGame.src
             textures2Dlocations.Add("sectorLocked");
             textures2Dlocations.Add("sectorPressed");
 
-            //Choose Mission
+            //Choose Race
             //textures2Dlocations.Add("background");
             textures2Dlocations.Add("race");
             textures2Dlocations.Add("raceLocked");
@@ -84,19 +84,19 @@ namespace MyGame.src
                 positions.Add("sector" + i, new Vector2(300 + (500 * i) + ((Game1.memoryCard.sectorIndex) * -500), 150));
             }
 
-            sectors = new Dictionary<int, string>();
-            sectors.Add(0, "1. Sector A");
-            sectors.Add(1, "2. Sector B");
-            sectors.Add(2, "3. Sector C");
-            sectors.Add(3, "4. Sector D");
-            sectors.Add(4, "5. Sector E");
-            sectors.Add(5, "6. Sector F");
-            sectors.Add(6, "7. Sector G");
-            sectors.Add(7, "8. Sector H");
-            sectors.Add(8, "9. Sector I");
-            sectors.Add(9, "10. Sector J");
+            sectors = new List<string>();
+            sectors.Add("1. Sector A");
+            sectors.Add("2. Sector B");
+            sectors.Add("3. Sector C");
+            sectors.Add("4. Sector D");
+            sectors.Add("5. Sector E");
+            sectors.Add("6. Sector F");
+            sectors.Add("7. Sector G");
+            sectors.Add("8. Sector H");
+            sectors.Add("9. Sector I");
+            sectors.Add("10. Sector J");
 
-            //Choose Mission
+            //Choose Race
             for (int i = 0; i < 10; i++)
             {
                 if (i < 5)
@@ -171,18 +171,15 @@ namespace MyGame.src
 
                             if (Game1.input.click0)
                             {
-                                if (Math.Abs(Game1.input.totalDx) < 10)  
+                                for (int i = 0; i < 10; i++)
                                 {
-                                    for (int i = 0; i < 10; i++)
+                                    if (textures2D["sector"].intersectsWithMouseClick(positions["sector" + i]))
                                     {
-                                        if (textures2D["sector"].intersectsWithMouseClick(positions["sector" + i]))
+                                        if ((Game1.memoryCard.raceUnlocked) / 10 >= i)
                                         {
-                                            if ((Game1.memoryCard.raceUnlocked) / 10 >= i)
-                                            {
-                                                nextState = states.chooseMisson;
-                                                Game1.memoryCard.sectorIndex = i;
-                                                return;
-                                            }
+                                            nextState = states.chooseRace;
+                                            Game1.memoryCard.sectorIndex = i;
+                                            return;
                                         }
                                     }
                                 }
@@ -191,13 +188,31 @@ namespace MyGame.src
                         }
                         break;
                     #endregion
-                    #region case states.chooseMisson:
-                    case states.chooseMisson:
+                    #region case states.chooseRace:
+                    case states.chooseRace:
                         {
                             if (Game1.input.backButtonClick)
                             {
                                 nextState = states.chooseSector;
                                 return;
+                            }
+
+                            if (Game1.input.click0)
+                            {
+                                for (int i = 0; i < 10; i++)
+                                {
+                                    int aux = (Game1.memoryCard.sectorIndex * 10) + i;
+
+                                    if (textures2D["race"].intersectsWithMouseClick(positions["race" + i]))
+                                    {
+                                        if (aux <= Game1.memoryCard.raceUnlocked)
+                                        {
+                                            Game1.memoryCard.race = aux;
+                                            Game1.nextState = Game1.states.race;
+                                            return;
+                                        }
+                                    }
+                                }
                             }
                         }
                         break;
@@ -238,8 +253,8 @@ namespace MyGame.src
                         }
                         break;
                     #endregion
-                    #region case states.chooseMisson:
-                    case states.chooseMisson:
+                    #region case states.chooseRace:
+                    case states.chooseRace:
                         {
                         }
                         break;
@@ -349,14 +364,25 @@ namespace MyGame.src
                     }
                     break;
                 #endregion
-                #region case states.chooseMisson:
-                case states.chooseMisson:
+                #region case states.chooseRace:
+                case states.chooseRace:
                     {
                         Game1.graphicsDeviceManager.GraphicsDevice.Clear(Color.Black);
                         textures2D["background"].drawOnScreen();
                         for (int i = 0; i < 10; i++)
                         {
-                            textures2D["race"].drawOnScreen(positions["race" + i]);
+                            int aux = (Game1.memoryCard.sectorIndex * 10) + i;
+
+                            if (aux <= Game1.memoryCard.raceUnlocked)
+                            {
+                                textures2D["race"].drawOnScreen(positions["race" + i]);
+                                Game1.spriteBatch.DrawString(Game1.verdana12, "" + (aux + 1), new Vector2(positions["race" + i].X + 10, positions["race" + i].Y + 10), Color.Black);
+                            }
+                            else
+                            {
+                                textures2D["raceLocked"].drawOnScreen(positions["race" + i]);
+                                Game1.spriteBatch.DrawString(Game1.verdana12, "" + (aux + 1), new Vector2(positions["race" + i].X + 10, positions["race" + i].Y + 10), Color.White);
+                            }
                         }
                     }
                     break;
