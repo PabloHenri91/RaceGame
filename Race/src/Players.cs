@@ -19,7 +19,10 @@ namespace MyGame.src
             int i = 1;
 
             //Definindo atributos base dos carros que o jogador vai poder comprar
-            playerType = new PlayerType(i++, 0, 0, 0, 0, 0, 0, 30, 30, 30);//1 Boa estabilidade
+            playerType = new PlayerType(i++, 10, 10, 10, 10, 10, 10, 10, 10, 10);//0
+            playerTypes.Add(playerType.type, playerType);
+
+            playerType = new PlayerType(i++, 20, 50, 0, 0, 0, 0, 0, 20, 0);//1 Ótima aceleração
             playerTypes.Add(playerType.type, playerType);
 
             playerType = new PlayerType(i++, 30, 30, 30, 0, 0, 0, 0, 0, 0);//2 Bom motor
@@ -28,13 +31,10 @@ namespace MyGame.src
             playerType = new PlayerType(i++, 0, 0, 0, 30, 30, 30, 0, 0, 0);//3 Boa defesa
             playerTypes.Add(playerType.type, playerType);
 
-            playerType = new PlayerType(i++, 20, 50, 0, 0, 0, 0, 0, 20, 0);//4 Ótima aceleração
+            playerType = new PlayerType(i++, 0, 0, 0, 0, 0, 0, 30, 30, 30);//4 Boa estabilidade
             playerTypes.Add(playerType.type, playerType);
 
             playerType = new PlayerType(i++, 0, 0, 0, 50, 20, 20, 0, 0, 0);//5 Ótima Blindagem
-            playerTypes.Add(playerType.type, playerType);
-
-            playerType = new PlayerType(i++, 10, 10, 10, 10, 10, 10, 10, 10, 10);//6
             playerTypes.Add(playerType.type, playerType);
         }
     }

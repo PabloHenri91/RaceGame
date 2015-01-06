@@ -12,9 +12,9 @@ namespace MyGame.src
         private string line;
 
         //Dados do jogador
-        private int carIndex;
-        private int score;
-        private int level;
+        internal int carIndex;
+        internal int score;
+        internal int level;
         internal int race;
         internal int raceUnlocked;
         internal int sectorIndex;

@@ -315,9 +315,10 @@
     <None Include="Content\nave5.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\nave6.xnb">
+    <None Include="Content\nave0.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Content\nave6.xnb" />
     <None Include="Content\newGameBackground.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -7,6 +7,7 @@ using FarseerPhysics.Dynamics.Joints;
 using FarseerPhysics.Factories;
 using Microsoft.Xna.Framework;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace MyGame.src
@@ -19,6 +20,7 @@ namespace MyGame.src
 
         //New Game
         int newCarIndex;
+        private Players players;
 
         //Física
         World world;
@@ -64,7 +66,7 @@ namespace MyGame.src
             textures2Dlocations.Add("buttonLeftPressed");
             textures2Dlocations.Add("buttonRight");
             textures2Dlocations.Add("buttonRightPressed");
-            for (int i = 1; i <= 6; i++)//Carregar texturas dos carros que o jogador vai poder escolher para começar o jogo.
+            for (int i = 0; i < 6; i++)//Carregar texturas dos carros que o jogador vai poder escolher para começar o jogo.
             {
                 textures2Dlocations.Add("nave" + i);
             }
@@ -111,14 +113,28 @@ namespace MyGame.src
             ground.CreateFixture(polygonShape);
 
             //Carros
+            players = new Players();
             //Auxiliares
             scale = new Vector2(ConvertUnits.ToSimUnits(1), -ConvertUnits.ToSimUnits(1));
             hz = 5f;//4.0f;//suspensão
             zeta = 0.1f;//0.6f;//suspensão
             circle = new CircleShape(ConvertUnits.ToSimUnits(25f / 2f), 2f);
             axis = new Vector2(0.0f, -1.0f);
-            newCarIndex = 1;
+            newCarIndex = 0;
             loadCar();
+
+            positions.Add("speed", new Vector2(266, 321));
+            positions.Add("acceleration", new Vector2(266, 352));
+            positions.Add("agility", new Vector2(266, 383));
+            positions.Add("armor", new Vector2(266, 413));
+            positions.Add("shieldPower", new Vector2(266, 444));
+            positions.Add("shieldRecharge", new Vector2(266, 475));
+            positions.Add("suspension", new Vector2(266, 506));
+            positions.Add("tires", new Vector2(266, 536));
+            positions.Add("downforce", new Vector2(266, 567));
+
+            positions.Add("score", new Vector2(638, 476));
+            positions.Add("level", new Vector2(636, 536));
             
             return true;
         }
@@ -199,14 +215,14 @@ namespace MyGame.src
                                 if (textures2D["buttonLeft"].intersectsWithMouseClick())
                                 {
                                     newCarIndex--;
-                                    if (newCarIndex < 1) newCarIndex = 6;
+                                    if (newCarIndex < 0) newCarIndex = 5;
                                     loadCar();
                                     return;
                                 }
                                 if (textures2D["buttonRight"].intersectsWithMouseClick())
                                 {
                                     newCarIndex++;
-                                    if (newCarIndex > 6) newCarIndex = 1;
+                                    if (newCarIndex > 5) newCarIndex = 0;
                                     loadCar();
                                     return;
                                 }
@@ -301,7 +317,7 @@ namespace MyGame.src
                         break;
                     #endregion
                 }
-                state = nextState;;
+                state = nextState;
             }
         }
 
@@ -363,6 +379,19 @@ namespace MyGame.src
 
                         textures2D["wheel"].drawOnScreen(new Vector2(ConvertUnits.ToDisplayUnits(wheel1.Position.X), -ConvertUnits.ToDisplayUnits(wheel1.Position.Y)), -wheel1.Rotation);
                         textures2D["wheel"].drawOnScreen(new Vector2(ConvertUnits.ToDisplayUnits(wheel2.Position.X), -ConvertUnits.ToDisplayUnits(wheel2.Position.Y)), -wheel2.Rotation);
+
+                        drawAtributeBar(positions["speed"], players.playerTypes.Values.ElementAt(newCarIndex).speedBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["acceleration"], players.playerTypes.Values.ElementAt(newCarIndex).accelerationBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["agility"], players.playerTypes.Values.ElementAt(newCarIndex).agilityBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["armor"], players.playerTypes.Values.ElementAt(newCarIndex).armorBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["shieldPower"], players.playerTypes.Values.ElementAt(newCarIndex).shieldPowerBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["shieldRecharge"], players.playerTypes.Values.ElementAt(newCarIndex).shieldRechargeBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["suspension"], players.playerTypes.Values.ElementAt(newCarIndex).suspensionBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["tires"], players.playerTypes.Values.ElementAt(newCarIndex).tiresBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["downforce"], players.playerTypes.Values.ElementAt(newCarIndex).downforceBonus + 10, 100, "Lime");
+
+                        Game1.spriteBatch.DrawString(Game1.verdana20, "$" + 10000, positions["score"], Color.White);
+                        Game1.spriteBatch.DrawString(Game1.verdana20, "Level: " + 1, positions["level"], Color.White);
                     }
                     break;
                 #endregion
@@ -398,6 +427,27 @@ namespace MyGame.src
         }
 
 #region New Game
+
+        private void drawAtributeBar(Vector2 position, int health, int maxHealth, string color)
+        {
+            //TODO Melhorar design das barrinhas dos atributos
+            int biggerSide = 162;
+            Color healthColor = new Color();
+            switch (color)
+            {
+                case "Lime":
+                    healthColor = new Color(500 - 500 * health / maxHealth, 500 * health / maxHealth, 0);
+                    break;
+                case "Red":
+                    healthColor = new Color(500 - 500 * (maxHealth - health) / maxHealth, 500 * (maxHealth - health) / maxHealth, 0);
+                    break;
+            }
+
+
+            Game1.spriteBatch.Draw(Game1.voidTexture, new Rectangle((int)(position.X), (int)(position.Y), biggerSide + 2, 5), Color.White);
+            Game1.spriteBatch.Draw(Game1.voidTexture, new Rectangle((int)(position.X) + 1, (int)(position.Y) + 1, biggerSide, 3), Color.Black);
+            Game1.spriteBatch.Draw(Game1.voidTexture, new Rectangle((int)(position.X) + 1, (int)(position.Y) + 1, biggerSide * health / maxHealth, 3), healthColor);
+        }
         /// <summary>
         /// Carrega um carro com suspensao e rodas, baseado no valor de newCarIndex
         /// </summary>

@@ -11,9 +11,14 @@ namespace MyGame.src
         public enum states { hangar, loading, supplyRoom, chooseSector, chooseRace, saveGame };
         states state;
         states nextState;
+
+        //Hangar
+        private int carIndex;
+        private List<int> levelReqPoints;
         
         //Choose Sector
         private List<string> sectors;
+        private Players players;
 
         public Hangar()
             : base()
@@ -33,6 +38,11 @@ namespace MyGame.src
             textures2Dlocations.Add("buttonPlusPressed");
             textures2Dlocations.Add("buttonMinus");
             textures2Dlocations.Add("buttonMinusPressed");
+            for (int i = 0; i < 6; i++)
+            {
+                textures2Dlocations.Add("nave" + i);
+            }
+            textures2Dlocations.Add("wheel");
 
             //Choose Sector
             textures2Dlocations.Add("background");
@@ -77,6 +87,34 @@ namespace MyGame.src
             positions.Add("buttonPlusTires", new Vector2(827, 504));
             positions.Add("buttonMinusDownforce", new Vector2(757, 564));
             positions.Add("buttonPlusDownforce", new Vector2(827, 564));
+
+            positions.Add("wheel1", new Vector2(400, 539));
+            positions.Add("wheel2", new Vector2(449, 539));
+
+            positions.Add("speed", new Vector2(568, 109));
+            positions.Add("acceleration", new Vector2(568, 169));
+            positions.Add("agility", new Vector2(568, 229));
+            positions.Add("armor", new Vector2(568, 288));
+            positions.Add("shieldPower", new Vector2(568, 348));
+            positions.Add("shieldRecharge", new Vector2(568, 408));
+            positions.Add("suspension", new Vector2(568, 468));
+            positions.Add("tires", new Vector2(568, 527));
+            positions.Add("downforce", new Vector2(568, 587));
+
+            positions.Add("score", new Vector2(155, 25));
+            positions.Add("level", new Vector2(382, 214));
+
+            players = new Players();
+
+            carIndex = Game1.memoryCard.carIndex;
+            textures2D["nave" + carIndex].setPosition(399, 489);
+
+            positions.Add("levelReqPoints", new Vector2(397, 154));
+            levelReqPoints = new List<int>();
+            for (int i = 0; i < 900; i++)
+            {
+                levelReqPoints.Add(i * 500);
+            }
 
             //Choose Sector
             for (int i = 0; i < 10; i++)
@@ -141,6 +179,12 @@ namespace MyGame.src
                                 }
                                 if (textures2D["buttonLevelUp"].intersectsWithMouseClick())
                                 {
+                                    if (Game1.memoryCard.score >= levelReqPoints[Game1.memoryCard.level + 1])
+                                    {
+                                        Game1.memoryCard.score -= levelReqPoints[Game1.memoryCard.level + 1];
+                                        Game1.memoryCard.level++;
+                                        setCarAtributes();
+                                    }
                                     return;
                                 }
                             }
@@ -279,6 +323,32 @@ namespace MyGame.src
                     {
                         Game1.graphicsDeviceManager.GraphicsDevice.Clear(Color.Black);
                         textures2D["hangarBackground"].drawOnScreen();
+
+                        Game1.spriteBatch.DrawString(Game1.verdana20, "$" + Game1.memoryCard.score, positions["score"], Color.White);
+                        Game1.spriteBatch.DrawString(Game1.verdana20, "Level: " + Game1.memoryCard.level, positions["level"], Color.White);
+
+                        if (Game1.memoryCard.score >= levelReqPoints[Game1.memoryCard.level + 1])
+                        {
+                            Game1.spriteBatch.DrawString(Game1.verdana20, "$" + levelReqPoints[Game1.memoryCard.level + 1], positions["levelReqPoints"], Color.CornflowerBlue);
+                        }
+                        else
+                        {
+                            Game1.spriteBatch.DrawString(Game1.verdana20, "$" + levelReqPoints[Game1.memoryCard.level + 1], positions["levelReqPoints"], Color.Red * 0.75f);
+                        }
+
+                        textures2D["nave" + carIndex].drawOnScreen();
+                        textures2D["wheel"].drawOnScreen(positions["wheel1"]);
+                        textures2D["wheel"].drawOnScreen(positions["wheel2"]);
+
+                        drawAtributeBar(positions["speed"], players.playerTypes.Values.ElementAt(carIndex).speedBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["acceleration"], players.playerTypes.Values.ElementAt(carIndex).accelerationBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["agility"], players.playerTypes.Values.ElementAt(carIndex).agilityBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["armor"], players.playerTypes.Values.ElementAt(carIndex).armorBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["shieldPower"], players.playerTypes.Values.ElementAt(carIndex).shieldPowerBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["shieldRecharge"], players.playerTypes.Values.ElementAt(carIndex).shieldRechargeBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["suspension"], players.playerTypes.Values.ElementAt(carIndex).suspensionBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["tires"], players.playerTypes.Values.ElementAt(carIndex).tiresBonus + 10, 100, "Lime");
+                        drawAtributeBar(positions["downforce"], players.playerTypes.Values.ElementAt(carIndex).downforceBonus + 10, 100, "Lime");
 
                         //Desenho dos botões
                         if (Game1.input.mouse0)
@@ -442,6 +512,35 @@ namespace MyGame.src
                     }
                 }
             }
+        }
+
+        
+        //Hangar
+        //TODO private void setCarAtributes()
+        private void setCarAtributes()
+        {
+            
+        }
+
+        private void drawAtributeBar(Vector2 position, int health, int maxHealth, string color)
+        {
+            //TODO Melhorar design das barrinhas dos atributos???
+            int biggerSide = 162;
+            Color healthColor = new Color();
+            switch (color)
+            {
+                case "Lime":
+                    healthColor = new Color(500 - 500 * health / maxHealth, 500 * health / maxHealth, 0);
+                    break;
+                case "Red":
+                    healthColor = new Color(500 - 500 * (maxHealth - health) / maxHealth, 500 * (maxHealth - health) / maxHealth, 0);
+                    break;
+            }
+
+
+            Game1.spriteBatch.Draw(Game1.voidTexture, new Rectangle((int)(position.X), (int)(position.Y), biggerSide + 2, 5), Color.White);
+            Game1.spriteBatch.Draw(Game1.voidTexture, new Rectangle((int)(position.X) + 1, (int)(position.Y) + 1, biggerSide, 3), Color.Black);
+            Game1.spriteBatch.Draw(Game1.voidTexture, new Rectangle((int)(position.X) + 1, (int)(position.Y) + 1, biggerSide * health / maxHealth, 3), healthColor);
         }
 
     }
