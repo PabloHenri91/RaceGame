@@ -66,7 +66,7 @@ namespace MyGame.src
             textures2Dlocations.Add("buttonLeftPressed");
             textures2Dlocations.Add("buttonRight");
             textures2Dlocations.Add("buttonRightPressed");
-            for (int i = 0; i < 6; i++)//Carregar texturas dos carros que o jogador vai poder escolher para começar o jogo.
+            for (int i = 0;i < 6;i++)//Carregar texturas dos carros que o jogador vai poder escolher para começar o jogo.
             {
                 textures2Dlocations.Add("nave" + i);
             }
@@ -98,7 +98,7 @@ namespace MyGame.src
             textures2D["buttonRightPressed"].setPosition(688, 405);
 
             //Física
-            world = new World(new Vector2(0, -9.807f)); // 9,807 = gravidade da Terra =P
+            world = new World(new Vector2(0, -9.807f));// 9,807 = gravidade da Terra =P
 
             //Chão
             vertices = new Vertices();
@@ -208,6 +208,7 @@ namespace MyGame.src
                                 if (textures2D["buttonOk"].intersectsWithMouseClick())
                                 {
                                     Game1.memoryCard = new MemoryCard();
+                                    Game1.players = new Players();//Carrega dados dos carros que vão ser usador para criar o novo jogo
                                     Game1.memoryCard.newGame(newCarIndex);
                                     Game1.nextState = Game1.states.hangar;
                                     return;
@@ -235,7 +236,7 @@ namespace MyGame.src
                     #region case states.loadGame:
                     case states.loadGame: 
                         {
-                            //TODO carregar dados do arquivo data e ir para a garagem
+                            //TODO carregar dados dos carros (Game1.players = new Players();) e do arquivo data e ir para a garagem
                             if (Game1.input.click0)
                             {
                                 nextState = states.mainMenu;

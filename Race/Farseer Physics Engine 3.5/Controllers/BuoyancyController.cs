@@ -58,7 +58,7 @@ namespace FarseerPhysics.Controllers
 
         public AABB Container
         {
-            get { return _container; }
+            get { return _container;}
             set
             {
                 _container = value;
@@ -89,7 +89,7 @@ namespace FarseerPhysics.Controllers
                 float area = 0;
                 float mass = 0;
 
-                for (int j = 0; j < body.FixtureList.Count; j++)
+                for (int j = 0;j < body.FixtureList.Count;j++)
                 {
                     Fixture fixture = body.FixtureList[j];
 

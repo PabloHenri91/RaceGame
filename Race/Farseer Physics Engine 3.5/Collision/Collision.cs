@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -276,12 +276,12 @@ namespace FarseerPhysics.Collision
 
         public float Width
         {
-            get { return UpperBound.X - LowerBound.X; }
+            get { return UpperBound.X - LowerBound.X;}
         }
 
         public float Height
         {
-            get { return UpperBound.Y - LowerBound.Y; }
+            get { return UpperBound.Y - LowerBound.Y;}
         }
 
         /// <summary>
@@ -289,7 +289,7 @@ namespace FarseerPhysics.Collision
         /// </summary>
         public Vector2 Center
         {
-            get { return 0.5f * (LowerBound + UpperBound); }
+            get { return 0.5f * (LowerBound + UpperBound);}
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace FarseerPhysics.Collision
         /// </summary>
         public Vector2 Extents
         {
-            get { return 0.5f * (UpperBound - LowerBound); }
+            get { return 0.5f * (UpperBound - LowerBound);}
         }
 
         /// <summary>
@@ -335,7 +335,7 @@ namespace FarseerPhysics.Collision
         /// </summary>
         public AABB Q1
         {
-            get { return new AABB(Center, UpperBound); }
+            get { return new AABB(Center, UpperBound);}
         }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace FarseerPhysics.Collision
         /// </summary>
         public AABB Q2
         {
-            get { return new AABB(new Vector2(LowerBound.X, Center.Y), new Vector2(Center.X, UpperBound.Y)); }
+            get { return new AABB(new Vector2(LowerBound.X, Center.Y), new Vector2(Center.X, UpperBound.Y));}
         }
 
         /// <summary>
@@ -351,7 +351,7 @@ namespace FarseerPhysics.Collision
         /// </summary>
         public AABB Q3
         {
-            get { return new AABB(LowerBound, Center); }
+            get { return new AABB(LowerBound, Center);}
         }
 
         /// <summary>
@@ -359,14 +359,14 @@ namespace FarseerPhysics.Collision
         /// </summary>
         public AABB Q4
         {
-            get { return new AABB(new Vector2(Center.X, LowerBound.Y), new Vector2(UpperBound.X, Center.Y)); }
+            get { return new AABB(new Vector2(Center.X, LowerBound.Y), new Vector2(UpperBound.X, Center.Y));}
         }
 
         /// <summary>
         /// Verify that the bounds are sorted. And the bounds are valid numbers (not NaN).
         /// </summary>
         /// <returns>
-        /// 	<c>true</c> if this instance is valid; otherwise, <c>false</c>.
+        /// 	<c>true</c> if this instance is valid;otherwise, <c>false</c>.
         /// </returns>
         public bool IsValid()
         {
@@ -402,7 +402,7 @@ namespace FarseerPhysics.Collision
         /// </summary>
         /// <param name="aabb">The aabb.</param>
         /// <returns>
-        /// 	<c>true</c> if it contains the specified aabb; otherwise, <c>false</c>.
+        /// 	<c>true</c> if it contains the specified aabb;otherwise, <c>false</c>.
         /// </returns>
         public bool Contains(ref AABB aabb)
         {
@@ -419,7 +419,7 @@ namespace FarseerPhysics.Collision
         /// </summary>
         /// <param name="point">The point.</param>
         /// <returns>
-        /// 	<c>true</c> if it contains the specified point; otherwise, <c>false</c>.
+        /// 	<c>true</c> if it contains the specified point;otherwise, <c>false</c>.
         /// </returns>
         public bool Contains(ref Vector2 point)
         {
@@ -469,7 +469,7 @@ namespace FarseerPhysics.Collision
 
             Vector2 normal = Vector2.Zero;
 
-            for (int i = 0; i < 2; ++i)
+            for (int i = 0;i < 2;++i)
             {
                 float absD_i = i == 0 ? absD.X : absD.Y;
                 float lowerBound_i = i == 0 ? LowerBound.X : LowerBound.Y;
@@ -625,13 +625,13 @@ namespace FarseerPhysics.Collision
             state2 = new FixedArray2<PointState>();
 
             // Detect persists and removes.
-            for (int i = 0; i < manifold1.PointCount; ++i)
+            for (int i = 0;i < manifold1.PointCount;++i)
             {
                 ContactID id = manifold1.Points[i].Id;
 
                 state1[i] = PointState.Remove;
 
-                for (int j = 0; j < manifold2.PointCount; ++j)
+                for (int j = 0;j < manifold2.PointCount;++j)
                 {
                     if (manifold2.Points[j].Id.Key == id.Key)
                     {
@@ -642,13 +642,13 @@ namespace FarseerPhysics.Collision
             }
 
             // Detect persists and adds.
-            for (int i = 0; i < manifold2.PointCount; ++i)
+            for (int i = 0;i < manifold2.PointCount;++i)
             {
                 ContactID id = manifold2.Points[i].Id;
 
                 state2[i] = PointState.Add;
 
-                for (int j = 0; j < manifold1.PointCount; ++j)
+                for (int j = 0;j < manifold1.PointCount;++j)
                 {
                     if (manifold1.Points[j].Id.Key == id.Key)
                     {
@@ -712,7 +712,7 @@ namespace FarseerPhysics.Collision
             float radius = polygonA.Radius + circleB.Radius;
             int vertexCount = polygonA.Vertices.Count;
 
-            for (int i = 0; i < vertexCount; ++i)
+            for (int i = 0;i < vertexCount;++i)
             {
                 Vector2 value1 = polygonA.Normals[i];
                 Vector2 value2 = cLocal - polygonA.Vertices[i];
@@ -859,10 +859,10 @@ namespace FarseerPhysics.Collision
             if (separationB > totalRadius)
                 return;
 
-            PolygonShape poly1; // reference polygon
-            PolygonShape poly2; // incident polygon
+            PolygonShape poly1;// reference polygon
+            PolygonShape poly2;// incident polygon
             Transform xf1, xf2;
-            int edge1; // reference edge
+            int edge1;// reference edge
             bool flip;
             const float k_relativeTol = 0.98f;
             const float k_absoluteTol = 0.001f;
@@ -943,7 +943,7 @@ namespace FarseerPhysics.Collision
             manifold.LocalPoint = planePoint;
 
             int pointCount = 0;
-            for (int i = 0; i < Settings.MaxManifoldPoints; ++i)
+            for (int i = 0;i < Settings.MaxManifoldPoints;++i)
             {
                 Vector2 value = clipPoints2[i].V;
                 float separation = normalx * value.X + normaly * value.Y - frontOffset;
@@ -1354,7 +1354,7 @@ namespace FarseerPhysics.Collision
 
                 // Get polygonB in frameA
                 _polygonB.Count = polygonB.Vertices.Count;
-                for (int i = 0; i < polygonB.Vertices.Count; ++i)
+                for (int i = 0;i < polygonB.Vertices.Count;++i)
                 {
                     _polygonB.Vertices[i] = MathUtils.Mul(ref _xf, polygonB.Vertices[i]);
                     _polygonB.Normals[i] = MathUtils.Mul(_xf.q, polygonB.Normals[i]);
@@ -1410,7 +1410,7 @@ namespace FarseerPhysics.Collision
                     // Search for the polygon normal that is most anti-parallel to the edge normal.
                     int bestIndex = 0;
                     float bestValue = Vector2.Dot(_normal, _polygonB.Normals[0]);
-                    for (int i = 1; i < _polygonB.Count; ++i)
+                    for (int i = 1;i < _polygonB.Count;++i)
                     {
                         float value = Vector2.Dot(_normal, _polygonB.Normals[i]);
                         if (value < bestValue)
@@ -1521,7 +1521,7 @@ namespace FarseerPhysics.Collision
                 }
 
                 int pointCount = 0;
-                for (int i = 0; i < Settings.MaxManifoldPoints; ++i)
+                for (int i = 0;i < Settings.MaxManifoldPoints;++i)
                 {
                     float separation = Vector2.Dot(rf.normal, clipPoints2[i].V - rf.v1);
 
@@ -1558,7 +1558,7 @@ namespace FarseerPhysics.Collision
                 axis.Index = _front ? 0 : 1;
                 axis.Separation = Settings.MaxFloat;
 
-                for (int i = 0; i < _polygonB.Count; ++i)
+                for (int i = 0;i < _polygonB.Count;++i)
                 {
                     float s = Vector2.Dot(_normal, _polygonB.Vertices[i] - _v1);
                     if (s < axis.Separation)
@@ -1579,7 +1579,7 @@ namespace FarseerPhysics.Collision
 
                 Vector2 perp = new Vector2(-_normal.Y, _normal.X);
 
-                for (int i = 0; i < _polygonB.Count; ++i)
+                for (int i = 0;i < _polygonB.Count;++i)
                 {
                     Vector2 n = -_polygonB.Normals[i];
 
@@ -1703,7 +1703,7 @@ namespace FarseerPhysics.Collision
             int index = 0;
             float minDot = Settings.MaxFloat;
 
-            for (int i = 0; i < count2; ++i)
+            for (int i = 0;i < count2;++i)
             {
                 float dot = Vector2.Dot(vertices2[i], normal1);
                 if (dot < minDot)
@@ -1740,7 +1740,7 @@ namespace FarseerPhysics.Collision
             // Find edge normal on poly1 that has the largest projection onto d.
             int edge = 0;
             float maxDot = -Settings.MaxFloat;
-            for (int i = 0; i < count1; ++i)
+            for (int i = 0;i < count1;++i)
             {
                 float dot = Vector2.Dot(normals1[i], dLocal1);
                 if (dot > maxDot)
@@ -1784,7 +1784,7 @@ namespace FarseerPhysics.Collision
             }
 
             // Perform a local search for the best edge normal.
-            for (; ; )
+            for (;;)
             {
                 if (increment == -1)
                     edge = bestEdge - 1 >= 0 ? bestEdge - 1 : count1 - 1;
@@ -1826,7 +1826,7 @@ namespace FarseerPhysics.Collision
             // Find the incident edge on poly2.
             int index = 0;
             float minDot = Settings.MaxFloat;
-            for (int i = 0; i < count2; ++i)
+            for (int i = 0;i < count2;++i)
             {
                 float dot = Vector2.Dot(normal1, normals2[i]);
                 if (dot < minDot)

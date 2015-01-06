@@ -6,7 +6,7 @@ namespace FarseerPhysics.Collision
 {
     public interface IBroadPhase
     {
-        int ProxyCount { get; }
+        int ProxyCount { get;}
         void UpdatePairs(BroadphaseDelegate callback);
 
         bool TestOverlap(int proxyIdA, int proxyIdB);

@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -109,41 +109,41 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// The local anchor point relative to bodyA's origin.
         /// </summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2 LocalAnchorA { get;set;}
 
         /// <summary>
         /// The local anchor point relative to bodyB's origin.
         /// </summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2 LocalAnchorB { get;set;}
 
         public override sealed Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get { return BodyA.GetWorldPoint(LocalAnchorA);}
+            set { Debug.Assert(false, "You can't set the world anchor on this joint type.");}
         }
 
         public override sealed Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get { return BodyB.GetWorldPoint(LocalAnchorB);}
+            set { Debug.Assert(false, "You can't set the world anchor on this joint type.");}
         }
 
         /// <summary>
         /// The natural length between the anchor points.
         /// Manipulating the length can lead to non-physical behavior when the frequency is zero.
         /// </summary>
-        public float Length { get; set; }
+        public float Length { get;set;}
 
         /// <summary>
         /// The mass-spring-damper frequency in Hertz. A value of 0
         /// disables softness.
         /// </summary>
-        public float Frequency { get; set; }
+        public float Frequency { get;set;}
 
         /// <summary>
         /// The damping ratio. 0 = no damping, 1 = critical damping.
         /// </summary>
-        public float DampingRatio { get; set; }
+        public float DampingRatio { get;set;}
 
         /// <summary>
         /// Get the reaction force given the inverse time step. Unit is N.
@@ -309,7 +309,7 @@ namespace FarseerPhysics.Dynamics.Joints
             Vector2 rB = MathUtils.Mul(qB, LocalAnchorB - _localCenterB);
             Vector2 u = cB + rB - cA - rA;
 
-            float length = u.Length(); u.Normalize();
+            float length = u.Length();u.Normalize();
             float C = length - Length;
             C = MathUtils.Clamp(C, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
 

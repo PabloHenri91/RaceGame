@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -99,35 +99,35 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// The local anchor point on BodyA
         /// </summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2 LocalAnchorA { get;set;}
 
         /// <summary>
         /// The local anchor point on BodyB
         /// </summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2 LocalAnchorB { get;set;}
 
         public override sealed Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get { return BodyA.GetWorldPoint(LocalAnchorA);}
+            set { LocalAnchorA = BodyA.GetLocalPoint(value);}
         }
 
         public override sealed Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { LocalAnchorB = BodyB.GetLocalPoint(value); }
+            get { return BodyB.GetWorldPoint(LocalAnchorB);}
+            set { LocalAnchorB = BodyB.GetLocalPoint(value);}
         }
 
         /// <summary>
         /// Get or set the maximum length of the rope.
         /// By default, it is the distance between the two anchor points.
         /// </summary>
-        public float MaxLength { get; set; }
+        public float MaxLength { get;set;}
 
         /// <summary>
         /// Gets the state of the joint.
         /// </summary>
-        public LimitState State { get; private set; }
+        public LimitState State { get;private set;}
 
         public override Vector2 GetReactionForce(float invDt)
         {
@@ -268,7 +268,7 @@ namespace FarseerPhysics.Dynamics.Joints
             Vector2 rB = MathUtils.Mul(qB, LocalAnchorB - _localCenterB);
             Vector2 u = cB + rB - cA - rA;
 
-            float length = u.Length(); u.Normalize();
+            float length = u.Length();u.Normalize();
             float C = length - MaxLength;
 
             C = MathUtils.Clamp(C, 0.0f, Settings.MaxLinearCorrection);

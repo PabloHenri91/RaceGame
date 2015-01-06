@@ -140,7 +140,7 @@ namespace Microsoft.Xna.Framework
 
         public static float WrapAngle(float angle)
         {
-            angle = (float) Math.IEEERemainder((double) angle, 6.2831854820251465); //2xPi precission is double
+            angle = (float) Math.IEEERemainder((double) angle, 6.2831854820251465);//2xPi precission is double
             if (angle <= -3.141593f)
             {
                 angle += 6.283185f;

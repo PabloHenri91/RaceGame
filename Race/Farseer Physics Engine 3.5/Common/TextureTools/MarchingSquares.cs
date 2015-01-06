@@ -25,8 +25,8 @@ namespace FarseerPhysics.Common.TextureTools
     IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
     FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
     CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE,
+    DATA, OR PROFITS;OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
     IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
     OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     */
@@ -70,12 +70,12 @@ namespace FarseerPhysics.Common.TextureTools
             GeomPolyVal[,] ps = new GeomPolyVal[xn + 1, yn + 1];
 
             //populate shared function lookups.
-            for (int x = 0; x < xn + 1; x++)
+            for (int x = 0;x < xn + 1;x++)
             {
                 int x0;
                 if (x == xn) x0 = (int)domain.UpperBound.X;
                 else x0 = (int)(x * cellWidth + domain.LowerBound.X);
-                for (int y = 0; y < yn + 1; y++)
+                for (int y = 0;y < yn + 1;y++)
                 {
                     int y0;
                     if (y == yn) y0 = (int)domain.UpperBound.Y;
@@ -85,14 +85,14 @@ namespace FarseerPhysics.Common.TextureTools
             }
 
             //generate sub-polys and combine to scan lines
-            for (int y = 0; y < yn; y++)
+            for (int y = 0;y < yn;y++)
             {
                 float y0 = y * cellHeight + domain.LowerBound.Y;
                 float y1;
                 if (y == yn - 1) y1 = domain.UpperBound.Y;
                 else y1 = y0 + cellHeight;
                 GeomPoly pre = null;
-                for (int x = 0; x < xn; x++)
+                for (int x = 0;x < xn;x++)
                 {
                     float x0 = x * cellWidth + domain.LowerBound.X;
                     float x1;
@@ -131,7 +131,7 @@ namespace FarseerPhysics.Common.TextureTools
             }
 
             //combine scan lines together
-            for (int y = 1; y < yn; y++)
+            for (int y = 1;y < yn;y++)
             {
                 int x = 0;
                 while (x < xn)
@@ -214,7 +214,7 @@ namespace FarseerPhysics.Common.TextureTools
                     if (bj == bp.End()) bj = bp.Begin();
                     while (bj != bi)
                     {
-                        ai = ap.Insert(ai, bj.Elem()); // .clone()
+                        ai = ap.Insert(ai, bj.Elem());// .clone()
                         bj = bj.Next();
                         if (bj == bp.End()) bj = bp.Begin();
                         u.GeomP.Length++;
@@ -249,7 +249,7 @@ namespace FarseerPhysics.Common.TextureTools
                     p.GeomP = u.GeomP;
 
                     x = (int)((bi.Next().Elem().X - domain.LowerBound.X) / cellWidth) + 1;
-                    //x++; this was already commented out!
+                    //x++;this was already commented out!
                 }
             }
 
@@ -366,7 +366,7 @@ namespace FarseerPhysics.Common.TextureTools
             if (val != 0)
             {
                 CxFastListNode<Vector2> pi = null;
-                for (int i = 0; i < 8; i++)
+                for (int i = 0;i < 8;i++)
                 {
                     Vector2 p;
                     if ((val & (1 << i)) != 0)
@@ -421,9 +421,9 @@ namespace FarseerPhysics.Common.TextureTools
                         b = bi.Next().Elem();
 
                         Vector2 u = a - a0;
-                        //vec_new(u); vec_sub(a.p.p, a0.p.p, u);
+                        //vec_new(u);vec_sub(a.p.p, a0.p.p, u);
                         Vector2 v = b - a;
-                        //vec_new(v); vec_sub(b.p.p, a.p.p, v);
+                        //vec_new(v);vec_sub(b.p.p, a.p.p, v);
                         float dot = VecCross(u, v);
                         if (dot * dot < Settings.Epsilon)
                         {
@@ -457,9 +457,9 @@ namespace FarseerPhysics.Common.TextureTools
                     Vector2 a2 = ai.Elem();
                     Vector2 a00 = preb.Elem();
                     Vector2 uu = a1 - a00;
-                    //vec_new(u); vec_sub(a1.p, a0.p, u);
+                    //vec_new(u);vec_sub(a1.p, a0.p, u);
                     Vector2 vv = a2 - a1;
-                    //vec_new(v); vec_sub(a2.p, a1.p, v);
+                    //vec_new(v);vec_sub(a2.p, a1.p, v);
                     float dot1 = VecCross(uu, vv);
                     if (dot1 * dot1 < Settings.Epsilon)
                     {

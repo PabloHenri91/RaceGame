@@ -36,17 +36,17 @@ namespace FarseerPhysics.Common.Decomposition
 
             int[] polygon = new int[vertices.Count];
 
-            for (int v = 0; v < vertices.Count; v++)
+            for (int v = 0;v < vertices.Count;v++)
                 polygon[v] = v;
 
             int nv = vertices.Count;
 
             // Remove nv-2 Vertices, creating 1 triangle every time
-            int count = 2 * nv; /* error detection */
+            int count = 2 * nv;/* error detection */
 
             List<Vertices> result = new List<Vertices>();
 
-            for (int v = nv - 1; nv > 2; )
+            for (int v = nv - 1;nv > 2;)
             {
                 // If we loop, it is probably a non-simple polygon 
                 if (0 >= (count--))
@@ -58,13 +58,13 @@ namespace FarseerPhysics.Common.Decomposition
                 // Three consecutive vertices in current polygon, <u,v,world>
                 int u = v;
                 if (nv <= u)
-                    u = 0; // Previous 
+                    u = 0;// Previous 
                 v = u + 1;
                 if (nv <= v)
-                    v = 0; // New v   
+                    v = 0;// New v   
                 int w = v + 1;
                 if (nv <= w)
-                    w = 0; // Next 
+                    w = 0;// Next 
 
                 _tmpA = vertices[polygon[u]];
                 _tmpB = vertices[polygon[v]];
@@ -82,7 +82,7 @@ namespace FarseerPhysics.Common.Decomposition
                     result.Add(triangle);
 
                     // Remove v from remaining polygon 
-                    for (s = v, t = v + 1; t < nv; s++, t++)
+                    for (s = v, t = v + 1;t < nv;s++, t++)
                     {
                         polygon[s] = polygon[t];
                     }
@@ -135,7 +135,7 @@ namespace FarseerPhysics.Common.Decomposition
             if (Settings.Epsilon > MathUtils.Area(ref _tmpA, ref _tmpB, ref _tmpC))
                 return false;
 
-            for (int p = 0; p < n; p++)
+            for (int p = 0;p < n;p++)
             {
                 if ((p == u) || (p == v) || (p == w))
                     continue;

@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -134,40 +134,40 @@ namespace FarseerPhysics.Dynamics.Joints
         /// Gets or sets the type of the joint.
         /// </summary>
         /// <value>The type of the joint.</value>
-        public JointType JointType { get; protected set; }
+        public JointType JointType { get;protected set;}
 
         /// <summary>
         /// Get the first body attached to this joint.
         /// </summary>
-        public Body BodyA { get; internal set; }
+        public Body BodyA { get;internal set;}
 
         /// <summary>
         /// Get the second body attached to this joint.
         /// </summary>
-        public Body BodyB { get; internal set; }
+        public Body BodyB { get;internal set;}
 
         /// <summary>
         /// Get the anchor point on bodyA in world coordinates.
         /// On some joints, this value indicate the anchor point within the world.
         /// </summary>
-        public abstract Vector2 WorldAnchorA { get; set; }
+        public abstract Vector2 WorldAnchorA { get;set;}
 
         /// <summary>
         /// Get the anchor point on bodyB in world coordinates.
         /// On some joints, this value indicate the anchor point within the world.
         /// </summary>
-        public abstract Vector2 WorldAnchorB { get; set; }
+        public abstract Vector2 WorldAnchorB { get;set;}
 
         /// <summary>
         /// Set the user data pointer.
         /// </summary>
         /// <value>The data.</value>
-        public object UserData { get; set; }
+        public object UserData { get;set;}
 
         /// <summary>
         /// Set this flag to true if the attached bodies should collide.
         /// </summary>
-        public bool CollideConnected { get; set; }
+        public bool CollideConnected { get;set;}
 
         /// <summary>
         /// The Breakpoint simply indicates the maximum Value the JointError can be before it breaks.
@@ -175,7 +175,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float Breakpoint
         {
-            get { return _breakpoint; }
+            get { return _breakpoint;}
             set
             {
                 _breakpoint = value;

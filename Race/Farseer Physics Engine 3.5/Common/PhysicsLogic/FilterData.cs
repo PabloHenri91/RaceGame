@@ -93,7 +93,7 @@ namespace FarseerPhysics.Common.PhysicsLogic
         /// </summary>
         /// <param name="category">The category.</param>
         /// <returns>
-        /// 	<c>true</c> if the object has the specified category; otherwise, <c>false</c>.
+        /// 	<c>true</c> if the object has the specified category;otherwise, <c>false</c>.
         /// </returns>
         public bool IsInDisabledCategory(Category category)
         {
@@ -123,7 +123,7 @@ namespace FarseerPhysics.Common.PhysicsLogic
         /// </summary>
         /// <param name="category">The category.</param>
         /// <returns>
-        /// 	<c>true</c> if the object has the specified category; otherwise, <c>false</c>.
+        /// 	<c>true</c> if the object has the specified category;otherwise, <c>false</c>.
         /// </returns>
         public bool IsInEnabledInCategory(Category category)
         {

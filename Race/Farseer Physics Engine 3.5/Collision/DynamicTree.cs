@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -83,7 +83,7 @@ namespace FarseerPhysics.Collision
             _nodes = new TreeNode<T>[_nodeCapacity];
 
             // Build a linked list for the free list.
-            for (int i = 0; i < _nodeCapacity - 1; ++i)
+            for (int i = 0;i < _nodeCapacity - 1;++i)
             {
                 _nodes[i] = new TreeNode<T>();
                 _nodes[i].ParentOrNext = i + 1;
@@ -127,7 +127,7 @@ namespace FarseerPhysics.Collision
                 float rootArea = root.AABB.Perimeter;
 
                 float totalArea = 0.0f;
-                for (int i = 0; i < _nodeCapacity; ++i)
+                for (int i = 0;i < _nodeCapacity;++i)
                 {
                     TreeNode<T> node = _nodes[i];
                     if (node.Height < 0)
@@ -152,7 +152,7 @@ namespace FarseerPhysics.Collision
             get
             {
                 int maxBalance = 0;
-                for (int i = 0; i < _nodeCapacity; ++i)
+                for (int i = 0;i < _nodeCapacity;++i)
                 {
                     TreeNode<T> node = _nodes[i];
                     if (node.Height <= 1)
@@ -345,7 +345,7 @@ namespace FarseerPhysics.Collision
             r.Normalize();
 
             // v is perpendicular to the segment.
-            Vector2 absV = MathUtils.Abs(new Vector2(-r.Y, r.X)); //FPE: Inlined the 'v' variable
+            Vector2 absV = MathUtils.Abs(new Vector2(-r.Y, r.X));//FPE: Inlined the 'v' variable
 
             // Separating axis for segment (Gino, p80).
             // |dot(v, p1 - c)| > dot(|v|, h)
@@ -435,7 +435,7 @@ namespace FarseerPhysics.Collision
 
                 // Build a linked list for the free list. The parent
                 // pointer becomes the "next" pointer.
-                for (int i = _nodeCount; i < _nodeCapacity - 1; ++i)
+                for (int i = _nodeCount;i < _nodeCapacity - 1;++i)
                 {
                     _nodes[i] = new TreeNode<T>();
                     _nodes[i].ParentOrNext = i + 1;
@@ -948,7 +948,7 @@ namespace FarseerPhysics.Collision
             int count = 0;
 
             // Build array of leaves. Free the rest.
-            for (int i = 0; i < _nodeCapacity; ++i)
+            for (int i = 0;i < _nodeCapacity;++i)
             {
                 if (_nodes[i].Height < 0)
                 {
@@ -972,11 +972,11 @@ namespace FarseerPhysics.Collision
             {
                 float minCost = Settings.MaxFloat;
                 int iMin = -1, jMin = -1;
-                for (int i = 0; i < count; ++i)
+                for (int i = 0;i < count;++i)
                 {
                     AABB AABBi = _nodes[nodes[i]].AABB;
 
-                    for (int j = i + 1; j < count; ++j)
+                    for (int j = i + 1;j < count;++j)
                     {
                         AABB AABBj = _nodes[nodes[j]].AABB;
                         AABB b = new AABB();
@@ -1024,7 +1024,7 @@ namespace FarseerPhysics.Collision
         public void ShiftOrigin(Vector2 newOrigin)
         {
             // Build array of leaves. Free the rest.
-            for (int i = 0; i < _nodeCapacity; ++i)
+            for (int i = 0;i < _nodeCapacity;++i)
             {
                 _nodes[i].AABB.LowerBound -= newOrigin;
                 _nodes[i].AABB.UpperBound -= newOrigin;

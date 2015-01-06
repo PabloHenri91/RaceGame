@@ -39,14 +39,14 @@ namespace FarseerPhysics.Dynamics.Joints
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.Position; }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get { return BodyA.Position;}
+            set { Debug.Assert(false, "You can't set the world anchor on this joint type.");}
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.Position; }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get { return BodyB.Position;}
+            set { Debug.Assert(false, "You can't set the world anchor on this joint type.");}
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float TargetAngle
         {
-            get { return _targetAngle; }
+            get { return _targetAngle;}
             set
             {
                 if (value != _targetAngle)
@@ -69,19 +69,19 @@ namespace FarseerPhysics.Dynamics.Joints
         /// Gets or sets the bias factor.
         /// Defaults to 0.2
         /// </summary>
-        public float BiasFactor { get; set; }
+        public float BiasFactor { get;set;}
         
         /// <summary>
         /// Gets or sets the maximum impulse
         /// Defaults to float.MaxValue
         /// </summary>
-        public float MaxImpulse { get; set; }
+        public float MaxImpulse { get;set;}
         
         /// <summary>
         /// Gets or sets the softness of the joint
         /// Defaults to 0
         /// </summary>
-        public float Softness { get; set; }
+        public float Softness { get;set;}
 
         public override Vector2 GetReactionForce(float invDt)
         {

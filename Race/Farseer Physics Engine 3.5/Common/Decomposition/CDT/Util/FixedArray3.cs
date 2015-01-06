@@ -22,8 +22,8 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA, OR
+ * PROFITS;OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -90,13 +90,13 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Util
 
         public bool Contains(T value)
         {
-            for (int i = 0; i < 3; ++i) if (this[i] == value) return true;
+            for (int i = 0;i < 3;++i) if (this[i] == value) return true;
             return false;
         }
 
         public int IndexOf(T value)
         {
-            for (int i = 0; i < 3; ++i) if (this[i] == value) return i;
+            for (int i = 0;i < 3;++i) if (this[i] == value) return i;
             return -1;
         }
 
@@ -107,12 +107,12 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Util
 
         public void Clear(T value)
         {
-            for (int i = 0; i < 3; ++i) if (this[i] == value) this[i] = null;
+            for (int i = 0;i < 3;++i) if (this[i] == value) this[i] = null;
         }
 
         private IEnumerable<T> Enumerate()
         {
-            for (int i = 0; i < 3; ++i) yield return this[i];
+            for (int i = 0;i < 3;++i) yield return this[i];
         }
     }
 }

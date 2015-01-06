@@ -64,7 +64,7 @@ namespace Microsoft.Xna.Framework
 
         public static Matrix Identity
         {
-            get { return identity; }
+            get { return identity;}
         }
 
 #endregion Static Properties
@@ -73,7 +73,7 @@ namespace Microsoft.Xna.Framework
 
         public Vector3 Backward
         {
-            get { return new Vector3(M31, M32, M33); }
+            get { return new Vector3(M31, M32, M33);}
             set
             {
                 M31 = value.X;
@@ -84,7 +84,7 @@ namespace Microsoft.Xna.Framework
 
         public Vector3 Down
         {
-            get { return new Vector3(-M21, -M22, -M23); }
+            get { return new Vector3(-M21, -M22, -M23);}
             set
             {
                 M21 = -value.X;
@@ -95,7 +95,7 @@ namespace Microsoft.Xna.Framework
 
         public Vector3 Forward
         {
-            get { return new Vector3(-M31, -M32, -M33); }
+            get { return new Vector3(-M31, -M32, -M33);}
             set
             {
                 M31 = -value.X;
@@ -106,7 +106,7 @@ namespace Microsoft.Xna.Framework
 
         public Vector3 Left
         {
-            get { return new Vector3(-M11, -M12, -M13); }
+            get { return new Vector3(-M11, -M12, -M13);}
             set
             {
                 M11 = -value.X;
@@ -117,7 +117,7 @@ namespace Microsoft.Xna.Framework
 
         public Vector3 Right
         {
-            get { return new Vector3(M11, M12, M13); }
+            get { return new Vector3(M11, M12, M13);}
             set
             {
                 M11 = value.X;
@@ -128,7 +128,7 @@ namespace Microsoft.Xna.Framework
 
         public Vector3 Translation
         {
-            get { return new Vector3(M41, M42, M43); }
+            get { return new Vector3(M41, M42, M43);}
             set
             {
                 M41 = value.X;
@@ -139,7 +139,7 @@ namespace Microsoft.Xna.Framework
 
         public Vector3 Up
         {
-            get { return new Vector3(M21, M22, M23); }
+            get { return new Vector3(M21, M22, M23);}
             set
             {
                 M21 = value.X;
@@ -776,7 +776,7 @@ namespace Microsoft.Xna.Framework
 
             float invDetMatrix = 1f/detMatrix;
 
-            Matrix ret; // Allow for matrix and result to point to the same structure
+            Matrix ret;// Allow for matrix and result to point to the same structure
 
             ret.M11 = (matrix.M22*det12 - matrix.M23*det11 + matrix.M24*det10)*invDetMatrix;
             ret.M12 = (-matrix.M12*det12 + matrix.M13*det11 - matrix.M14*det10)*invDetMatrix;

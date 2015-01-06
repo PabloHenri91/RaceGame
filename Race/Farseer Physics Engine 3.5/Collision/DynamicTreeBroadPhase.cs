@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -100,7 +100,7 @@ namespace FarseerPhysics.Collision
         /// <value>The proxy count.</value>
         public int ProxyCount
         {
-            get { return _proxyCount; }
+            get { return _proxyCount;}
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace FarseerPhysics.Collision
 
         private void UnBufferMove(int proxyId)
         {
-            for (int i = 0; i < _moveCount; ++i)
+            for (int i = 0;i < _moveCount;++i)
             {
                 if (_moveBuffer[i] == proxyId)
                 {
@@ -240,7 +240,7 @@ namespace FarseerPhysics.Collision
             _pairCount = 0;
 
             // Perform tree queries for all moving proxies.
-            for (int j = 0; j < _moveCount; ++j)
+            for (int j = 0;j < _moveCount;++j)
             {
                 _queryProxyId = _moveBuffer[j];
                 if (_queryProxyId == NullProxy)
@@ -325,7 +325,7 @@ namespace FarseerPhysics.Collision
         /// </summary>
         public float TreeQuality
         {
-            get { return _tree.AreaRatio; }
+            get { return _tree.AreaRatio;}
         }
 
         /// <summary>
@@ -333,7 +333,7 @@ namespace FarseerPhysics.Collision
         /// </summary>
         public int TreeBalance
         {
-            get { return _tree.MaxBalance; }
+            get { return _tree.MaxBalance;}
         }
 
         /// <summary>
@@ -341,7 +341,7 @@ namespace FarseerPhysics.Collision
         /// </summary>
         public int TreeHeight
         {
-            get { return _tree.Height; }
+            get { return _tree.Height;}
         }
     }
 }

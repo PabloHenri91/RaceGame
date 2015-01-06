@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -114,29 +114,29 @@ namespace FarseerPhysics.Dynamics.Joints
                 LocalAnchorB = anchor;
             }
 
-            Axis = axis; //FPE only: We maintain the original value as it is supposed to.
+            Axis = axis;//FPE only: We maintain the original value as it is supposed to.
         }
 
         /// <summary>
         /// The local anchor point on BodyA
         /// </summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2 LocalAnchorA { get;set;}
 
         /// <summary>
         /// The local anchor point on BodyB
         /// </summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2 LocalAnchorB { get;set;}
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get { return BodyA.GetWorldPoint(LocalAnchorA);}
+            set { LocalAnchorA = BodyA.GetLocalPoint(value);}
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { LocalAnchorB = BodyB.GetLocalPoint(value); }
+            get { return BodyB.GetWorldPoint(LocalAnchorB);}
+            set { LocalAnchorB = BodyB.GetLocalPoint(value);}
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public Vector2 Axis
         {
-            get { return _axis; }
+            get { return _axis;}
             set
             {
                 _axis = value;
@@ -156,14 +156,14 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// The axis in local coordinates relative to BodyA
         /// </summary>
-        public Vector2 LocalXAxis { get; private set; }
+        public Vector2 LocalXAxis { get;private set;}
 
         /// <summary>
         /// The desired motor speed in radians per second.
         /// </summary>
         public float MotorSpeed
         {
-            get { return _motorSpeed; }
+            get { return _motorSpeed;}
             set
             {
                 WakeBodies();
@@ -176,7 +176,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float MaxMotorTorque
         {
-            get { return _maxMotorTorque; }
+            get { return _maxMotorTorque;}
             set
             {
                 WakeBodies();
@@ -187,12 +187,12 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// Suspension frequency, zero indicates no suspension
         /// </summary>
-        public float Frequency { get; set; }
+        public float Frequency { get;set;}
 
         /// <summary>
         /// Suspension damping ratio, one indicates critical damping
         /// </summary>
-        public float DampingRatio { get; set; }
+        public float DampingRatio { get;set;}
 
         /// <summary>
         /// Gets the translation along the axis
@@ -232,7 +232,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public bool MotorEnabled
         {
-            get { return _enableMotor; }
+            get { return _enableMotor;}
             set
             {
                 WakeBodies();

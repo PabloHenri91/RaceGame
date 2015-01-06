@@ -23,7 +23,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
 
             Vertices simplified = new Vertices(vertices.Count);
 
-            for (int i = 0; i < vertices.Count; i++)
+            for (int i = 0;i < vertices.Count;i++)
             {
                 Vector2 prev = vertices.PreviousVertex(i);
                 Vector2 current = vertices[i];
@@ -53,14 +53,14 @@ namespace FarseerPhysics.Common.PolygonManipulation
 
             bool[] usePoint = new bool[vertices.Count];
 
-            for (int i = 0; i < vertices.Count; i++)
+            for (int i = 0;i < vertices.Count;i++)
                 usePoint[i] = true;
 
             SimplifySection(vertices, 0, vertices.Count - 1, usePoint, distanceTolerance);
 
             Vertices simplified = new Vertices(vertices.Count);
 
-            for (int i = 0; i < vertices.Count; i++)
+            for (int i = 0;i < vertices.Count;i++)
             {
                 if (usePoint[i])
                     simplified.Add(vertices[i]);
@@ -79,7 +79,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
 
             double maxDistance = -1.0;
             int maxIndex = i;
-            for (int k = i + 1; k < j; k++)
+            for (int k = i + 1;k < j;k++)
             {
                 Vector2 point = vertices[k];
 
@@ -94,7 +94,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
 
             if (maxDistance <= distanceTolerance)
             {
-                for (int k = i + 1; k < j; k++)
+                for (int k = i + 1;k < j;k++)
                 {
                     usePoint[k] = false;
                 }
@@ -116,13 +116,13 @@ namespace FarseerPhysics.Common.PolygonManipulation
             //From Eric Jordan's convex decomposition library
 
             if (vertices.Count <= 3)
-                return vertices; //Can't do anything useful here to a triangle
+                return vertices;//Can't do anything useful here to a triangle
 
             bool[] mergeMe = new bool[vertices.Count];
             int newNVertices = vertices.Count;
 
             //Gather points to process
-            for (int i = 0; i < vertices.Count; ++i)
+            for (int i = 0;i < vertices.Count;++i)
             {
                 int lower = (i == 0) ? (vertices.Count - 1) : (i - 1);
                 int middle = i;
@@ -166,7 +166,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
             //Copy the vertices to a new list and clear the old
             Vertices newVertices = new Vertices(newNVertices);
 
-            for (int i = 0; i < vertices.Count; ++i)
+            for (int i = 0;i < vertices.Count;++i)
             {
                 if (mergeMe[i] || newNVertices == 0 || currIndex == newNVertices)
                     continue;
@@ -210,7 +210,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
 
             Vertices simplified = new Vertices(vertices.Count);
 
-            for (int i = 0; i < vertices.Count; i++)
+            for (int i = 0;i < vertices.Count;i++)
             {
                 Vector2 current = vertices[i];
                 Vector2 next = vertices.NextVertex(i);
@@ -241,7 +241,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
 
             Vertices simplified = new Vertices(vertices.Count);
 
-            for (int i = 0; i < vertices.Count; i++)
+            for (int i = 0;i < vertices.Count;i++)
             {
                 if (i % nth == 0)
                     continue;
@@ -276,7 +276,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
             Vector2 v2 = vertices[vertices.Count - 1];
             areaTolerance *= 2;
 
-            for (int i = 0; i < vertices.Count; ++i, v2 = v3)
+            for (int i = 0;i < vertices.Count;++i, v2 = v3)
             {
                 v3 = i == vertices.Count - 1 ? simplified[0] : vertices[i];
 

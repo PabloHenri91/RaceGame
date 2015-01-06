@@ -40,7 +40,7 @@ namespace FarseerPhysics.Controllers
         /// </summary>
         /// <param name="controller">The controller type.</param>
         /// <returns>
-        /// 	<c>true</c> if the body has the specified flag; otherwise, <c>false</c>.
+        /// 	<c>true</c> if the body has the specified flag;otherwise, <c>false</c>.
         /// </returns>
         public bool IsControllerIgnored(ControllerType controller)
         {

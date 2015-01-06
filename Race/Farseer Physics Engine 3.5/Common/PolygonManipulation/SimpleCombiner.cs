@@ -9,7 +9,7 @@
 * Permission is granted to anyone to use this software for any purpose,
 * including commercial applications, and to alter it and redistribute it
 * freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
+* 1. The origin of this software must not be misrepresented;you must not
 * claim that you wrote the original software. If you use this software
 * in a product, an acknowledgment in the product documentation would be
 * appreciated but is not required.
@@ -46,7 +46,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
             List<Vertices> polys = new List<Vertices>();
 
             bool[] covered = new bool[triangles.Count];
-            for (int i = 0; i < triangles.Count; ++i)
+            for (int i = 0;i < triangles.Count;++i)
             {
                 covered[i] = false;
 
@@ -66,7 +66,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
             while (notDone)
             {
                 int currTri = -1;
-                for (int i = 0; i < triangles.Count; ++i)
+                for (int i = 0;i < triangles.Count;++i)
                 {
                     if (covered[i])
                         continue;
@@ -83,14 +83,14 @@ namespace FarseerPhysics.Common.PolygonManipulation
                 {
                     Vertices poly = new Vertices(3);
 
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0;i < 3;i++)
                     {
                         poly.Add(triangles[currTri][i]);
                     }
 
                     covered[currTri] = true;
                     int index = 0;
-                    for (int i = 0; i < 2 * triangles.Count; ++i, ++index)
+                    for (int i = 0;i < 2 * triangles.Count;++i, ++index)
                     {
                         while (index >= triangles.Count) index -= triangles.Count;
                         if (covered[index])
@@ -99,7 +99,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
                         }
                         Vertices newP = AddTriangle(triangles[index], poly);
                         if (newP == null)
-                            continue; // is this right
+                            continue;// is this right
 
                         if (newP.Count > Settings.MaxPolygonVertices)
                             continue;
@@ -127,13 +127,13 @@ namespace FarseerPhysics.Common.PolygonManipulation
                     }
 
                     if (poly.Count >= 3)
-                        polyIndex++; //Must be outside (polyIndex < polysLength) test
+                        polyIndex++;//Must be outside (polyIndex < polysLength) test
                 }
             }
 
             //TO DO: Add sanity check
             //Remove empty vertice collections
-            for (int i = polys.Count - 1; i >= 0; i--)
+            for (int i = polys.Count - 1;i >= 0;i--)
             {
                 if (polys[i].Count == 0)
                     polys.RemoveAt(i);
@@ -149,7 +149,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
             int firstT = -1;
             int secondP = -1;
             int secondT = -1;
-            for (int i = 0; i < vertices.Count; i++)
+            for (int i = 0;i < vertices.Count;i++)
             {
                 if (t[0].X == vertices[i].X && t[0].Y == vertices[i].Y)
                 {
@@ -212,7 +212,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
                 tipT = 2;
 
             Vertices result = new Vertices(vertices.Count + 1);
-            for (int i = 0; i < vertices.Count; i++)
+            for (int i = 0;i < vertices.Count;i++)
             {
                 result.Add(vertices[i]);
 

@@ -66,7 +66,7 @@ namespace FarseerPhysics.Dynamics
                     float maxImpulse = 0.0f;
                     int count = contact.Manifold.PointCount;
 
-                    for (int i = 0; i < count; ++i)
+                    for (int i = 0;i < count;++i)
                     {
                         maxImpulse = Math.Max(maxImpulse, impulse.points[i].normalImpulse);
                     }
@@ -100,7 +100,7 @@ namespace FarseerPhysics.Dynamics
                 }
 
                 //Cache the linear and angular velocities.
-                for (int i = 0; i < Parts.Count; i++)
+                for (int i = 0;i < Parts.Count;i++)
                 {
                     _velocitiesCache[i] = Parts[i].Body.LinearVelocity;
                     _angularVelocitiesCache[i] = Parts[i].Body.AngularVelocity;
@@ -113,7 +113,7 @@ namespace FarseerPhysics.Dynamics
             //Unsubsribe from the PostSolve delegate
             _world.ContactManager.PostSolve -= PostSolve;
 
-            for (int i = 0; i < Parts.Count; i++)
+            for (int i = 0;i < Parts.Count;i++)
             {
                 Fixture oldFixture = Parts[i];
 

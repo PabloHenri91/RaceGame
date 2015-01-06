@@ -22,8 +22,8 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA, OR
+ * PROFITS;OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -43,12 +43,12 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Sets
 
         #region Triangulatable Members
 
-        public IList<TriangulationPoint> Points { get; private set; }
-        public IList<DelaunayTriangle> Triangles { get; private set; }
+        public IList<TriangulationPoint> Points { get;private set;}
+        public IList<DelaunayTriangle> Triangles { get;private set;}
 
         public virtual TriangulationMode TriangulationMode
         {
-            get { return TriangulationMode.Unconstrained; }
+            get { return TriangulationMode.Unconstrained;}
         }
 
         public void AddTriangle(DelaunayTriangle t)

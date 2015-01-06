@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -181,7 +181,7 @@ namespace FarseerPhysics.Dynamics
                 _collisionGroup = value;
                 Refilter();
             }
-            get { return _collisionGroup; }
+            get { return _collisionGroup;}
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace FarseerPhysics.Dynamics
         /// </summary>
         public Category CollidesWith
         {
-            get { return _collidesWith; }
+            get { return _collidesWith;}
 
             set
             {
@@ -216,7 +216,7 @@ namespace FarseerPhysics.Dynamics
         /// </summary>
         public Category CollisionCategories
         {
-            get { return _collisionCategories; }
+            get { return _collisionCategories;}
 
             set
             {
@@ -233,15 +233,15 @@ namespace FarseerPhysics.Dynamics
         /// number of vertices because this will crash some collision caching mechanisms.
         /// </summary>
         /// <value>The shape.</value>
-        public Shape Shape { get; internal set; }
+        public Shape Shape { get;internal set;}
 
         /// <summary>
         /// Gets or sets a value indicating whether this fixture is a sensor.
         /// </summary>
-        /// <value><c>true</c> if this instance is a sensor; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if this instance is a sensor;otherwise, <c>false</c>.</value>
         public bool IsSensor
         {
-            get { return _isSensor; }
+            get { return _isSensor;}
             set
             {
                 if (Body != null)
@@ -255,13 +255,13 @@ namespace FarseerPhysics.Dynamics
         /// Get the parent body of this fixture. This is null if the fixture is not attached.
         /// </summary>
         /// <value>The body.</value>
-        public Body Body { get; internal set; }
+        public Body Body { get;internal set;}
 
         /// <summary>
         /// Set the user data. Use this to store your application specific data.
         /// </summary>
         /// <value>The user data.</value>
-        public object UserData { get; set; }
+        public object UserData { get;set;}
 
         /// <summary>
         /// Set the coefficient of friction. This will _not_ change the friction of
@@ -270,7 +270,7 @@ namespace FarseerPhysics.Dynamics
         /// <value>The friction.</value>
         public float Friction
         {
-            get { return _friction; }
+            get { return _friction;}
             set
             {
                 Debug.Assert(!float.IsNaN(value));
@@ -286,7 +286,7 @@ namespace FarseerPhysics.Dynamics
         /// <value>The restitution.</value>
         public float Restitution
         {
-            get { return _restitution; }
+            get { return _restitution;}
             set
             {
                 Debug.Assert(!float.IsNaN(value));
@@ -299,11 +299,11 @@ namespace FarseerPhysics.Dynamics
         /// Gets a unique ID for this fixture.
         /// </summary>
         /// <value>The fixture id.</value>
-        public int FixtureId { get; internal set; }
+        public int FixtureId { get;internal set;}
 
         #region IDisposable Members
 
-        public bool IsDisposed { get; set; }
+        public bool IsDisposed { get;set;}
 
         public void Dispose()
         {
@@ -348,7 +348,7 @@ namespace FarseerPhysics.Dynamics
         /// </summary>
         /// <param name="fixture">The fixture.</param>
         /// <returns>
-        /// 	<c>true</c> if the fixture is ignored; otherwise, <c>false</c>.
+        /// 	<c>true</c> if the fixture is ignored;otherwise, <c>false</c>.
         /// </returns>
         public bool IsFixtureIgnored(Fixture fixture)
         {
@@ -386,7 +386,7 @@ namespace FarseerPhysics.Dynamics
 
             // Touch each proxy so that new pairs may be created
             IBroadPhase broadPhase = world.ContactManager.BroadPhase;
-            for (int i = 0; i < ProxyCount; ++i)
+            for (int i = 0;i < ProxyCount;++i)
             {
                 broadPhase.TouchProxy(Proxies[i].ProxyId);
             }
@@ -498,7 +498,7 @@ namespace FarseerPhysics.Dynamics
             // Create proxies in the broad-phase.
             ProxyCount = Shape.ChildCount;
 
-            for (int i = 0; i < ProxyCount; ++i)
+            for (int i = 0;i < ProxyCount;++i)
             {
                 FixtureProxy proxy = new FixtureProxy();
                 Shape.ComputeAABB(out proxy.AABB, ref xf, i);
@@ -515,7 +515,7 @@ namespace FarseerPhysics.Dynamics
         internal void DestroyProxies(IBroadPhase broadPhase)
         {
             // Destroy proxies in the broad-phase.
-            for (int i = 0; i < ProxyCount; ++i)
+            for (int i = 0;i < ProxyCount;++i)
             {
                 broadPhase.RemoveProxy(Proxies[i].ProxyId);
                 Proxies[i].ProxyId = -1;
@@ -531,7 +531,7 @@ namespace FarseerPhysics.Dynamics
                 return;
             }
 
-            for (int i = 0; i < ProxyCount; ++i)
+            for (int i = 0;i < ProxyCount;++i)
             {
                 FixtureProxy proxy = Proxies[i];
 

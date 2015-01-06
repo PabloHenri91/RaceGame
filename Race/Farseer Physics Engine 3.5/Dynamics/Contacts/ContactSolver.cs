@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -75,7 +75,7 @@ namespace FarseerPhysics.Dynamics.Contacts
 
         public ContactVelocityConstraint()
         {
-            for (int i = 0; i < Settings.MaxManifoldPoints; i++)
+            for (int i = 0;i < Settings.MaxManifoldPoints;i++)
             {
                 points[i] = new VelocityConstraintPoint();
             }
@@ -106,19 +106,19 @@ namespace FarseerPhysics.Dynamics.Contacts
                 _velocityConstraints = new ContactVelocityConstraint[count * 2];
                 _positionConstraints = new ContactPositionConstraint[count * 2];
 
-                for (int i = 0; i < _velocityConstraints.Length; i++)
+                for (int i = 0;i < _velocityConstraints.Length;i++)
                 {
                     _velocityConstraints[i] = new ContactVelocityConstraint();
                 }
 
-                for (int i = 0; i < _positionConstraints.Length; i++)
+                for (int i = 0;i < _positionConstraints.Length;i++)
                 {
                     _positionConstraints[i] = new ContactPositionConstraint();
                 }
             }
 
             // Initialize position independent portions of the constraints.
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0;i < _count;++i)
             {
                 Contact contact = contacts[i];
 
@@ -166,7 +166,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                 pc.radiusB = radiusB;
                 pc.type = manifold.Type;
 
-                for (int j = 0; j < pointCount; ++j)
+                for (int j = 0;j < pointCount;++j)
                 {
                     ManifoldPoint cp = manifold.Points[j];
                     VelocityConstraintPoint vcp = vc.points[j];
@@ -195,7 +195,7 @@ namespace FarseerPhysics.Dynamics.Contacts
 
         public void InitializeVelocityConstraints()
         {
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0;i < _count;++i)
             {
                 ContactVelocityConstraint vc = _velocityConstraints[i];
                 ContactPositionConstraint pc = _positionConstraints[i];
@@ -240,7 +240,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                 vc.normal = normal;
 
                 int pointCount = vc.pointCount;
-                for (int j = 0; j < pointCount; ++j)
+                for (int j = 0;j < pointCount;++j)
                 {
                     VelocityConstraintPoint vcp = vc.points[j];
 
@@ -309,7 +309,7 @@ namespace FarseerPhysics.Dynamics.Contacts
         public void WarmStart()
         {
             // Warm start.
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0;i < _count;++i)
             {
                 ContactVelocityConstraint vc = _velocityConstraints[i];
 
@@ -329,7 +329,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                 Vector2 normal = vc.normal;
                 Vector2 tangent = MathUtils.Cross(normal, 1.0f);
 
-                for (int j = 0; j < pointCount; ++j)
+                for (int j = 0;j < pointCount;++j)
                 {
                     VelocityConstraintPoint vcp = vc.points[j];
                     Vector2 P = vcp.normalImpulse * normal + vcp.tangentImpulse * tangent;
@@ -348,7 +348,7 @@ namespace FarseerPhysics.Dynamics.Contacts
 
         public void SolveVelocityConstraints()
         {
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0;i < _count;++i)
             {
                 ContactVelocityConstraint vc = _velocityConstraints[i];
 
@@ -373,7 +373,7 @@ namespace FarseerPhysics.Dynamics.Contacts
 
                 // Solve tangent constraints first because non-penetration is more important
                 // than friction.
-                for (int j = 0; j < pointCount; ++j)
+                for (int j = 0;j < pointCount;++j)
                 {
                     VelocityConstraintPoint vcp = vc.points[j];
 
@@ -484,7 +484,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                     const float k_errorTol = 1e-3f;
                     //B2_NOT_USED(k_errorTol);
 
-                    for (; ; )
+                    for (;;)
                     {
                         //
                         // Case 1: vn = 0
@@ -658,12 +658,12 @@ namespace FarseerPhysics.Dynamics.Contacts
 
         public void StoreImpulses()
         {
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0;i < _count;++i)
             {
                 ContactVelocityConstraint vc = _velocityConstraints[i];
                 Manifold manifold = _contacts[vc.contactIndex].Manifold;
 
-                for (int j = 0; j < vc.pointCount; ++j)
+                for (int j = 0;j < vc.pointCount;++j)
                 {
                     ManifoldPoint point = manifold.Points[j];
                     point.NormalImpulse = vc.points[j].normalImpulse;
@@ -679,7 +679,7 @@ namespace FarseerPhysics.Dynamics.Contacts
         {
             float minSeparation = 0.0f;
 
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0;i < _count;++i)
             {
                 ContactPositionConstraint pc = _positionConstraints[i];
 
@@ -700,7 +700,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                 float aB = _positions[indexB].a;
 
                 // Solve normal constraints
-                for (int j = 0; j < pointCount; ++j)
+                for (int j = 0;j < pointCount;++j)
                 {
                     Transform xfA = new Transform();
                     Transform xfB = new Transform();
@@ -758,7 +758,7 @@ namespace FarseerPhysics.Dynamics.Contacts
         {
             float minSeparation = 0.0f;
 
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0;i < _count;++i)
             {
                 ContactPositionConstraint pc = _positionConstraints[i];
 
@@ -791,7 +791,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                 float aB = _positions[indexB].a;
 
                 // Solve normal constraints
-                for (int j = 0; j < pointCount; ++j)
+                for (int j = 0;j < pointCount;++j)
                 {
                     Transform xfA = new Transform();
                     Transform xfB = new Transform();
@@ -893,7 +893,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                             normal = MathUtils.Mul(xfA.q, manifold.LocalNormal);
                             Vector2 planePoint = MathUtils.Mul(ref xfA, manifold.LocalPoint);
 
-                            for (int i = 0; i < manifold.PointCount; ++i)
+                            for (int i = 0;i < manifold.PointCount;++i)
                             {
                                 Vector2 clipPoint = MathUtils.Mul(ref xfB, manifold.Points[i].LocalPoint);
                                 Vector2 cA = clipPoint + (radiusA - Vector2.Dot(clipPoint - planePoint, normal)) * normal;
@@ -908,7 +908,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                             normal = MathUtils.Mul(xfB.q, manifold.LocalNormal);
                             Vector2 planePoint = MathUtils.Mul(ref xfB, manifold.LocalPoint);
 
-                            for (int i = 0; i < manifold.PointCount; ++i)
+                            for (int i = 0;i < manifold.PointCount;++i)
                             {
                                 Vector2 clipPoint = MathUtils.Mul(ref xfA, manifold.Points[i].LocalPoint);
                                 Vector2 cB = clipPoint + (radiusB - Vector2.Dot(clipPoint - planePoint, normal)) * normal;

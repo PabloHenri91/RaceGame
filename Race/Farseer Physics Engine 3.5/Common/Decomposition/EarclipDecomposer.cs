@@ -9,7 +9,7 @@
 * Permission is granted to anyone to use this software for any purpose,
 * including commercial applications, and to alter it and redistribute it
 * freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
+* 1. The origin of this software must not be misrepresented;you must not
 * claim that you wrote the original software. If you use this software
 * in a product, an acknowledgment in the product documentation would be
 * appreciated but is not required.
@@ -90,11 +90,11 @@ namespace FarseerPhysics.Common.Decomposition
                 if (mergeA.Count == -1 || mergeB.Count == -1)
                     throw new Exception("Can't triangulate your polygon.");
 
-                for (int i = 0; i < mergeA.Count; ++i)
+                for (int i = 0;i < mergeA.Count;++i)
                 {
                     results.Add(new Vertices(mergeA[i]));
                 }
-                for (int i = 0; i < mergeB.Count; ++i)
+                for (int i = 0;i < mergeB.Count;++i)
                 {
                     results.Add(new Vertices(mergeB[i]));
                 }
@@ -106,7 +106,7 @@ namespace FarseerPhysics.Common.Decomposition
             int bufferSize = 0;
             float[] xrem = new float[vertices.Count];
             float[] yrem = new float[vertices.Count];
-            for (int i = 0; i < vertices.Count; ++i)
+            for (int i = 0;i < vertices.Count;++i)
             {
                 xrem[i] = vertices[i].X;
                 yrem[i] = vertices[i].Y;
@@ -119,7 +119,7 @@ namespace FarseerPhysics.Common.Decomposition
                 // Find an ear
                 int earIndex = -1;
                 float earMaxMinCross = -10.0f;
-                for (int i = 0; i < vNum; ++i)
+                for (int i = 0;i < vNum;++i)
                 {
                     if (IsEar(i, xrem, yrem, vNum))
                     {
@@ -160,7 +160,7 @@ namespace FarseerPhysics.Common.Decomposition
                 // should just be thrown out without halting triangulation.
                 if (earIndex == -1)
                 {
-                    for (int i = 0; i < bufferSize; i++)
+                    for (int i = 0;i < bufferSize;i++)
                     {
                         results.Add(buffer[i]);
                     }
@@ -175,7 +175,7 @@ namespace FarseerPhysics.Common.Decomposition
                 float[] newx = new float[vNum];
                 float[] newy = new float[vNum];
                 int currDest = 0;
-                for (int i = 0; i < vNum; ++i)
+                for (int i = 0;i < vNum;++i)
                 {
                     if (currDest == earIndex) ++currDest;
                     newx[i] = xrem[currDest];
@@ -200,7 +200,7 @@ namespace FarseerPhysics.Common.Decomposition
             buffer[bufferSize] = tooAdd;
             ++bufferSize;
 
-            for (int i = 0; i < bufferSize; i++)
+            for (int i = 0;i < bufferSize;i++)
             {
                 results.Add(new Vertices(buffer[i]));
             }
@@ -213,7 +213,7 @@ namespace FarseerPhysics.Common.Decomposition
         /// vertices are at the same point.
         /// 
         /// If a pinch point is found, pin is broken up into poutA and poutB
-        /// and true is returned; otherwise, returns false.
+        /// and true is returned;otherwise, returns false.
         /// 
         /// Mostly for internal use.
         /// 
@@ -234,9 +234,9 @@ namespace FarseerPhysics.Common.Decomposition
             bool hasPinchPoint = false;
             int pinchIndexA = -1;
             int pinchIndexB = -1;
-            for (int i = 0; i < pin.Count; ++i)
+            for (int i = 0;i < pin.Count;++i)
             {
-                for (int j = i + 1; j < pin.Count; ++j)
+                for (int j = i + 1;j < pin.Count;++j)
                 {
                     //Don't worry about pinch points where the points
                     //are actually just dupe neighbors
@@ -253,17 +253,17 @@ namespace FarseerPhysics.Common.Decomposition
             if (hasPinchPoint)
             {
                 int sizeA = pinchIndexB - pinchIndexA;
-                if (sizeA == pin.Count) return false; //has dupe points at wraparound, not a problem here
-                for (int i = 0; i < sizeA; ++i)
+                if (sizeA == pin.Count) return false;//has dupe points at wraparound, not a problem here
+                for (int i = 0;i < sizeA;++i)
                 {
-                    int ind = Remainder(pinchIndexA + i, pin.Count); // is this right
+                    int ind = Remainder(pinchIndexA + i, pin.Count);// is this right
                     poutA.Add(pin[ind]);
                 }
 
                 int sizeB = pin.Count - sizeA;
-                for (int i = 0; i < sizeB; ++i)
+                for (int i = 0;i < sizeB;++i)
                 {
-                    int ind = Remainder(pinchIndexB + i, pin.Count); // is this right    
+                    int ind = Remainder(pinchIndexB + i, pin.Count);// is this right    
                     poutB.Add(pin[ind]);
                 }
             }
@@ -297,7 +297,7 @@ namespace FarseerPhysics.Common.Decomposition
         /// Assumes clockwise orientation of polygon.
         /// </remarks>
         /// <returns>
-        /// 	<c>true</c> if the specified i is ear; otherwise, <c>false</c>.
+        /// 	<c>true</c> if the specified i is ear;otherwise, <c>false</c>.
         /// </returns>
         private static bool IsEar(int i, float[] xv, float[] yv, int xvLength)
         {
@@ -339,7 +339,7 @@ namespace FarseerPhysics.Common.Decomposition
 
             Triangle myTri = new Triangle(xv[i], yv[i], xv[upper], yv[upper], xv[lower], yv[lower]);
 
-            for (int j = 0; j < xvLength; ++j)
+            for (int j = 0;j < xvLength;++j)
             {
                 if (j == i || j == lower || j == upper)
                     continue;

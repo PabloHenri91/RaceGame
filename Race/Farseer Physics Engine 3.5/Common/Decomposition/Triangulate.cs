@@ -140,7 +140,7 @@ namespace FarseerPhysics.Common.Decomposition
 
             if (discardAndFixInvalid)
             {
-                for (int i = results.Count - 1; i >= 0; i--)
+                for (int i = results.Count - 1;i >= 0;i--)
                 {
                     Vertices polygon = results[i];
 

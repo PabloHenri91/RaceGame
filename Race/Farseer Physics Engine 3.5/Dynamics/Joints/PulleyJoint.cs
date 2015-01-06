@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -126,36 +126,36 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// The local anchor point on BodyA
         /// </summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2 LocalAnchorA { get;set;}
 
         /// <summary>
         /// The local anchor point on BodyB
         /// </summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2 LocalAnchorB { get;set;}
 
         /// <summary>
         /// Get the first world anchor.
         /// </summary>
         /// <value></value>
-        public override sealed Vector2 WorldAnchorA { get; set; }
+        public override sealed Vector2 WorldAnchorA { get;set;}
 
         /// <summary>
         /// Get the second world anchor.
         /// </summary>
         /// <value></value>
-        public override sealed Vector2 WorldAnchorB { get; set; }
+        public override sealed Vector2 WorldAnchorB { get;set;}
 
         /// <summary>
         /// Get the current length of the segment attached to body1.
         /// </summary>
         /// <value></value>
-        public float LengthA { get; set; }
+        public float LengthA { get;set;}
 
         /// <summary>
         /// Get the current length of the segment attached to body2.
         /// </summary>
         /// <value></value>
-        public float LengthB { get; set; }
+        public float LengthB { get;set;}
 
         /// <summary>
         /// The current length between the anchor point on BodyA and WorldAnchorA
@@ -189,10 +189,10 @@ namespace FarseerPhysics.Dynamics.Joints
         /// Get the pulley ratio.
         /// </summary>
         /// <value></value>
-        public float Ratio { get; set; }
+        public float Ratio { get;set;}
 
         //FPE note: Only used for serialization.
-        internal float Constant { get; set; }
+        internal float Constant { get;set;}
 
         public override Vector2 GetReactionForce(float invDt)
         {

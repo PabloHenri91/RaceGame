@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -105,42 +105,42 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// The local anchor point on BodyA
         /// </summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2 LocalAnchorA { get;set;}
 
         /// <summary>
         /// The local anchor point on BodyB
         /// </summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2 LocalAnchorB { get;set;}
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get { return BodyA.GetWorldPoint(LocalAnchorA);}
+            set { LocalAnchorA = BodyA.GetLocalPoint(value);}
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { LocalAnchorB = BodyB.GetLocalPoint(value); }
+            get { return BodyB.GetWorldPoint(LocalAnchorB);}
+            set { LocalAnchorB = BodyB.GetLocalPoint(value);}
         }
 
         /// <summary>
         /// The bodyB angle minus bodyA angle in the reference state (radians).
         /// </summary>
-        public float ReferenceAngle { get; set; }
+        public float ReferenceAngle { get;set;}
 
         /// <summary>
         /// The frequency of the joint. A higher frequency means a stiffer joint, but
         /// a too high value can cause the joint to oscillate.
         /// Default is 0, which means the joint does no spring calculations.
         /// </summary>
-        public float FrequencyHz { get; set; }
+        public float FrequencyHz { get;set;}
 
         /// <summary>
         /// The damping on the joint. The damping is only used when
         /// the joint has a frequency (> 0). A higher value means more damping.
         /// </summary>
-        public float DampingRatio { get; set; }
+        public float DampingRatio { get;set;}
 
         public override Vector2 GetReactionForce(float invDt)
         {
@@ -178,7 +178,7 @@ namespace FarseerPhysics.Dynamics.Joints
 
             // J = [-I -r1_skew I r2_skew]
             //     [ 0       -1 0       1]
-            // r_skew = [-ry; rx]
+            // r_skew = [-ry;rx]
 
             // Matlab
             // K = [ mA+r1y^2*iA+mB+r2y^2*iB,  -r1y*iA*r1x-r2y*iB*r2x,          -r1y*iA-r2y*iB]

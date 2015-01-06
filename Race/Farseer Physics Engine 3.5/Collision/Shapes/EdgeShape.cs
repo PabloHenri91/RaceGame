@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -64,35 +64,35 @@ namespace FarseerPhysics.Collision.Shapes
 
         public override int ChildCount
         {
-            get { return 1; }
+            get { return 1;}
         }
 
         /// <summary>
         /// Is true if the edge is connected to an adjacent vertex before vertex 1.
         /// </summary>
-        public bool HasVertex0 { get; set; }
+        public bool HasVertex0 { get;set;}
 
         /// <summary>
         /// Is true if the edge is connected to an adjacent vertex after vertex2.
         /// </summary>
-        public bool HasVertex3 { get; set; }
+        public bool HasVertex3 { get;set;}
 
         /// <summary>
         /// Optional adjacent vertices. These are used for smooth collision.
         /// </summary>
-        public Vector2 Vertex0 { get; set; }
+        public Vector2 Vertex0 { get;set;}
 
         /// <summary>
         /// Optional adjacent vertices. These are used for smooth collision.
         /// </summary>
-        public Vector2 Vertex3 { get; set; }
+        public Vector2 Vertex3 { get;set;}
 
         /// <summary>
         /// These are the edge vertices
         /// </summary>
         public Vector2 Vertex1
         {
-            get { return _vertex1; }
+            get { return _vertex1;}
             set
             {
                 _vertex1 = value;
@@ -105,7 +105,7 @@ namespace FarseerPhysics.Collision.Shapes
         /// </summary>
         public Vector2 Vertex2
         {
-            get { return _vertex2; }
+            get { return _vertex2;}
             set
             {
                 _vertex2 = value;
@@ -150,7 +150,7 @@ namespace FarseerPhysics.Collision.Shapes
             Vector2 v1 = _vertex1;
             Vector2 v2 = _vertex2;
             Vector2 e = v2 - v1;
-            Vector2 normal = new Vector2(e.Y, -e.X); //TO DO: Could possibly cache the normal.
+            Vector2 normal = new Vector2(e.Y, -e.X);//TO DO: Could possibly cache the normal.
             normal.Normalize();
 
             // q = p1 + t * d

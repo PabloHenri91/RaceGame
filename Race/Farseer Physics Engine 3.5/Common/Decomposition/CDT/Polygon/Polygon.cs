@@ -22,8 +22,8 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA, OR
+ * PROFITS;OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -32,7 +32,7 @@
 // Changes from the Java version
 //   Polygon constructors sprused up, checks for 3+ polys
 //   Naming of everything
-//   getTriangulationMode() -> TriangulationMode { get; }
+//   getTriangulationMode() -> TriangulationMode { get;}
 //   Exceptions replaced
 // Future possibilities
 //   We have a lot of Add/Clear methods -- we may prefer to just expose the container
@@ -82,24 +82,24 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Polygon
 
         public IList<Polygon> Holes
         {
-            get { return _holes; }
+            get { return _holes;}
         }
 
         #region Triangulatable Members
 
         public TriangulationMode TriangulationMode
         {
-            get { return TriangulationMode.Polygon; }
+            get { return TriangulationMode.Polygon;}
         }
 
         public IList<TriangulationPoint> Points
         {
-            get { return _points; }
+            get { return _points;}
         }
 
         public IList<DelaunayTriangle> Triangles
         {
-            get { return _triangles; }
+            get { return _triangles;}
         }
 
         public void AddTriangle(DelaunayTriangle t)
@@ -133,7 +133,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Polygon
             }
 
             // Outer constraints
-            for (int i = 0; i < _points.Count - 1; i++)
+            for (int i = 0;i < _points.Count - 1;i++)
             {
                 tcx.NewConstraint(_points[i], _points[i + 1]);
             }
@@ -145,7 +145,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Polygon
             {
                 foreach (Polygon p in _holes)
                 {
-                    for (int i = 0; i < p._points.Count - 1; i++)
+                    for (int i = 0;i < p._points.Count - 1;i++)
                     {
                         tcx.NewConstraint(p._points[i], p._points[i + 1]);
                     }

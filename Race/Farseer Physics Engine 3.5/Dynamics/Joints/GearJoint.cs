@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -192,14 +192,14 @@ namespace FarseerPhysics.Dynamics.Joints
 
         public override Vector2 WorldAnchorA
         {
-            get { return _bodyA.GetWorldPoint(_localAnchorA); }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get { return _bodyA.GetWorldPoint(_localAnchorA);}
+            set { Debug.Assert(false, "You can't set the world anchor on this joint type.");}
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return _bodyB.GetWorldPoint(_localAnchorB); }
-            set { Debug.Assert(false, "You can't set the world anchor on this joint type."); }
+            get { return _bodyB.GetWorldPoint(_localAnchorB);}
+            set { Debug.Assert(false, "You can't set the world anchor on this joint type.");}
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float Ratio
         {
-            get { return _ratio; }
+            get { return _ratio;}
             set
             {
                 Debug.Assert(MathUtils.IsValid(value));
@@ -218,12 +218,12 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// The first revolute/prismatic joint attached to the gear joint.
         /// </summary>
-        public Joint JointA { get; private set; }
+        public Joint JointA { get;private set;}
 
         /// <summary>
         /// The second revolute/prismatic joint attached to the gear joint.
         /// </summary>
-        public Joint JointB { get; private set; }
+        public Joint JointB { get;private set;}
 
         public override Vector2 GetReactionForce(float invDt)
         {

@@ -47,14 +47,14 @@ namespace FarseerPhysics.Common.PolygonManipulation
             Vertices vertices = new Vertices(shape.Vertices);
             Vertices[] newPolygon = new Vertices[2];
 
-            for (int i = 0; i < newPolygon.Length; i++)
+            for (int i = 0;i < newPolygon.Length;i++)
             {
                 newPolygon[i] = new Vertices(vertices.Count);
             }
 
             int[] cutAdded = { -1, -1 };
             int last = -1;
-            for (int i = 0; i < vertices.Count; i++)
+            for (int i = 0;i < vertices.Count;i++)
             {
                 int n;
                 //Find out if this vertex is on the old or new shape.
@@ -100,7 +100,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
                 newPolygon[1].Add(localExitPoint);
             }
 
-            for (int n = 0; n < 2; n++)
+            for (int n = 0;n < 2;n++)
             {
                 Vector2 offset;
                 if (cutAdded[n] > 0)
@@ -175,7 +175,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
             if (entryPoints.Count + exitPoints.Count < 2)
                 return false;
 
-            for (int i = 0; i < fixtures.Count; i++)
+            for (int i = 0;i < fixtures.Count;i++)
             {
                 // can't cut circles or edges yet !
                 if (fixtures[i].Shape.ShapeType != ShapeType.Polygon)

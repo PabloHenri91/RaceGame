@@ -109,7 +109,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
       // Reverse the polygon translation from the beginning
       // and remove collinear points from output
       translate *= -1f;
-      for (int i = 0; i < result.Count; ++i)
+      for (int i = 0;i < result.Count;++i)
       {
         result[i].Translate(ref translate);
         SimplifyTools.CollinearSimplify(result[i]);
@@ -131,14 +131,14 @@ namespace FarseerPhysics.Common.PolygonManipulation
       slicedPoly2 = new Vertices(polygon2);
 
       // Iterate through polygon1's edges
-      for (int i = 0; i < polygon1.Count; i++)
+      for (int i = 0;i < polygon1.Count;i++)
       {
         // Get edge vertices
         Vector2 a = polygon1[i];
         Vector2 b = polygon1[polygon1.NextIndex(i)];
 
         // Get intersections between this edge and polygon2
-        for (int j = 0; j < polygon2.Count; j++)
+        for (int j = 0;j < polygon2.Count;j++)
         {
           Vector2 c = polygon2[j];
           Vector2 d = polygon2[polygon2.NextIndex(j)];
@@ -177,7 +177,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
         }
       }
       // Check for very small edges
-      for (int i = 0; i < slicedPoly1.Count; ++i)
+      for (int i = 0;i < slicedPoly1.Count;++i)
       {
         int iNext = slicedPoly1.NextIndex(i);
         //If they are closer than the distance remove vertex
@@ -187,7 +187,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
           --i;
         }
       }
-      for (int i = 0; i < slicedPoly2.Count; ++i)
+      for (int i = 0;i < slicedPoly2.Count;++i)
       {
         int iNext = slicedPoly2.NextIndex(i);
         //If they are closer than the distance remove vertex
@@ -208,7 +208,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
     {
       simplicies = new List<Edge>();
       coeff = new List<float>();
-      for (int i = 0; i < poly.Count; ++i)
+      for (int i = 0;i < poly.Count;++i)
       {
         simplicies.Add(new Edge(poly[i], poly[poly.NextIndex(i)]));
         coeff.Add(CalculateSimplexCoefficient(Vector2.Zero, poly[i], poly[poly.NextIndex(i)]));
@@ -226,7 +226,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
     {
       resultSimplices = new List<Edge>();
 
-      for (int i = 0; i < poly1Simplicies.Count; ++i)
+      for (int i = 0;i < poly1Simplicies.Count;++i)
       {
         float edgeCharacter = 0;
         if (poly2Simplicies.Contains(poly1Simplicies[i]))
@@ -239,7 +239,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
         }
         else
         {
-          for (int j = 0; j < poly2Simplicies.Count; ++j)
+          for (int j = 0;j < poly2Simplicies.Count;++j)
           {
             if (!poly2Simplicies.Contains(-poly1Simplicies[i]))
             {
@@ -263,7 +263,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
           }
         }
       }
-      for (int i = 0; i < poly2Simplicies.Count; ++i)
+      for (int i = 0;i < poly2Simplicies.Count;++i)
       {
         float edgeCharacter = 0f;
         if (!resultSimplices.Contains(poly2Simplicies[i]) &&
@@ -276,7 +276,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
           else
           {
             edgeCharacter = 0f;
-            for (int j = 0; j < poly1Simplicies.Count; ++j)
+            for (int j = 0;j < poly1Simplicies.Count;++j)
             {
               if (!poly1Simplicies.Contains(poly2Simplicies[i]) && !poly1Simplicies.Contains(-poly2Simplicies[i]))
               {
@@ -320,7 +320,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
         simplicies.RemoveAt(0);
         bool closed = false;
         int index = 0;
-        int count = simplicies.Count; // Needed to catch infinite loops
+        int count = simplicies.Count;// Needed to catch infinite loops
         while (!closed && simplicies.Count > 0)
         {
           if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeStart))
@@ -466,8 +466,8 @@ namespace FarseerPhysics.Common.PolygonManipulation
         EdgeEnd = edgeEnd;
       }
 
-      public Vector2 EdgeStart { get; private set; }
-      public Vector2 EdgeEnd { get; private set; }
+      public Vector2 EdgeStart { get;private set;}
+      public Vector2 EdgeEnd { get;private set;}
 
       public Vector2 GetCenter()
       {

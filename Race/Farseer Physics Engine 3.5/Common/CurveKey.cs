@@ -52,31 +52,31 @@ namespace Microsoft.Xna.Framework
 
         public CurveContinuity Continuity
         {
-            get { return continuity; }
-            set { continuity = value; }
+            get { return continuity;}
+            set { continuity = value;}
         }
 
         public float Position
         {
-            get { return position; }
+            get { return position;}
         }
 
         public float TangentIn
         {
-            get { return tangentIn; }
-            set { tangentIn = value; }
+            get { return tangentIn;}
+            set { tangentIn = value;}
         }
 
         public float TangentOut
         {
-            get { return tangentOut; }
-            set { tangentOut = value; }
+            get { return tangentOut;}
+            set { tangentOut = value;}
         }
 
         public float Value
         {
-            get { return value; }
-            set { this.value = value; }
+            get { return value;}
+            set { this.value = value;}
         }
 
 #endregion

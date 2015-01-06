@@ -35,17 +35,17 @@ namespace FarseerPhysics.Common.Decomposition
         {
             List<Vertices> list = new List<Vertices>();
             Vector2 lowerInt = new Vector2();
-            Vector2 upperInt = new Vector2(); // intersection points
+            Vector2 upperInt = new Vector2();// intersection points
             int lowerIndex = 0, upperIndex = 0;
             Vertices lowerPoly, upperPoly;
 
-            for (int i = 0; i < vertices.Count; ++i)
+            for (int i = 0;i < vertices.Count;++i)
             {
                 if (Reflex(i, vertices))
                 {
                     float upperDist;
                     float lowerDist = upperDist = float.MaxValue;
-                    for (int j = 0; j < vertices.Count; ++j)
+                    for (int j = 0;j < vertices.Count;++j)
                     {
                         // if line intersects with an edge
                         float d;
@@ -102,7 +102,7 @@ namespace FarseerPhysics.Common.Decomposition
                         while (upperIndex < lowerIndex)
                             upperIndex += vertices.Count;
 
-                        for (int j = lowerIndex; j <= upperIndex; ++j)
+                        for (int j = lowerIndex;j <= upperIndex;++j)
                         {
                             if (CanSee(i, j, vertices))
                             {
@@ -161,7 +161,7 @@ namespace FarseerPhysics.Common.Decomposition
 
             Vertices p = new Vertices(j);
 
-            for (; i <= j; ++i)
+            for (;i <= j;++i)
             {
                 p.Add(At(i, vertices));
             }
@@ -190,10 +190,10 @@ namespace FarseerPhysics.Common.Decomposition
                 if (RightOn(At(j, vertices), At(j + 1, vertices), At(i, vertices)) || LeftOn(At(j, vertices), At(j - 1, vertices), At(i, vertices)))
                     return false;
             }
-            for (int k = 0; k < vertices.Count; ++k)
+            for (int k = 0;k < vertices.Count;++k)
             {
                 if ((k + 1) % vertices.Count == i || k == i || (k + 1) % vertices.Count == j || k == j)
-                    continue; // ignore incident edges
+                    continue;// ignore incident edges
 
                 Vector2 intersectionPoint;
 

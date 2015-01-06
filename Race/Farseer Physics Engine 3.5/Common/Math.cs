@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -226,7 +226,7 @@ namespace FarseerPhysics.Common
         /// </summary>
         /// <param name="x">The x.</param>
         /// <returns>
-        /// 	<c>true</c> if the specified x is valid; otherwise, <c>false</c>.
+        /// 	<c>true</c> if the specified x is valid;otherwise, <c>false</c>.
         /// </returns>
         public static bool IsValid(float x)
         {
@@ -592,9 +592,9 @@ namespace FarseerPhysics.Common
                 det = 1.0f / det;
             }
 
-            M.ex.X = det * d; M.ey.X = -det * b; M.ex.Z = 0.0f;
-            M.ex.Y = -det * c; M.ey.Y = det * a; M.ey.Z = 0.0f;
-            M.ez.X = 0.0f; M.ez.Y = 0.0f; M.ez.Z = 0.0f;
+            M.ex.X = det * d;M.ey.X = -det * b;M.ex.Z = 0.0f;
+            M.ex.Y = -det * c;M.ey.Y = det * a;M.ey.Z = 0.0f;
+            M.ez.X = 0.0f;M.ez.Y = 0.0f;M.ez.Z = 0.0f;
         }
 
         /// Get the symmetric inverse of this matrix as a 3-by-3.

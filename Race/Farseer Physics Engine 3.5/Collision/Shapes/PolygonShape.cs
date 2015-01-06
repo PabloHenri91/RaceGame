@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -82,7 +82,7 @@ namespace FarseerPhysics.Collision.Shapes
         /// </summary>
         public Vertices Vertices
         {
-            get { return _vertices; }
+            get { return _vertices;}
             set
             {
                 _vertices = new Vertices(value);
@@ -102,7 +102,7 @@ namespace FarseerPhysics.Collision.Shapes
                 _normals = new Vertices(_vertices.Count);
 
                 // Compute normals. Ensure the edges have non-zero length.
-                for (int i = 0; i < _vertices.Count; ++i)
+                for (int i = 0;i < _vertices.Count;++i)
                 {
                     int next = i + 1 < _vertices.Count ? i + 1 : 0;
                     Vector2 edge = _vertices[next] - _vertices[i];
@@ -119,9 +119,9 @@ namespace FarseerPhysics.Collision.Shapes
             }
         }
 
-        public Vertices Normals { get { return _normals; } }
+        public Vertices Normals { get { return _normals;} }
 
-        public override int ChildCount { get { return 1; } }
+        public override int ChildCount { get { return 1;} }
 
         protected override void ComputeProperties()
         {
@@ -165,7 +165,7 @@ namespace FarseerPhysics.Collision.Shapes
             Vector2 s = Vector2.Zero;
 
             // This code would put the reference point inside the polygon.
-            for (int i = 0; i < Vertices.Count; ++i)
+            for (int i = 0;i < Vertices.Count;++i)
             {
                 s += Vertices[i];
             }
@@ -173,7 +173,7 @@ namespace FarseerPhysics.Collision.Shapes
 
             const float k_inv3 = 1.0f / 3.0f;
 
-            for (int i = 0; i < Vertices.Count; ++i)
+            for (int i = 0;i < Vertices.Count;++i)
             {
                 // Triangle vertices.
                 Vector2 e1 = Vertices[i] - s;
@@ -220,7 +220,7 @@ namespace FarseerPhysics.Collision.Shapes
         {
             Vector2 pLocal = MathUtils.MulT(transform.q, point - transform.p);
 
-            for (int i = 0; i < Vertices.Count; ++i)
+            for (int i = 0;i < Vertices.Count;++i)
             {
                 float dot = Vector2.Dot(Normals[i], pLocal - Vertices[i]);
                 if (dot > 0.0f)
@@ -245,7 +245,7 @@ namespace FarseerPhysics.Collision.Shapes
 
             int index = -1;
 
-            for (int i = 0; i < Vertices.Count; ++i)
+            for (int i = 0;i < Vertices.Count;++i)
             {
                 // p = p1 + a * d
                 // dot(normal, p - v) = 0
@@ -314,7 +314,7 @@ namespace FarseerPhysics.Collision.Shapes
             Vector2 lower = MathUtils.Mul(ref transform, Vertices[0]);
             Vector2 upper = lower;
 
-            for (int i = 1; i < Vertices.Count; ++i)
+            for (int i = 1;i < Vertices.Count;++i)
             {
                 Vector2 v = MathUtils.Mul(ref transform, Vertices[i]);
                 lower = Vector2.Min(lower, v);
@@ -341,7 +341,7 @@ namespace FarseerPhysics.Collision.Shapes
 
             bool lastSubmerged = false;
             int i;
-            for (i = 0; i < Vertices.Count; i++)
+            for (i = 0;i < Vertices.Count;i++)
             {
                 depths[i] = Vector2.Dot(normalL, Vertices[i]) - offsetL;
                 bool isSubmerged = depths[i] < -Settings.Epsilon;
@@ -447,7 +447,7 @@ namespace FarseerPhysics.Collision.Shapes
             if (Vertices.Count != shape.Vertices.Count)
                 return false;
 
-            for (int i = 0; i < Vertices.Count; i++)
+            for (int i = 0;i < Vertices.Count;i++)
             {
                 if (Vertices[i] != shape.Vertices[i])
                     return false;

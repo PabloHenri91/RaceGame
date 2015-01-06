@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -35,22 +35,22 @@ namespace FarseerPhysics.Collision.Shapes
         /// <summary>
         /// The area of the shape
         /// </summary>
-        public float Area { get; internal set; }
+        public float Area { get;internal set;}
 
         /// <summary>
         /// The position of the shape's centroid relative to the shape's origin.
         /// </summary>
-        public Vector2 Centroid { get; internal set; }
+        public Vector2 Centroid { get;internal set;}
 
         /// <summary>
         /// The rotational inertia of the shape about the local origin.
         /// </summary>
-        public float Inertia { get; internal set; }
+        public float Inertia { get;internal set;}
 
         /// <summary>
         /// The mass of the shape, usually in kilograms.
         /// </summary>
-        public float Mass { get; internal set; }
+        public float Mass { get;internal set;}
 
         /// <summary>
         /// The equal operator
@@ -143,13 +143,13 @@ namespace FarseerPhysics.Collision.Shapes
         /// Get the type of this shape.
         /// </summary>
         /// <value>The type of the shape.</value>
-        public ShapeType ShapeType { get; internal set; }
+        public ShapeType ShapeType { get;internal set;}
 
         /// <summary>
         /// Get the number of child primitives.
         /// </summary>
         /// <value></value>
-        public abstract int ChildCount { get; }
+        public abstract int ChildCount { get;}
 
         /// <summary>
         /// Gets or sets the density.
@@ -158,7 +158,7 @@ namespace FarseerPhysics.Collision.Shapes
         /// <value>The density.</value>
         public float Density
         {
-            get { return _density; }
+            get { return _density;}
             set
             {
                 Debug.Assert(value >= 0);
@@ -174,7 +174,7 @@ namespace FarseerPhysics.Collision.Shapes
         /// </summary>
         public float Radius
         {
-            get { return _radius; }
+            get { return _radius;}
             set
             {
                 Debug.Assert(value >= 0);

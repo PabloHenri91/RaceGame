@@ -22,8 +22,8 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA, OR
+ * PROFITS;OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -46,23 +46,23 @@ namespace FarseerPhysics.Common.Decomposition.CDT
             Y = y;
         }
 
-        public List<DTSweepConstraint> Edges { get; private set; }
+        public List<DTSweepConstraint> Edges { get;private set;}
 
         public float Xf
         {
-            get { return (float) X; }
-            set { X = value; }
+            get { return (float) X;}
+            set { X = value;}
         }
 
         public float Yf
         {
-            get { return (float) Y; }
-            set { Y = value; }
+            get { return (float) Y;}
+            set { Y = value;}
         }
 
         public bool HasEdges
         {
-            get { return Edges != null; }
+            get { return Edges != null;}
         }
 
         public override string ToString()

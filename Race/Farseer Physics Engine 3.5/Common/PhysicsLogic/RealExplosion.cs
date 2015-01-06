@@ -15,7 +15,7 @@ namespace FarseerPhysics.Common.PhysicsLogic
     {
         public Body Body;
         public float Max;
-        public float Min; // absolute angles
+        public float Min;// absolute angles
     }
 
     /// <summary>
@@ -157,7 +157,7 @@ namespace FarseerPhysics.Common.PhysicsLogic
             // Per shape max/min angles for now.
             float[] vals = new float[shapeCount * 2];
             int valIndex = 0;
-            for (int i = 0; i < shapeCount; ++i)
+            for (int i = 0;i < shapeCount;++i)
             {
                 PolygonShape ps;
                 CircleShape cs = shapes[i].Shape as CircleShape;
@@ -187,7 +187,7 @@ namespace FarseerPhysics.Common.PhysicsLogic
                     float minAbsolute = 0.0f;
                     float maxAbsolute = 0.0f;
 
-                    for (int j = 0; j < ps.Vertices.Count; ++j)
+                    for (int j = 0;j < ps.Vertices.Count;++j)
                     {
                         Vector2 toVertex = (shapes[i].Body.GetWorldPoint(ps.Vertices[j]) - pos);
                         float newAngle = (float)Math.Atan2(toVertex.Y, toVertex.X);
@@ -197,12 +197,12 @@ namespace FarseerPhysics.Common.PhysicsLogic
                         // the minus pi is important. It means cutoff for going other direction is at 180 deg where it needs to be
 
                         if (diff < 0.0f)
-                            diff += 2 * MathHelper.Pi; // correction for not handling negs
+                            diff += 2 * MathHelper.Pi;// correction for not handling negs
 
                         diff -= MathHelper.Pi;
 
                         if (Math.Abs(diff) > MathHelper.Pi)
-                            continue; // Something's wrong, point not in shape but exists angle diff > 180
+                            continue;// Something's wrong, point not in shape but exists angle diff > 180
 
                         if (diff > max)
                         {
@@ -227,7 +227,7 @@ namespace FarseerPhysics.Common.PhysicsLogic
             _data.Clear();
             bool rayMissed = true;
 
-            for (int i = 0; i < valIndex; ++i)
+            for (int i = 0;i < valIndex;++i)
             {
                 Fixture fixture = null;
                 float midpt;
@@ -313,11 +313,11 @@ namespace FarseerPhysics.Common.PhysicsLogic
                 }
                 else
                 {
-                    rayMissed = true; // raycast did not find a shape
+                    rayMissed = true;// raycast did not find a shape
                 }
             }
 
-            for (int i = 0; i < _data.Count; ++i)
+            for (int i = 0;i < _data.Count;++i)
             {
                 if (!IsActiveOn(_data[i].Body))
                     continue;
@@ -344,7 +344,7 @@ namespace FarseerPhysics.Common.PhysicsLogic
                     float minlambda = float.MaxValue;
 
                     List<Fixture> fl = _data[i].Body.FixtureList;
-                    for (int x = 0; x < fl.Count; x++)
+                    for (int x = 0;x < fl.Count;x++)
                     {
                         Fixture f = fl[x];
                         RayCastInput ri;
@@ -383,7 +383,7 @@ namespace FarseerPhysics.Common.PhysicsLogic
             }
 
             // We check contained shapes
-            for (int i = 0; i < containedShapeCount; ++i)
+            for (int i = 0;i < containedShapeCount;++i)
             {
                 Fixture fix = containedShapes[i];
 

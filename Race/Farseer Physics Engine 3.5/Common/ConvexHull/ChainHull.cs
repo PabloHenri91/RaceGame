@@ -31,13 +31,13 @@ namespace FarseerPhysics.Common.ConvexHull
             Vector2[] h = new Vector2[pointSet.Count];
             Vertices res;
 
-            int top = -1; // indices for bottom and top of the stack
-            int i; // array scan index
+            int top = -1;// indices for bottom and top of the stack
+            int i;// array scan index
 
             // Get the indices of points with min x-coord and min|max i-coord
             const int minmin = 0;
             float xmin = pointSet[0].X;
-            for (i = 1; i < pointSet.Count; i++)
+            for (i = 1;i < pointSet.Count;i++)
             {
                 if (pointSet[i].X != xmin)
                     break;
@@ -52,10 +52,10 @@ namespace FarseerPhysics.Common.ConvexHull
                 if (pointSet[minmax].Y != pointSet[minmin].Y) // a nontrivial segment
                     h[++top] = pointSet[minmax];
 
-                h[++top] = pointSet[minmin]; // add polygon endpoint
+                h[++top] = pointSet[minmin];// add polygon endpoint
 
                 res = new Vertices(top + 1);
-                for (int j = 0; j < top + 1; j++)
+                for (int j = 0;j < top + 1;j++)
                 {
                     res.Add(h[j]);
                 }
@@ -68,7 +68,7 @@ namespace FarseerPhysics.Common.ConvexHull
             // Get the indices of points with max x-coord and min|max i-coord
             int maxmax = pointSet.Count - 1;
             float xmax = pointSet[pointSet.Count - 1].X;
-            for (i = pointSet.Count - 2; i >= 0; i--)
+            for (i = pointSet.Count - 2;i >= 0;i--)
             {
                 if (pointSet[i].X != xmax)
                     break;
@@ -76,54 +76,54 @@ namespace FarseerPhysics.Common.ConvexHull
             int maxmin = i + 1;
 
             // Compute the lower hull on the stack H
-            h[++top] = pointSet[minmin]; // push minmin point onto stack
+            h[++top] = pointSet[minmin];// push minmin point onto stack
             i = minmax;
             while (++i <= maxmin)
             {
                 // the lower line joins P[minmin] with P[maxmin]
                 if (MathUtils.Area(pointSet[minmin], pointSet[maxmin], pointSet[i]) >= 0 && i < maxmin)
-                    continue; // ignore P[i] above or on the lower line
+                    continue;// ignore P[i] above or on the lower line
 
                 while (top > 0) // there are at least 2 points on the stack
                 {
                     // test if P[i] is left of the line at the stack top
                     if (MathUtils.Area(h[top - 1], h[top], pointSet[i]) > 0)
-                        break; // P[i] is a new hull vertex
+                        break;// P[i] is a new hull vertex
 
-                    top--; // pop top point off stack
+                    top--;// pop top point off stack
                 }
-                h[++top] = pointSet[i]; // push P[i] onto stack
+                h[++top] = pointSet[i];// push P[i] onto stack
             }
 
             // Next, compute the upper hull on the stack H above the bottom hull
             if (maxmax != maxmin) // if distinct xmax points
-                h[++top] = pointSet[maxmax]; // push maxmax point onto stack
+                h[++top] = pointSet[maxmax];// push maxmax point onto stack
             int bot = top;
             i = maxmin;
             while (--i >= minmax)
             {
                 // the upper line joins P[maxmax] with P[minmax]
                 if (MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0 && i > minmax)
-                    continue; // ignore P[i] below or on the upper line
+                    continue;// ignore P[i] below or on the upper line
 
                 while (top > bot) // at least 2 points on the upper stack
                 {
                     // test if P[i] is left of the line at the stack top
                     if (MathUtils.Area(h[top - 1], h[top], pointSet[i]) > 0)
-                        break; // P[i] is a new hull vertex
+                        break;// P[i] is a new hull vertex
 
-                    top--; // pop top point off stack
+                    top--;// pop top point off stack
                 }
 
-                h[++top] = pointSet[i]; // push P[i] onto stack
+                h[++top] = pointSet[i];// push P[i] onto stack
             }
 
             if (minmax != minmin)
-                h[++top] = pointSet[minmin]; // push joining endpoint onto stack
+                h[++top] = pointSet[minmin];// push joining endpoint onto stack
 
             res = new Vertices(top + 1);
 
-            for (int j = 0; j < top + 1; j++)
+            for (int j = 0;j < top + 1;j++)
             {
                 res.Add(h[j]);
             }

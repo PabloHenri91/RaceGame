@@ -64,13 +64,13 @@ namespace FarseerPhysics.Common
             AddRange(vertices);
         }
 
-        internal bool AttachedToBody { get; set; }
+        internal bool AttachedToBody { get;set;}
 
         /// <summary>
         /// You can add holes to this collection.
         /// It will get respected by some of the triangulation algoithms, but otherwise not used.
         /// </summary>
-        public List<Vertices> Holes { get; set; }
+        public List<Vertices> Holes { get;set;}
 
         /// <summary>
         /// Gets the next index. Used for iterating all the edges with wrap-around.
@@ -122,7 +122,7 @@ namespace FarseerPhysics.Common
             int i;
             float area = 0;
 
-            for (i = 0; i < Count; i++)
+            for (i = 0;i < Count;i++)
             {
                 int j = (i + 1) % Count;
 
@@ -161,7 +161,7 @@ namespace FarseerPhysics.Common
             float area = 0.0f;
             const float inv3 = 1.0f / 3.0f;
 
-            for (int i = 0; i < Count; ++i)
+            for (int i = 0;i < Count;++i)
             {
                 // Triangle vertices.
                 Vector2 current = this[i];
@@ -188,7 +188,7 @@ namespace FarseerPhysics.Common
             Vector2 lowerBound = new Vector2(float.MaxValue, float.MaxValue);
             Vector2 upperBound = new Vector2(float.MinValue, float.MinValue);
 
-            for (int i = 0; i < Count; ++i)
+            for (int i = 0;i < Count;++i)
             {
                 if (this[i].X < lowerBound.X)
                 {
@@ -232,7 +232,7 @@ namespace FarseerPhysics.Common
         {
             Debug.Assert(!AttachedToBody, "Translating vertices that are used by a Body can result in unstable behavior. Use Body.Position instead.");
 
-            for (int i = 0; i < Count; i++)
+            for (int i = 0;i < Count;i++)
                 this[i] = Vector2.Add(this[i], value);
 
             if (Holes != null && Holes.Count > 0)
@@ -261,7 +261,7 @@ namespace FarseerPhysics.Common
         {
             Debug.Assert(!AttachedToBody, "Scaling vertices that are used by a Body can result in unstable behavior.");
 
-            for (int i = 0; i < Count; i++)
+            for (int i = 0;i < Count;i++)
                 this[i] = Vector2.Multiply(this[i], value);
 
             if (Holes != null && Holes.Count > 0)
@@ -287,7 +287,7 @@ namespace FarseerPhysics.Common
             float num1 = (float)Math.Cos(value);
             float num2 = (float)Math.Sin(value);
 
-            for (int i = 0; i < Count; i++)
+            for (int i = 0;i < Count;i++)
             {
                 Vector2 position = this[i];
                 this[i] = new Vector2((position.X * num1 + position.Y * -num2), (position.X * num2 + position.Y * num1));
@@ -311,7 +311,7 @@ namespace FarseerPhysics.Common
         /// - The polygon has no overlapping edges
         /// </summary>
         /// <returns>
-        /// 	<c>true</c> if it is convex; otherwise, <c>false</c>.
+        /// 	<c>true</c> if it is convex;otherwise, <c>false</c>.
         /// </returns>
         public bool IsConvex()
         {
@@ -324,12 +324,12 @@ namespace FarseerPhysics.Common
                 return true;
 
             // Checks the polygon is convex and the interior is to the left of each edge.
-            for (int i = 0; i < Count; ++i)
+            for (int i = 0;i < Count;++i)
             {
                 int next = i + 1 < Count ? i + 1 : 0;
                 Vector2 edge = this[next] - this[i];
 
-                for (int j = 0; j < Count; ++j)
+                for (int j = 0;j < Count;++j)
                 {
                     // Don't check vertices on the current edge.
                     if (j == i || j == next)
@@ -381,11 +381,11 @@ namespace FarseerPhysics.Common
             if (Count < 3)
                 return false;
 
-            for (int i = 0; i < Count; ++i)
+            for (int i = 0;i < Count;++i)
             {
                 Vector2 a1 = this[i];
                 Vector2 a2 = NextVertex(i);
-                for (int j = i + 1; j < Count; ++j)
+                for (int j = i + 1;j < Count;++j)
                 {
                     Vector2 b1 = this[j];
                     Vector2 b2 = NextVertex(j);
@@ -423,7 +423,7 @@ namespace FarseerPhysics.Common
                 return PolygonError.NotConvex;
 
             //Check if the sides are of adequate length.
-            for (int i = 0; i < Count; ++i)
+            for (int i = 0;i < Count;++i)
             {
                 int next = i + 1 < Count ? i + 1 : 0;
                 Vector2 edge = this[next] - this[i];
@@ -452,7 +452,7 @@ namespace FarseerPhysics.Common
             min = dotProduct;
             max = dotProduct;
 
-            for (int i = 0; i < Count; i++)
+            for (int i = 0;i < Count;i++)
             {
                 dotProduct = Vector2.Dot(this[i], axis);
                 if (dotProduct < min)
@@ -483,7 +483,7 @@ namespace FarseerPhysics.Common
             int wn = 0;
 
             // Iterate through polygon's edges
-            for (int i = 0; i < Count; i++)
+            for (int i = 0;i < Count;i++)
             {
                 // Get points
                 Vector2 p1 = this[i];
@@ -525,7 +525,7 @@ namespace FarseerPhysics.Common
             double angle = 0;
 
             // Iterate through polygon's edges
-            for (int i = 0; i < Count; i++)
+            for (int i = 0;i < Count;i++)
             {
                 // Get points
                 Vector2 p1 = this[i] - point;
@@ -549,13 +549,13 @@ namespace FarseerPhysics.Common
         public void Transform(ref Matrix transform)
         {
             // Transform main polygon
-            for (int i = 0; i < Count; i++)
+            for (int i = 0;i < Count;i++)
                 this[i] = Vector2.Transform(this[i], transform);
 
             // Transform holes
             if (Holes != null && Holes.Count > 0)
             {
-                for (int i = 0; i < Holes.Count; i++)
+                for (int i = 0;i < Holes.Count;i++)
                 {
                     Vector2[] temp = Holes[i].ToArray();
                     Vector2.Transform(temp, ref transform, temp);
@@ -568,7 +568,7 @@ namespace FarseerPhysics.Common
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < Count; i++)
+            for (int i = 0;i < Count;i++)
             {
                 builder.Append(this[i].ToString());
                 if (i < Count - 1)

@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -65,9 +65,9 @@ namespace FarseerPhysics.Collision.Shapes
             _radius = Settings.PolygonRadius;
 
             Debug.Assert(vertices != null && vertices.Count >= 3);
-            Debug.Assert(vertices[0] != vertices[vertices.Count - 1]); // FPE. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
+            Debug.Assert(vertices[0] != vertices[vertices.Count - 1]);// FPE. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
 
-            for (int i = 1; i < vertices.Count; ++i)
+            for (int i = 1;i < vertices.Count;++i)
             {
                 Vector2 v1 = vertices[i - 1];
                 Vector2 v2 = vertices[i];
@@ -81,15 +81,15 @@ namespace FarseerPhysics.Collision.Shapes
             if (createLoop)
             {
                 Vertices.Add(vertices[0]);
-                PrevVertex = Vertices[Vertices.Count - 2]; //FPE: We use the properties instead of the private fields here.
-                NextVertex = Vertices[1]; //FPE: We use the properties instead of the private fields here.
+                PrevVertex = Vertices[Vertices.Count - 2];//FPE: We use the properties instead of the private fields here.
+                NextVertex = Vertices[1];//FPE: We use the properties instead of the private fields here.
             }
         }
 
         public override int ChildCount
         {
             // edge count = vertex count - 1
-            get { return Vertices.Count - 1; }
+            get { return Vertices.Count - 1;}
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace FarseerPhysics.Collision.Shapes
         /// </summary>
         public Vector2 PrevVertex
         {
-            get { return _prevVertex; }
+            get { return _prevVertex;}
             set
             {
                 Debug.Assert(value != null);
@@ -114,7 +114,7 @@ namespace FarseerPhysics.Collision.Shapes
         /// </summary>
         public Vector2 NextVertex
         {
-            get { return _nextVertex; }
+            get { return _nextVertex;}
             set
             {
                 Debug.Assert(value != null);
@@ -235,7 +235,7 @@ namespace FarseerPhysics.Collision.Shapes
             if (Vertices.Count != shape.Vertices.Count)
                 return false;
 
-            for (int i = 0; i < Vertices.Count; i++)
+            for (int i = 0;i < Vertices.Count;i++)
             {
                 if (Vertices[i] != shape.Vertices[i])
                     return false;

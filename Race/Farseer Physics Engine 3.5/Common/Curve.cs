@@ -72,24 +72,24 @@ namespace Microsoft.Xna.Framework
 
         public bool IsConstant
         {
-            get { return keys.Count <= 1; }
+            get { return keys.Count <= 1;}
         }
 
         public CurveKeyCollection Keys
         {
-            get { return keys; }
+            get { return keys;}
         }
 
         public CurveLoopType PostLoop
         {
-            get { return postLoop; }
-            set { postLoop = value; }
+            get { return postLoop;}
+            set { postLoop = value;}
         }
 
         public CurveLoopType PreLoop
         {
-            get { return preLoop; }
-            set { preLoop = value; }
+            get { return preLoop;}
+            set { preLoop = value;}
         }
 
 #endregion Public Properties
@@ -237,7 +237,7 @@ namespace Microsoft.Xna.Framework
             //only for position in curve
             CurveKey prev = keys[0];
             CurveKey next;
-            for (int i = 1; i < keys.Count; i++)
+            for (int i = 1;i < keys.Count;i++)
             {
                 next = Keys[i];
                 if (next.Position >= position)
@@ -250,7 +250,7 @@ namespace Microsoft.Xna.Framework
                         }
                         return prev.Value;
                     }
-                    float t = (position - prev.Position)/(next.Position - prev.Position); //to have t in [0,1]
+                    float t = (position - prev.Position)/(next.Position - prev.Position);//to have t in [0,1]
                     float ts = t*t;
                     float tss = ts*t;
                     //After a lot of search on internet I have found all about spline function

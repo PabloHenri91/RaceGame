@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -88,17 +88,17 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// The local anchor point on BodyA
         /// </summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2 LocalAnchorA { get;set;}
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get { return BodyA.GetWorldPoint(LocalAnchorA);}
+            set { LocalAnchorA = BodyA.GetLocalPoint(value);}
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return _worldAnchor; }
+            get { return _worldAnchor;}
             set
             {
                 WakeBodies();
@@ -113,7 +113,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float MaxForce
         {
-            get { return _maxForce; }
+            get { return _maxForce;}
             set
             {
                 Debug.Assert(MathUtils.IsValid(value) && value >= 0.0f);
@@ -126,7 +126,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float Frequency
         {
-            get { return _frequency; }
+            get { return _frequency;}
             set
             {
                 Debug.Assert(MathUtils.IsValid(value) && value >= 0.0f);
@@ -139,7 +139,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float DampingRatio
         {
-            get { return _dampingRatio; }
+            get { return _dampingRatio;}
             set
             {
                 Debug.Assert(MathUtils.IsValid(value) && value >= 0.0f);

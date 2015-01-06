@@ -39,7 +39,7 @@ namespace FarseerPhysics.Common
         {
             ControlPoints = new List<Vector2>(vertices.Length);
 
-            for (int i = 0; i < vertices.Length; i++)
+            for (int i = 0;i < vertices.Length;i++)
             {
                 Add(vertices[i]);
             }
@@ -52,7 +52,7 @@ namespace FarseerPhysics.Common
         public Path(IList<Vector2> vertices)
         {
             ControlPoints = new List<Vector2>(vertices.Count);
-            for (int i = 0; i < vertices.Count; i++)
+            for (int i = 0;i < vertices.Count;i++)
             {
                 Add(vertices[i]);
             }
@@ -61,8 +61,8 @@ namespace FarseerPhysics.Common
         /// <summary>
         /// True if the curve is closed.
         /// </summary>
-        /// <value><c>true</c> if closed; otherwise, <c>false</c>.</value>
-        public bool Closed { get; set; }
+        /// <value><c>true</c> if closed;otherwise, <c>false</c>.</value>
+        public bool Closed { get;set;}
 
         /// <summary>
         /// Gets the next index of a controlpoint
@@ -98,7 +98,7 @@ namespace FarseerPhysics.Common
         /// <param name="vector">The vector.</param>
         public void Translate(ref Vector2 vector)
         {
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0;i < ControlPoints.Count;i++)
                 ControlPoints[i] = Vector2.Add(ControlPoints[i], vector);
         }
 
@@ -108,7 +108,7 @@ namespace FarseerPhysics.Common
         /// <param name="value">The Value.</param>
         public void Scale(ref Vector2 value)
         {
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0;i < ControlPoints.Count;i++)
                 ControlPoints[i] = Vector2.Multiply(ControlPoints[i], value);
         }
 
@@ -121,14 +121,14 @@ namespace FarseerPhysics.Common
             Matrix rotationMatrix;
             Matrix.CreateRotationZ(value, out rotationMatrix);
 
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0;i < ControlPoints.Count;i++)
                 ControlPoints[i] = Vector2.Transform(ControlPoints[i], rotationMatrix);
         }
 
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0;i < ControlPoints.Count;i++)
             {
                 builder.Append(ControlPoints[i].ToString());
                 if (i < ControlPoints.Count - 1)
@@ -152,7 +152,7 @@ namespace FarseerPhysics.Common
 
             float timeStep = 1f / divisions;
 
-            for (float i = 0; i < 1f; i += timeStep)
+            for (float i = 0;i < 1f;i += timeStep)
             {
                 verts.Add(GetPosition(i));
             }
@@ -273,7 +273,7 @@ output = new Vector2();
             List<Vector2> verts = GetVertices(ControlPoints.Count * 25);
             float length = 0;
 
-            for (int i = 1; i < verts.Count; i++)
+            for (int i = 1;i < verts.Count;i++)
             {
                 length += Vector2.Distance(verts[i - 1], verts[i]);
             }
@@ -310,7 +310,7 @@ output = new Vector2();
             start = end;
 
             // for each box
-            for (int i = 1; i < divisions; i++)
+            for (int i = 1;i < divisions;i++)
             {
                 Vector2 normal = GetPositionNormal(t);
                 float angle = (float)Math.Atan2(normal.Y, normal.X);

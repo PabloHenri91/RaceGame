@@ -22,8 +22,8 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA, OR
+ * PROFITS;OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -68,7 +68,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay
             Points[2] = p3;
         }
 
-        public bool IsInterior { get; set; }
+        public bool IsInterior { get;set;}
 
         public int IndexOf(TriangulationPoint p)
         {
@@ -203,7 +203,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay
         public void Clear()
         {
             DelaunayTriangle t;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0;i < 3;i++)
             {
                 t = Neighbors[i];
                 if (t != null)
@@ -277,7 +277,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay
         /// </summary>
         public void MarkNeighborEdges()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0;i < 3;i++)
                 if (EdgeIsConstrained[i] && Neighbors[i] != null)
                 {
                     Neighbors[i].MarkConstrainedEdge(Points[(i + 1)%3], Points[(i + 2)%3]);
@@ -286,7 +286,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay
 
         public void MarkEdge(DelaunayTriangle triangle)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0;i < 3;i++)
                 if (EdgeIsConstrained[i])
                 {
                     triangle.MarkConstrainedEdge(Points[(i + 1)%3], Points[(i + 2)%3]);
@@ -296,7 +296,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay
         public void MarkEdge(List<DelaunayTriangle> tList)
         {
             foreach (DelaunayTriangle t in tList)
-                for (int i = 0; i < 3; i++)
+                for (int i = 0;i < 3;i++)
                     if (t.EdgeIsConstrained[i])
                     {
                         MarkConstrainedEdge(t.Points[(i + 1)%3], t.Points[(i + 2)%3]);

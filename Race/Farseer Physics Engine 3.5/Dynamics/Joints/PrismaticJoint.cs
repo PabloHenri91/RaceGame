@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -171,7 +171,7 @@ namespace FarseerPhysics.Dynamics.Joints
                 LocalAnchorB = localAnchorB;
             }
 
-            Axis = axis; //FPE only: store the orignal value for use in Serialization
+            Axis = axis;//FPE only: store the orignal value for use in Serialization
             ReferenceAngle = BodyB.Rotation - BodyA.Rotation;
 
             _limitState = LimitState.Inactive;
@@ -180,23 +180,23 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// The local anchor point on BodyA
         /// </summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2 LocalAnchorA { get;set;}
 
         /// <summary>
         /// The local anchor point on BodyB
         /// </summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2 LocalAnchorB { get;set;}
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get { return BodyA.GetWorldPoint(LocalAnchorA);}
+            set { LocalAnchorA = BodyA.GetLocalPoint(value);}
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { LocalAnchorB = BodyB.GetLocalPoint(value); }
+            get { return BodyB.GetWorldPoint(LocalAnchorB);}
+            set { LocalAnchorB = BodyB.GetLocalPoint(value);}
         }
 
         /// <summary>
@@ -246,10 +246,10 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// Is the joint limit enabled?
         /// </summary>
-        /// <value><c>true</c> if [limit enabled]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if [limit enabled];otherwise, <c>false</c>.</value>
         public bool LimitEnabled
         {
-            get { return _enableLimit; }
+            get { return _enableLimit;}
             set
             {
                 Debug.Assert(BodyA.FixedRotation == false || BodyB.FixedRotation == false, "Warning: limits does currently not work with fixed rotation");
@@ -269,7 +269,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <value></value>
         public float LowerLimit
         {
-            get { return _lowerTranslation; }
+            get { return _lowerTranslation;}
             set
             {
                 if (value != _lowerTranslation)
@@ -287,7 +287,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <value></value>
         public float UpperLimit
         {
-            get { return _upperTranslation; }
+            get { return _upperTranslation;}
             set
             {
                 if (value != _upperTranslation)
@@ -318,10 +318,10 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// Is the joint motor enabled?
         /// </summary>
-        /// <value><c>true</c> if [motor enabled]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if [motor enabled];otherwise, <c>false</c>.</value>
         public bool MotorEnabled
         {
-            get { return _enableMotor; }
+            get { return _enableMotor;}
             set
             {
                 WakeBodies();
@@ -340,7 +340,7 @@ namespace FarseerPhysics.Dynamics.Joints
                 WakeBodies();
                 _motorSpeed = value;
             }
-            get { return _motorSpeed; }
+            get { return _motorSpeed;}
         }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <value>The force.</value>
         public float MaxMotorForce
         {
-            get { return _maxMotorForce; }
+            get { return _maxMotorForce;}
             set
             {
                 WakeBodies();
@@ -361,7 +361,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// Get the current motor impulse, usually in N.
         /// </summary>
         /// <value></value>
-        public float MotorImpulse { get; set; }
+        public float MotorImpulse { get;set;}
 
         /// <summary>
         /// Gets the motor force.
@@ -377,7 +377,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public Vector2 Axis
         {
-            get { return _axis1; }
+            get { return _axis1;}
             set
             {
                 _axis1 = value;
@@ -390,12 +390,12 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// The axis in local coordinates relative to BodyA
         /// </summary>
-        public Vector2 LocalXAxis { get; private set; }
+        public Vector2 LocalXAxis { get;private set;}
 
         /// <summary>
         /// The reference angle.
         /// </summary>
-        public float ReferenceAngle { get; set; }
+        public float ReferenceAngle { get;set;}
 
         public override Vector2 GetReactionForce(float invDt)
         {

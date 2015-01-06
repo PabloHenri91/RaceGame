@@ -135,69 +135,69 @@ namespace FarseerPhysics.Controllers
         /// <summary>
         /// Global Strength of the force to be applied
         /// </summary>
-        public float Strength { get; set; }
+        public float Strength { get;set;}
 
         /// <summary>
         /// Position of the Force. Can be ignored (left at (0,0) for forces
         /// that are not position-dependent
         /// </summary>
-        public Vector2 Position { get; set; }
+        public Vector2 Position { get;set;}
 
         /// <summary>
         /// Maximum speed of the bodies. Bodies that are travelling faster are
         /// supposed to be ignored
         /// </summary>
-        public float MaximumSpeed { get; set; }
+        public float MaximumSpeed { get;set;}
 
         /// <summary>
         /// Maximum Force to be applied. As opposed to Maximum Speed this is 
         /// independent of the velocity of
         /// the affected body
         /// </summary>
-        public float MaximumForce { get; set; }
+        public float MaximumForce { get;set;}
 
         /// <summary>
         /// Timing Mode of the force instance
         /// </summary>
-        public TimingModes TimingMode { get; set; }
+        public TimingModes TimingMode { get;set;}
 
         /// <summary>
         /// Time of the current impulse. Incremented in update till 
         /// ImpulseLength is reached
         /// </summary>
-        public float ImpulseTime { get; private set; }
+        public float ImpulseTime { get;private set;}
 
         /// <summary>
         /// Length of a triggered impulse. Used in both Triggered and Curve Mode
         /// </summary>
-        public float ImpulseLength { get; set; }
+        public float ImpulseLength { get;set;}
 
         /// <summary>
         /// Indicating if we are currently during an Impulse 
         /// (Triggered and Curve Mode)
         /// </summary>
-        public bool Triggered { get; private set; }
+        public bool Triggered { get;private set;}
 
         /// <summary>
         /// Variation of the force applied to each body affected
         /// !! Must be used in inheriting classes properly !!
         /// </summary>
-        public float Variation { get; set; }
+        public float Variation { get;set;}
 
         /// <summary>
         /// See DecayModes
         /// </summary>
-        public DecayModes DecayMode { get; set; }
+        public DecayModes DecayMode { get;set;}
 
         /// <summary>
         /// Start of the distance based Decay. To set a non decaying area
         /// </summary>
-        public float DecayStart { get; set; }
+        public float DecayStart { get;set;}
 
         /// <summary>
         /// Maximum distance a force should be applied
         /// </summary>
-        public float DecayEnd { get; set; }
+        public float DecayEnd { get;set;}
 
         /// <summary>
         /// Calculate the Decay for a given body. Meant to ease force 

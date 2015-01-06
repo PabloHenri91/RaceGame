@@ -69,57 +69,57 @@ namespace Microsoft.Xna.Framework
 
         public static Vector3 Zero
         {
-            get { return zero; }
+            get { return zero;}
         }
 
         public static Vector3 One
         {
-            get { return one; }
+            get { return one;}
         }
 
         public static Vector3 UnitX
         {
-            get { return unitX; }
+            get { return unitX;}
         }
 
         public static Vector3 UnitY
         {
-            get { return unitY; }
+            get { return unitY;}
         }
 
         public static Vector3 UnitZ
         {
-            get { return unitZ; }
+            get { return unitZ;}
         }
 
         public static Vector3 Up
         {
-            get { return up; }
+            get { return up;}
         }
 
         public static Vector3 Down
         {
-            get { return down; }
+            get { return down;}
         }
 
         public static Vector3 Right
         {
-            get { return right; }
+            get { return right;}
         }
 
         public static Vector3 Left
         {
-            get { return left; }
+            get { return left;}
         }
 
         public static Vector3 Forward
         {
-            get { return forward; }
+            get { return forward;}
         }
 
         public static Vector3 Backward
         {
-            get { return backward; }
+            get { return backward;}
         }
 
 #endregion Properties

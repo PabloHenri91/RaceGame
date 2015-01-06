@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -112,8 +112,8 @@ namespace FarseerPhysics.Dynamics.Contacts
 
         public Fixture FixtureA;
         public Fixture FixtureB;
-        public float Friction { get; set; }
-        public float Restitution { get; set; }
+        public float Friction { get;set;}
+        public float Restitution { get;set;}
 
         /// <summary>
         /// Get the contact manifold. Do not modify the manifold unless you understand the
@@ -122,7 +122,7 @@ namespace FarseerPhysics.Dynamics.Contacts
         public Manifold Manifold;
 
         /// Get or set the desired tangent speed for a conveyor belt behavior. In meters per second.
-        public float TangentSpeed { get; set; }
+        public float TangentSpeed { get;set;}
 
         /// Enable/disable this contact. This can be used inside the pre-solve
         /// contact listener. The contact is only disabled for the current
@@ -130,31 +130,31 @@ namespace FarseerPhysics.Dynamics.Contacts
         /// NOTE: If you are setting Enabled to a constant true or false,
         /// use the explicit Enable() or Disable() functions instead to 
         /// save the CPU from doing a branch operation.
-        public bool Enabled { get; set; }
+        public bool Enabled { get;set;}
 
         /// <summary>
         /// Get the child primitive index for fixture A.
         /// </summary>
         /// <value>The child index A.</value>
-        public int ChildIndexA { get; internal set; }
+        public int ChildIndexA { get;internal set;}
 
         /// <summary>
         /// Get the child primitive index for fixture B.
         /// </summary>
         /// <value>The child index B.</value>
-        public int ChildIndexB { get; internal set; }
+        public int ChildIndexB { get;internal set;}
 
         /// <summary>
         /// Determines whether this contact is touching.
         /// </summary>
         /// <returns>
-        /// 	<c>true</c> if this instance is touching; otherwise, <c>false</c>.
+        /// 	<c>true</c> if this instance is touching;otherwise, <c>false</c>.
         /// </returns>
-        public bool IsTouching { get; set; }
+        public bool IsTouching { get;set;}
 
-        internal bool IslandFlag { get; set; }
-        internal bool TOIFlag { get; set; }
-        internal bool FilterFlag { get; set; }
+        internal bool IslandFlag { get;set;}
+        internal bool TOIFlag { get;set;}
+        internal bool FilterFlag { get;set;}
 
         public void ResetRestitution()
         {
@@ -262,14 +262,14 @@ namespace FarseerPhysics.Dynamics.Contacts
 
                 // Match old contact ids to new contact ids and copy the
                 // stored impulses to warm start the solver.
-                for (int i = 0; i < Manifold.PointCount; ++i)
+                for (int i = 0;i < Manifold.PointCount;++i)
                 {
                     ManifoldPoint mp2 = Manifold.Points[i];
                     mp2.NormalImpulse = 0.0f;
                     mp2.TangentImpulse = 0.0f;
                     ContactID id2 = mp2.Id;
 
-                    for (int j = 0; j < oldManifold.PointCount; ++j)
+                    for (int j = 0;j < oldManifold.PointCount;++j)
                     {
                         ManifoldPoint mp1 = oldManifold.Points[j];
 

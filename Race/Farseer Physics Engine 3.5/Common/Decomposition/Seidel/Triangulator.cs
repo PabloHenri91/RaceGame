@@ -139,12 +139,12 @@ namespace FarseerPhysics.Common.Decomposition.Seidel
                 t.TrimNeighbors();
         }
 
-        // Create segments and connect end points; update edge event pointer
+        // Create segments and connect end points;update edge event pointer
         private List<Edge> InitEdges(List<Point> points)
         {
             List<Edge> edges = new List<Edge>();
 
-            for (int i = 0; i < points.Count - 1; i++)
+            for (int i = 0;i < points.Count - 1;i++)
             {
                 edges.Add(new Edge(points[i], points[i + 1]));
             }

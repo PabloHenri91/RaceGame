@@ -34,12 +34,12 @@ namespace FarseerPhysics.Controllers
             Bodies = new List<Body>();
         }
 
-        public float MinRadius { get; set; }
-        public float MaxRadius { get; set; }
-        public float Strength { get; set; }
-        public GravityType GravityType { get; set; }
-        public List<Body> Bodies { get; set; }
-        public List<Vector2> Points { get; set; }
+        public float MinRadius { get;set;}
+        public float MaxRadius { get;set;}
+        public float Strength { get;set;}
+        public GravityType GravityType { get;set;}
+        public List<Body> Bodies { get;set;}
+        public List<Vector2> Points { get;set;}
 
         public override void Update(float dt)
         {

@@ -10,7 +10,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Util
         public static List<TriangulationPoint> UniformDistribution(int n, double scale)
         {
             List<TriangulationPoint> points = new List<TriangulationPoint>();
-            for (int i = 0; i < n; i++)
+            for (int i = 0;i < n;i++)
             {
                 points.Add(new TriangulationPoint(scale*(0.5 - RNG.NextDouble()), scale*(0.5 - RNG.NextDouble())));
             }
@@ -24,10 +24,10 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Util
             double halfScale = 0.5*scale;
 
             List<TriangulationPoint> points = new List<TriangulationPoint>();
-            for (int i = 0; i < n + 1; i++)
+            for (int i = 0;i < n + 1;i++)
             {
                 x = halfScale - i*size;
-                for (int j = 0; j < n + 1; j++)
+                for (int j = 0;j < n + 1;j++)
                 {
                     points.Add(new TriangulationPoint(x, halfScale - j*size));
                 }

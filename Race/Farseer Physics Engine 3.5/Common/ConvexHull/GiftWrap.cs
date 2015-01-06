@@ -24,7 +24,7 @@ namespace FarseerPhysics.Common.ConvexHull
             // Find the right most point on the hull
             int i0 = 0;
             float x0 = vertices[0].X;
-            for (int i = 1; i < vertices.Count; ++i)
+            for (int i = 1;i < vertices.Count;++i)
             {
                 float x = vertices[i].X;
                 if (x > x0 || (x == x0 && vertices[i].Y < vertices[i0].Y))
@@ -38,12 +38,12 @@ namespace FarseerPhysics.Common.ConvexHull
             int m = 0;
             int ih = i0;
 
-            for (; ; )
+            for (;;)
             {
                 hull[m] = ih;
 
                 int ie = 0;
-                for (int j = 1; j < vertices.Count; ++j)
+                for (int j = 1;j < vertices.Count;++j)
                 {
                     if (ie == ih)
                     {
@@ -78,7 +78,7 @@ namespace FarseerPhysics.Common.ConvexHull
             Vertices result = new Vertices(m);
 
             // Copy vertices.
-            for (int i = 0; i < m; ++i)
+            for (int i = 0;i < m;++i)
             {
                 result.Add(vertices[hull[i]]);
             }

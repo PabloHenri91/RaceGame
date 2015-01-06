@@ -40,7 +40,7 @@ namespace FarseerPhysics.Common
             xf.q.Set(angle);
 
             // Transform vertices
-            for (int i = 0; i < 4; ++i)
+            for (int i = 0;i < 4;++i)
             {
                 vertices[i] = MathUtils.Mul(ref xf, vertices[i]);
             }
@@ -95,7 +95,7 @@ namespace FarseerPhysics.Common
                 Vector2 posOffset = new Vector2(width / 2 - xRadius, height / 2 - yRadius);
                 vertices.Add(posOffset + new Vector2(xRadius, -yRadius + yRadius));
                 short phase = 0;
-                for (int i = 1; i < numberOfEdges; i++)
+                for (int i = 1;i < numberOfEdges;i++)
                 {
                     if (i - perPhase == 0 || i - perPhase * 3 == 0)
                     {
@@ -155,7 +155,7 @@ namespace FarseerPhysics.Common
             float stepSize = MathHelper.TwoPi / numberOfEdges;
 
             vertices.Add(new Vector2(xRadius, 0));
-            for (int i = numberOfEdges - 1; i > 0; --i)
+            for (int i = numberOfEdges - 1;i > 0;--i)
                 vertices.Add(new Vector2(xRadius * (float)Math.Cos(stepSize * i),
                                          -yRadius * (float)Math.Sin(stepSize * i)));
 
@@ -171,7 +171,7 @@ namespace FarseerPhysics.Common
             Vertices vertices = new Vertices();
 
             float stepSize = radians / sides;
-            for (int i = sides - 1; i > 0; i--)
+            for (int i = sides - 1;i > 0;i--)
             {
                 vertices.Add(new Vector2(radius * (float)Math.Cos(stepSize * i),
                                          radius * (float)Math.Sin(stepSize * i)));
@@ -246,7 +246,7 @@ namespace FarseerPhysics.Common
             vertices.Add(new Vector2(topRadius, newHeight));
 
             float stepSize = MathHelper.Pi / topEdges;
-            for (int i = 1; i < topEdges; i++)
+            for (int i = 1;i < topEdges;i++)
             {
                 vertices.Add(new Vector2(topRadius * (float)Math.Cos(stepSize * i),
                                          topRadius * (float)Math.Sin(stepSize * i) + newHeight));
@@ -258,7 +258,7 @@ namespace FarseerPhysics.Common
             vertices.Add(new Vector2(-bottomRadius, -newHeight));
 
             stepSize = MathHelper.Pi / bottomEdges;
-            for (int i = 1; i < bottomEdges; i++)
+            for (int i = 1;i < bottomEdges;i++)
             {
                 vertices.Add(new Vector2(-bottomRadius * (float)Math.Cos(stepSize * i),
                                          -bottomRadius * (float)Math.Sin(stepSize * i) - newHeight));
@@ -288,7 +288,7 @@ namespace FarseerPhysics.Common
 
             float toothAngleStepSize = (stepSize - (toothTipStepSize * 2f)) / 2f;
 
-            for (int i = numberOfTeeth - 1; i >= 0; --i)
+            for (int i = numberOfTeeth - 1;i >= 0;--i)
             {
                 if (toothTipStepSize > 0f)
                 {

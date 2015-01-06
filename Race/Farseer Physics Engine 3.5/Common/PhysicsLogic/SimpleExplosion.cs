@@ -14,14 +14,14 @@ namespace FarseerPhysics.Common.PhysicsLogic
         public SimpleExplosion(World world)
             : base(world, PhysicsLogicType.Explosion)
         {
-            Power = 1; //linear
+            Power = 1;//linear
         }
 
         /// <summary>
         /// This is the power used in the power function. A value of 1 means the force
         /// applied to bodies in the explosion is linear. A value of 2 means it is exponential.
         /// </summary>
-        public float Power { get; set; }
+        public float Power { get;set;}
 
         /// <summary>
         /// Activate the explosion at the specified position.

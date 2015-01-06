@@ -69,7 +69,7 @@ namespace FarseerPhysics.Common
         /// </summary>
         public bool IsRunning
         {
-            get { return _isRunning; }
+            get { return _isRunning;}
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace FarseerPhysics.Common
         /// </summary>
         public TimeSpan Elapsed
         {
-            get { return TimeSpan.FromMilliseconds(ElapsedMilliseconds); }
+            get { return TimeSpan.FromMilliseconds(ElapsedMilliseconds);}
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace FarseerPhysics.Common
         /// </summary>
         public long ElapsedMilliseconds
         {
-            get { return GetCurrentElapsedTicks() / TimeSpan.TicksPerMillisecond; }
+            get { return GetCurrentElapsedTicks() / TimeSpan.TicksPerMillisecond;}
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace FarseerPhysics.Common
         /// </summary>
         public long ElapsedTicks
         {
-            get { return GetCurrentElapsedTicks(); }
+            get { return GetCurrentElapsedTicks();}
         }
 
         private long GetCurrentElapsedTicks()

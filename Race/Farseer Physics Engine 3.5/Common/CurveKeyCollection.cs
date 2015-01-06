@@ -51,7 +51,7 @@ namespace Microsoft.Xna.Framework
 
         public CurveKey this[int index]
         {
-            get { return innerlist[index]; }
+            get { return innerlist[index];}
             set
             {
                 if (value == null)
@@ -72,12 +72,12 @@ namespace Microsoft.Xna.Framework
 
         public int Count
         {
-            get { return innerlist.Count; }
+            get { return innerlist.Count;}
         }
 
         public bool IsReadOnly
         {
-            get { return isReadOnly; }
+            get { return isReadOnly;}
         }
 
 #endregion Properties
@@ -104,7 +104,7 @@ namespace Microsoft.Xna.Framework
                 return;
             }
 
-            for (int i = 0; i < innerlist.Count; i++)
+            for (int i = 0;i < innerlist.Count;i++)
             {
                 if (item.Position < innerlist[i].Position)
                 {

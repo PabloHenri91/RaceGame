@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -36,7 +36,7 @@ namespace FarseerPhysics.Collision
         public DistanceProxy ProxyB = new DistanceProxy();
         public Sweep SweepA;
         public Sweep SweepB;
-        public float TMax; // defines sweep interval [0, tMax]
+        public float TMax;// defines sweep interval [0, tMax]
     }
 
     public enum TOIOutputState
@@ -326,7 +326,7 @@ namespace FarseerPhysics.Collision
 
             // The outer loop progressively attempts to compute new separating axes.
             // This loop terminates when an axis is repeated (no progress is made).
-            for (; ; )
+            for (;;)
             {
                 Transform xfA, xfB;
                 sweepA.GetTransform(out xfA, t1);
@@ -364,7 +364,7 @@ namespace FarseerPhysics.Collision
                 bool done = false;
                 float t2 = tMax;
                 int pushBackIter = 0;
-                for (; ; )
+                for (;;)
                 {
                     // Find the deepest point at t2. Store the witness point indices.
                     int indexA, indexB;
@@ -414,7 +414,7 @@ namespace FarseerPhysics.Collision
                     // Compute 1D root of: f(x) - target = 0
                     int rootIterCount = 0;
                     float a1 = t1, a2 = t2;
-                    for (; ; )
+                    for (;;)
                     {
                         // Use a mix of the secant rule and bisection.
                         float t;

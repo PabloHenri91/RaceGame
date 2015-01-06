@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -115,23 +115,23 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// The local anchor point on BodyA
         /// </summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2 LocalAnchorA { get;set;}
 
         /// <summary>
         /// The local anchor point on BodyB
         /// </summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2 LocalAnchorB { get;set;}
 
         public override Vector2 WorldAnchorA
         {
-            get { return BodyA.GetWorldPoint(LocalAnchorA); }
-            set { LocalAnchorA = BodyA.GetLocalPoint(value); }
+            get { return BodyA.GetWorldPoint(LocalAnchorA);}
+            set { LocalAnchorA = BodyA.GetLocalPoint(value);}
         }
 
         public override Vector2 WorldAnchorB
         {
-            get { return BodyB.GetWorldPoint(LocalAnchorB); }
-            set { LocalAnchorB = BodyB.GetLocalPoint(value); }
+            get { return BodyB.GetWorldPoint(LocalAnchorB);}
+            set { LocalAnchorB = BodyB.GetLocalPoint(value);}
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float ReferenceAngle
         {
-            get { return _referenceAngle; }
+            get { return _referenceAngle;}
             set
             {
                 WakeBodies();
@@ -152,7 +152,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float JointAngle
         {
-            get { return BodyB._sweep.A - BodyA._sweep.A - ReferenceAngle; }
+            get { return BodyB._sweep.A - BodyA._sweep.A - ReferenceAngle;}
         }
 
         /// <summary>
@@ -160,16 +160,16 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float JointSpeed
         {
-            get { return BodyB._angularVelocity - BodyA._angularVelocity; }
+            get { return BodyB._angularVelocity - BodyA._angularVelocity;}
         }
 
         /// <summary>
         /// Is the joint limit enabled?
         /// </summary>
-        /// <value><c>true</c> if [limit enabled]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if [limit enabled];otherwise, <c>false</c>.</value>
         public bool LimitEnabled
         {
-            get { return _enableLimit; }
+            get { return _enableLimit;}
             set
             {
                 if (_enableLimit != value)
@@ -186,7 +186,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float LowerLimit
         {
-            get { return _lowerAngle; }
+            get { return _lowerAngle;}
             set
             {
                 if (_lowerAngle != value)
@@ -203,7 +203,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float UpperLimit
         {
-            get { return _upperAngle; }
+            get { return _upperAngle;}
             set
             {
                 if (_upperAngle != value)
@@ -234,10 +234,10 @@ namespace FarseerPhysics.Dynamics.Joints
         /// <summary>
         /// Is the joint motor enabled?
         /// </summary>
-        /// <value><c>true</c> if [motor enabled]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if [motor enabled];otherwise, <c>false</c>.</value>
         public bool MotorEnabled
         {
-            get { return _enableMotor; }
+            get { return _enableMotor;}
             set
             {
                 WakeBodies();
@@ -255,7 +255,7 @@ namespace FarseerPhysics.Dynamics.Joints
                 WakeBodies();
                 _motorSpeed = value;
             }
-            get { return _motorSpeed; }
+            get { return _motorSpeed;}
         }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace FarseerPhysics.Dynamics.Joints
                 WakeBodies();
                 _maxMotorTorque = value;
             }
-            get { return _maxMotorTorque; }
+            get { return _maxMotorTorque;}
         }
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace FarseerPhysics.Dynamics.Joints
         /// </summary>
         public float MotorImpulse
         {
-            get { return _motorImpulse; }
+            get { return _motorImpulse;}
             set
             {
                 WakeBodies();
@@ -330,7 +330,7 @@ namespace FarseerPhysics.Dynamics.Joints
 
             // J = [-I -r1_skew I r2_skew]
             //     [ 0       -1 0       1]
-            // r_skew = [-ry; rx]
+            // r_skew = [-ry;rx]
 
             // Matlab
             // K = [ mA+r1y^2*iA+mB+r2y^2*iB,  -r1y*iA*r1x-r2y*iB*r2x,          -r1y*iA-r2y*iB]

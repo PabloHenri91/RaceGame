@@ -61,22 +61,22 @@ namespace Microsoft.Xna.Framework
 
         public static Vector2 Zero
         {
-            get { return zeroVector; }
+            get { return zeroVector;}
         }
 
         public static Vector2 One
         {
-            get { return unitVector; }
+            get { return unitVector;}
         }
 
         public static Vector2 UnitX
         {
-            get { return unitXVector; }
+            get { return unitXVector;}
         }
 
         public static Vector2 UnitY
         {
-            get { return unitYVector; }
+            get { return unitYVector;}
         }
 
         #endregion Properties

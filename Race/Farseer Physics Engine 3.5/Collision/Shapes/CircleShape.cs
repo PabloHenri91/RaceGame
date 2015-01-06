@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose,
 * including commercial applications, and to alter it and redistribute it
 * freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
+* 1. The origin of this software must not be misrepresented;you must not
 * claim that you wrote the original software. If you use this software
 * in a product, an acknowledgment in the product documentation would be
 * appreciated but is not required.
@@ -47,7 +47,7 @@ namespace FarseerPhysics.Collision.Shapes
 
             ShapeType = ShapeType.Circle;
             _position = Vector2.Zero;
-            Radius = radius; // The Radius property cache 2radius and calls ComputeProperties(). So no need to call ComputeProperties() here.
+            Radius = radius;// The Radius property cache 2radius and calls ComputeProperties(). So no need to call ComputeProperties() here.
         }
 
         internal CircleShape()
@@ -60,7 +60,7 @@ namespace FarseerPhysics.Collision.Shapes
 
         public override int ChildCount
         {
-            get { return 1; }
+            get { return 1;}
         }
 
         /// <summary>
@@ -68,11 +68,11 @@ namespace FarseerPhysics.Collision.Shapes
         /// </summary>
         public Vector2 Position
         {
-            get { return _position; }
+            get { return _position;}
             set
             {
                 _position = value;
-                ComputeProperties(); //TO DO: Optimize here
+                ComputeProperties();//TO DO: Optimize here
             }
         }
 
@@ -188,7 +188,7 @@ namespace FarseerPhysics.Collision.Shapes
             CircleShape clone = new CircleShape();
             clone.ShapeType = ShapeType;
             clone._radius = Radius;
-            clone._2radius = _2radius; //FPE note: We also copy the cache
+            clone._2radius = _2radius;//FPE note: We also copy the cache
             clone._density = _density;
             clone._position = _position;
             clone.MassData = MassData;

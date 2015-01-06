@@ -43,7 +43,7 @@ namespace FarseerPhysics.Common
             }
             else
             {
-                for (int i = 1; i < verts.Count; i++)
+                for (int i = 1;i < verts.Count;i++)
                 {
                     body.CreateFixture(new EdgeShape(verts[i], verts[i - 1]));
                 }
@@ -88,7 +88,7 @@ namespace FarseerPhysics.Common
             List<Vector3> centers = path.SubdivideEvenly(copies);
             List<Body> bodyList = new List<Body>();
 
-            for (int i = 0; i < centers.Count; i++)
+            for (int i = 0;i < centers.Count;i++)
             {
                 Body b = new Body(world);
 
@@ -164,7 +164,7 @@ namespace FarseerPhysics.Common
         {
             List<RevoluteJoint> joints = new List<RevoluteJoint>(bodies.Count + 1);
 
-            for (int i = 1; i < bodies.Count; i++)
+            for (int i = 1;i < bodies.Count;i++)
             {
                 RevoluteJoint joint = new RevoluteJoint(bodies[i], bodies[i - 1], localAnchorA, localAnchorB);
                 joint.CollideConnected = collideConnected;

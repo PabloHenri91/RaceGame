@@ -28,7 +28,7 @@ namespace MyGame.src
         private int maximumTouchCount;
         TouchPanelCapabilities touchPanelCapabilities;
         TouchCollection touchCollection;
-        private bool click1; //TODO precisa ser ajustado para multitoque
+        private bool click1;//TODO precisa ser ajustado para multitoque
         private int last1Touch;
 #endif
 

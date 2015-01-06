@@ -22,8 +22,8 @@
  * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA, OR
+ * PROFITS;OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -85,7 +85,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay.Sweep
         {
             List<TriangulationPoint> points = tcx.Points;
 
-            for (int i = 1; i < points.Count; i++)
+            for (int i = 1;i < points.Count;i++)
             {
                 TriangulationPoint point = points[i];
 
@@ -266,7 +266,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay.Sweep
             node.Next.Prev = newNode;
             node.Next = newNode;
 
-            tcx.AddNode(newNode); // XXX: BST
+            tcx.AddNode(newNode);// XXX: BST
 
             if (!Legalize(tcx, triangle))
             {
@@ -600,7 +600,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay.Sweep
                     if (eq == tcx.EdgeEvent.ConstrainedEdge.Q
                         && ep == tcx.EdgeEvent.ConstrainedEdge.P)
                     {
-                        if (tcx.IsDebugEnabled) Console.WriteLine("[FLIP] - constrained edge done"); // TO DO: remove
+                        if (tcx.IsDebugEnabled) Console.WriteLine("[FLIP] - constrained edge done");// TO DO: remove
                         t.MarkConstrainedEdge(ep, eq);
                         ot.MarkConstrainedEdge(ep, eq);
                         Legalize(tcx, t);
@@ -608,7 +608,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay.Sweep
                     }
                     else
                     {
-                        if (tcx.IsDebugEnabled) Console.WriteLine("[FLIP] - subedge done"); // TO DO: remove
+                        if (tcx.IsDebugEnabled) Console.WriteLine("[FLIP] - subedge done");// TO DO: remove
                         // XXX: I think one of the triangles should be legalized here?
                     }
                 }
@@ -1023,7 +1023,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT.Delaunay.Sweep
         {
             // To legalize a triangle we start by finding if any of the three edges
             // violate the Delaunay condition
-            for (int i = 0; i < 3; i++)
+            for (int i = 0;i < 3;i++)
             {
                 // TO DO: fix so that cEdge is always valid when creating new triangles then we can check it here
                 //       instead of below with ot

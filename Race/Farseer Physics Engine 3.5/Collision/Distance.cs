@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -62,7 +62,7 @@ namespace FarseerPhysics.Collision
                     {
                         PolygonShape polygon = (PolygonShape)shape;
                         Vertices.Clear();
-                        for (int i = 0; i < polygon.Vertices.Count; i++)
+                        for (int i = 0;i < polygon.Vertices.Count;i++)
                         {
                             Vertices.Add(polygon.Vertices[i]);
                         }
@@ -107,7 +107,7 @@ namespace FarseerPhysics.Collision
         {
             int bestIndex = 0;
             float bestValue = Vector2.Dot(Vertices[0], direction);
-            for (int i = 1; i < Vertices.Count; ++i)
+            for (int i = 1;i < Vertices.Count;++i)
             {
                 float value = Vector2.Dot(Vertices[i], direction);
                 if (value > bestValue)
@@ -129,7 +129,7 @@ namespace FarseerPhysics.Collision
         {
             int bestIndex = 0;
             float bestValue = Vector2.Dot(Vertices[0], direction);
-            for (int i = 1; i < Vertices.Count; ++i)
+            for (int i = 1;i < Vertices.Count;++i)
             {
                 float value = Vector2.Dot(Vertices[i], direction);
                 if (value > bestValue)
@@ -247,7 +247,7 @@ namespace FarseerPhysics.Collision
 
             // Copy data from cache.
             Count = cache.Count;
-            for (int i = 0; i < Count; ++i)
+            for (int i = 0;i < Count;++i)
             {
                 SimplexVertex v = V[i];
                 v.IndexA = cache.IndexA[i];
@@ -295,7 +295,7 @@ namespace FarseerPhysics.Collision
         {
             cache.Metric = GetMetric();
             cache.Count = (UInt16)Count;
-            for (int i = 0; i < Count; ++i)
+            for (int i = 0;i < Count;++i)
             {
                 cache.IndexA[i] = (byte)(V[i].IndexA);
                 cache.IndexB[i] = (byte)(V[i].IndexB);
@@ -661,7 +661,7 @@ namespace FarseerPhysics.Collision
             {
                 // Copy simplex so we can identify duplicates.
                 int saveCount = simplex.Count;
-                for (int i = 0; i < saveCount; ++i)
+                for (int i = 0;i < saveCount;++i)
                 {
                     saveA[i] = simplex.V[i].IndexA;
                     saveB[i] = simplex.V[i].IndexB;
@@ -733,7 +733,7 @@ namespace FarseerPhysics.Collision
 
                 // Check for duplicate support points. This is the main termination criteria.
                 bool duplicate = false;
-                for (int i = 0; i < saveCount; ++i)
+                for (int i = 0;i < saveCount;++i)
                 {
                     if (vertex.IndexA == saveA[i] && vertex.IndexB == saveB[i])
                     {

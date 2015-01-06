@@ -119,9 +119,9 @@ namespace FarseerPhysics.Common.TextureTools
 
             _terrainMap = new sbyte[(int)_localWidth + 1, (int)_localHeight + 1];
 
-            for (int x = 0; x < _localWidth; x++)
+            for (int x = 0;x < _localWidth;x++)
             {
-                for (int y = 0; y < _localHeight; y++)
+                for (int y = 0;y < _localHeight;y++)
                 {
                     _terrainMap[x, y] = 1;
                 }
@@ -142,9 +142,9 @@ namespace FarseerPhysics.Common.TextureTools
         /// <param name="offset"></param>
         public void ApplyData(sbyte[,] data, Vector2 offset = default(Vector2))
         {
-            for (int x = 0; x < data.GetUpperBound(0); x++)
+            for (int x = 0;x < data.GetUpperBound(0);x++)
             {
-                for (int y = 0; y < data.GetUpperBound(1); y++)
+                for (int y = 0;y < data.GetUpperBound(1);y++)
                 {
                     if (x + offset.X >= 0 && x + offset.X < _localWidth && y + offset.Y >= 0 && y + offset.Y < _localHeight)
                     {
@@ -209,14 +209,14 @@ namespace FarseerPhysics.Common.TextureTools
 
         private void RemoveOldData(int xStart, int xEnd, int yStart, int yEnd)
         {
-            for (int x = xStart; x < xEnd; x++)
+            for (int x = xStart;x < xEnd;x++)
             {
-                for (int y = yStart; y < yEnd; y++)
+                for (int y = yStart;y < yEnd;y++)
                 {
                     //remove old terrain object at grid cell
                     if (_bodyMap[x, y] != null)
                     {
-                        for (int i = 0; i < _bodyMap[x, y].Count; i++)
+                        for (int i = 0;i < _bodyMap[x, y].Count;i++)
                         {
                             World.RemoveBody(_bodyMap[x, y][i]);
                         }

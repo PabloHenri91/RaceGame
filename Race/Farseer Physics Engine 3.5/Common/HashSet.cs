@@ -64,12 +64,12 @@ namespace FarseerPhysics.Common
         // Properties
         public int Count
         {
-            get { return _dict.Keys.Count; }
+            get { return _dict.Keys.Count;}
         }
 
         public bool IsReadOnly
         {
-            get { return false; }
+            get { return false;}
         }
 
         #endregion

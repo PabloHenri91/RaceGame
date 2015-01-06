@@ -14,18 +14,18 @@ namespace FarseerPhysics.Controllers
         /// <summary>
         /// Direction of the windforce
         /// </summary>
-        public Vector2 Direction { get; set; }
+        public Vector2 Direction { get;set;}
 
         /// <summary>
         /// The amount of Direction randomization. Allowed range is 0-1.
         /// </summary>
-        public float Divergence { get; set; }
+        public float Divergence { get;set;}
 
         /// <summary>
         /// Ignore the position and apply the force. If off only in the "front" (relative to position and direction)
         /// will be affected
         /// </summary>
-        public bool IgnorePosition { get; set; }
+        public bool IgnorePosition { get;set;}
 
 
         public override void ApplyForce(float dt, float strength)

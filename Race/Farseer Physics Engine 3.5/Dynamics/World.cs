@@ -11,7 +11,7 @@
 * Permission is granted to anyone to use this software for any purpose, 
 * including commercial applications, and to alter it and redistribute it 
 * freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
+* 1. The origin of this software must not be misrepresented;you must not 
 * claim that you wrote the original software. If you use this software 
 * in a product, an acknowledgment in the product documentation would be 
 * appreciated but is not required. 
@@ -367,7 +367,7 @@ namespace FarseerPhysics.Dynamics
                     body.ContactList = null;
 
                     // Delete the attached fixtures. This destroys broad-phase proxies.
-                    for (int i = 0; i < body.FixtureList.Count; i++)
+                    for (int i = 0;i < body.FixtureList.Count;i++)
                     {
                         body.FixtureList[i].DestroyProxies(ContactManager.BroadPhase);
                         body.FixtureList[i].Destroy();
@@ -465,7 +465,7 @@ namespace FarseerPhysics.Dynamics
             foreach (var seed in AwakeBodyList)
             {
 #else
-            for (int index = BodyList.Count - 1; index >= 0; index--)
+            for (int index = BodyList.Count - 1;index >= 0;index--)
             {
                 Body seed = BodyList[index];
 #endif
@@ -515,7 +515,7 @@ namespace FarseerPhysics.Dynamics
                     }
 
                     // Search all contacts connected to this body.
-                    for (ContactEdge ce = b.ContactList; ce != null; ce = ce.Next)
+                    for (ContactEdge ce = b.ContactList;ce != null;ce = ce.Next)
                     {
                         Contact contact = ce.Contact;
 
@@ -561,7 +561,7 @@ namespace FarseerPhysics.Dynamics
                     }
 
                     // Search all joints connect to this body.
-                    for (JointEdge je = b.JointList; je != null; je = je.Next)
+                    for (JointEdge je = b.JointList;je != null;je = je.Next)
                     {
                         if (je.Joint.IslandFlag)
                         {
@@ -607,7 +607,7 @@ namespace FarseerPhysics.Dynamics
                 Island.Solve(ref step, ref Gravity);
 
                 // Post solve cleanup.
-                for (int i = 0; i < Island.BodyCount; ++i)
+                for (int i = 0;i < Island.BodyCount;++i)
                 {
                     // Allow static bodies to participate in other islands.
                     Body b = Island.Bodies[i];
@@ -679,7 +679,7 @@ namespace FarseerPhysics.Dynamics
                     b.Sweep.Alpha0 = 0.0f;
                 }
 #else
-                for (int i = 0; i < BodyList.Count; i++)
+                for (int i = 0;i < BodyList.Count;i++)
                 {
                     BodyList[i]._island = false;
                     BodyList[i]._sweep.Alpha0 = 0.0f;
@@ -689,7 +689,7 @@ namespace FarseerPhysics.Dynamics
                 foreach (var c in ContactManager.ActiveContacts)
                 {
 #else
-                for (int i = 0; i < ContactManager.ContactList.Count; i++)
+                for (int i = 0;i < ContactManager.ContactList.Count;i++)
                 {
                     Contact c = ContactManager.ContactList[i];
 #endif
@@ -702,7 +702,7 @@ namespace FarseerPhysics.Dynamics
             }
 
             // Find TOI events and solve them.
-            for (; ; )
+            for (;;)
             {
                 // Find the first TOI.
                 Contact minContact = null;
@@ -712,7 +712,7 @@ namespace FarseerPhysics.Dynamics
                 foreach (var c in ContactManager.ActiveContacts)
                 {
 #else
-                for (int i = 0; i < ContactManager.ContactList.Count; i++)
+                for (int i = 0;i < ContactManager.ContactList.Count;i++)
                 {
                     Contact c = ContactManager.ContactList[i];
 #endif
@@ -889,12 +889,12 @@ namespace FarseerPhysics.Dynamics
 
                 // Get contacts on bodyA and bodyB.
                 Body[] bodies = { bA0, bB0 };
-                for (int i = 0; i < 2; ++i)
+                for (int i = 0;i < 2;++i)
                 {
                     Body body = bodies[i];
                     if (body.BodyType == BodyType.Dynamic)
                     {
-                        for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
+                        for (ContactEdge ce = body.ContactList;ce != null;ce = ce.Next)
                         {
                             Contact contact = ce.Contact;
 
@@ -993,7 +993,7 @@ namespace FarseerPhysics.Dynamics
                 Island.SolveTOI(ref subStep, bA0.IslandIndex, bB0.IslandIndex, false);
 
                 // Reset island flags and synchronize broad-phase proxies.
-                for (int i = 0; i < Island.BodyCount; ++i)
+                for (int i = 0;i < Island.BodyCount;++i)
                 {
                     Body body = Island.Bodies[i];
                     body._island = false;
@@ -1006,7 +1006,7 @@ namespace FarseerPhysics.Dynamics
                     body.SynchronizeFixtures();
 
                     // Invalidate all contact TOIs on this displaced body.
-                    for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
+                    for (ContactEdge ce = body.ContactList;ce != null;ce = ce.Next)
                     {
                         ce.Contact.TOIFlag = false;
                         ce.Contact.IslandFlag = false;
@@ -1031,23 +1031,23 @@ namespace FarseerPhysics.Dynamics
 #endif
         }
 
-        public List<Controller> ControllerList { get; private set; }
+        public List<Controller> ControllerList { get;private set;}
 
-        public List<BreakableBody> BreakableBodyList { get; private set; }
+        public List<BreakableBody> BreakableBodyList { get;private set;}
 
-        public float UpdateTime { get; private set; }
+        public float UpdateTime { get;private set;}
 
-        public float ContinuousPhysicsTime { get; private set; }
+        public float ContinuousPhysicsTime { get;private set;}
 
-        public float ControllersUpdateTime { get; private set; }
+        public float ControllersUpdateTime { get;private set;}
 
-        public float AddRemoveTime { get; private set; }
+        public float AddRemoveTime { get;private set;}
 
-        public float NewContactsTime { get; private set; }
+        public float NewContactsTime { get;private set;}
 
-        public float ContactsUpdateTime { get; private set; }
+        public float ContactsUpdateTime { get;private set;}
 
-        public float SolveUpdateTime { get; private set; }
+        public float SolveUpdateTime { get;private set;}
 
         /// <summary>
         /// Get the number of broad-phase proxies.
@@ -1055,7 +1055,7 @@ namespace FarseerPhysics.Dynamics
         /// <value>The proxy count.</value>
         public int ProxyCount
         {
-            get { return ContactManager.BroadPhase.ProxyCount; }
+            get { return ContactManager.BroadPhase.ProxyCount;}
         }
 
         /// <summary>
@@ -1068,16 +1068,16 @@ namespace FarseerPhysics.Dynamics
         /// Get the contact manager for testing.
         /// </summary>
         /// <value>The contact manager.</value>
-        public ContactManager ContactManager { get; private set; }
+        public ContactManager ContactManager { get;private set;}
 
         /// <summary>
         /// Get the world body list.
         /// </summary>
         /// <value>Thehead of the world body list.</value>
-        public List<Body> BodyList { get; private set; }
+        public List<Body> BodyList { get;private set;}
 
 #if USE_AWAKE_BODY_SET
-        public HashSet<Body> AwakeBodySet { get; private set; }
+        public HashSet<Body> AwakeBodySet { get;private set;}
         List<Body> AwakeBodyList;
 #endif
 #if USE_ISLAND_SET
@@ -1091,7 +1091,7 @@ namespace FarseerPhysics.Dynamics
         /// Get the world joint list. 
         /// </summary>
         /// <value>The joint list.</value>
-        public List<Joint> JointList { get; private set; }
+        public List<Joint> JointList { get;private set;}
 
         /// <summary>
         /// Get the world contact list. With the returned contact, use Contact.GetNext to get
@@ -1100,15 +1100,15 @@ namespace FarseerPhysics.Dynamics
         /// <value>The head of the world contact list.</value>
         public List<Contact> ContactList
         {
-            get { return ContactManager.ContactList; }
+            get { return ContactManager.ContactList;}
         }
 
         /// <summary>
         /// If false, the whole simulation stops. It still processes added and removed geometries.
         /// </summary>
-        public bool Enabled { get; set; }
+        public bool Enabled { get;set;}
 
-        public Island Island { get; private set; }
+        public Island Island { get;private set;}
 
         /// <summary>
         /// Add a rigid body.
@@ -1230,7 +1230,7 @@ namespace FarseerPhysics.Dynamics
             step.dtRatio = _invDt0 * dt;
 
             //Update controllers
-            for (int i = 0; i < ControllerList.Count; i++)
+            for (int i = 0;i < ControllerList.Count;i++)
             {
                 ControllerList[i].Update(dt);
             }
@@ -1262,7 +1262,7 @@ namespace FarseerPhysics.Dynamics
             if (Settings.AutoClearForces)
                 ClearForces();
 
-            for (int i = 0; i < BreakableBodyList.Count; i++)
+            for (int i = 0;i < BreakableBodyList.Count;i++)
             {
                 BreakableBodyList[i].Update();
             }
@@ -1284,7 +1284,7 @@ namespace FarseerPhysics.Dynamics
         /// </summary>
         public void ClearForces()
         {
-            for (int i = 0; i < BodyList.Count; i++)
+            for (int i = 0;i < BodyList.Count;i++)
             {
                 Body body = BodyList[i];
                 body._force = Vector2.Zero;
@@ -1479,7 +1479,7 @@ namespace FarseerPhysics.Dynamics
 
             foreach (Joint joint in JointList)
             {
-                //joint.ShiftOrigin(newOrigin); //TODO: uncomment
+                //joint.ShiftOrigin(newOrigin);//TODO: uncomment
             }
 
             ContactManager.BroadPhase.ShiftOrigin(newOrigin);
@@ -1489,17 +1489,17 @@ namespace FarseerPhysics.Dynamics
         {
             ProcessChanges();
 
-            for (int i = BodyList.Count - 1; i >= 0; i--)
+            for (int i = BodyList.Count - 1;i >= 0;i--)
             {
                 RemoveBody(BodyList[i]);
             }
 
-            for (int i = ControllerList.Count - 1; i >= 0; i--)
+            for (int i = ControllerList.Count - 1;i >= 0;i--)
             {
                 RemoveController(ControllerList[i]);
             }
 
-            for (int i = BreakableBodyList.Count - 1; i >= 0; i--)
+            for (int i = BreakableBodyList.Count - 1;i >= 0;i--)
             {
                 RemoveBreakableBody(BreakableBodyList[i]);
             }

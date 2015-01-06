@@ -153,7 +153,7 @@ namespace FarseerPhysics.Common
             }
 
             _writer.WriteStartElement("Bindings");
-            for (int i = 0; i < body.FixtureList.Count; i++)
+            for (int i = 0;i < body.FixtureList.Count;i++)
             {
                 _writer.WriteStartElement("Pair");
                 _writer.WriteAttributeString("FixtureId", FindIndex(fixtures, body.FixtureList[i]).ToString());
@@ -341,7 +341,7 @@ namespace FarseerPhysics.Common
 
         private static int FindIndex(List<Body> list, Body item)
         {
-            for (int i = 0; i < list.Count; ++i)
+            for (int i = 0;i < list.Count;++i)
                 if (list[i] == item)
                     return i;
 
@@ -350,7 +350,7 @@ namespace FarseerPhysics.Common
 
         private static int FindIndex(List<Fixture> list, Fixture item)
         {
-            for (int i = 0; i < list.Count; ++i)
+            for (int i = 0;i < list.Count;++i)
                 if (list[i].CompareTo(item))
                     return i;
 
@@ -359,7 +359,7 @@ namespace FarseerPhysics.Common
 
         private static int FindIndex(List<Shape> list, Shape item)
         {
-            for (int i = 0; i < list.Count; ++i)
+            for (int i = 0;i < list.Count;++i)
                 if (list[i].CompareTo(item))
                     return i;
 
@@ -1174,8 +1174,8 @@ namespace FarseerPhysics.Common
 
     internal class XMLFragmentAttribute
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
+        public string Name { get;set;}
+        public string Value { get;set;}
     }
 
     internal class XMLFragmentElement
@@ -1185,18 +1185,18 @@ namespace FarseerPhysics.Common
 
         public IList<XMLFragmentElement> Elements
         {
-            get { return _elements; }
+            get { return _elements;}
         }
 
         public IList<XMLFragmentAttribute> Attributes
         {
-            get { return _attributes; }
+            get { return _attributes;}
         }
 
-        public string Name { get; set; }
-        public string Value { get; set; }
-        public string OuterXml { get; set; }
-        public string InnerXml { get; set; }
+        public string Name { get;set;}
+        public string Value { get;set;}
+        public string OuterXml { get;set;}
+        public string InnerXml { get;set;}
     }
 
     internal class XMLFragmentException : Exception
@@ -1217,13 +1217,13 @@ namespace FarseerPhysics.Common
             Position = 0;
         }
 
-        public string Buffer { get; set; }
+        public string Buffer { get;set;}
 
-        public int Position { get; set; }
+        public int Position { get;set;}
 
         private int Length
         {
-            get { return Buffer.Length; }
+            get { return Buffer.Length;}
         }
 
         public char Next
@@ -1238,7 +1238,7 @@ namespace FarseerPhysics.Common
 
         public bool EndOfBuffer
         {
-            get { return Position == Length; }
+            get { return Position == Length;}
         }
     }
 
@@ -1261,7 +1261,7 @@ namespace FarseerPhysics.Common
 
         public XMLFragmentElement RootNode
         {
-            get { return _rootNode; }
+            get { return _rootNode;}
         }
 
         public void Load(Stream stream)
@@ -1428,7 +1428,7 @@ namespace FarseerPhysics.Common
 
             while (true)
             {
-                int oldPos = _buffer.Position; // for restoration below
+                int oldPos = _buffer.Position;// for restoration below
                 token = NextToken();
 
                 if (token == "<")
@@ -1437,9 +1437,9 @@ namespace FarseerPhysics.Common
 
                     if (token == "/") // finish element
                     {
-                        NextToken(); // skip the / again
+                        NextToken();// skip the / again
                         token = NextToken();
-                        NextToken(); // skip >
+                        NextToken();// skip >
 
                         element.OuterXml = TrimControl(_buffer.Buffer.Substring(startOuterXml, _buffer.Position - startOuterXml)).Trim();
                         element.InnerXml = TrimTags(element.OuterXml);
