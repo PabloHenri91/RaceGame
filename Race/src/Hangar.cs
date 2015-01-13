@@ -490,7 +490,7 @@ namespace MyGame.src
                         textures2D["wheel"].drawOnScreen(positions["wheel2"]);
                         
                         drawAtributeBar(positions["speed"], Game1.memoryCard.speed, 100, "Lime");
-                        drawAtributeBar(positions["acceleration"], Game1.memoryCard.acceleration + 10, 100, "Lime");
+                        drawAtributeBar(positions["acceleration"], Game1.memoryCard.acceleration, 100, "Lime");
                         drawAtributeBar(positions["agility"], Game1.memoryCard.agility, 100, "Lime");
                         drawAtributeBar(positions["armor"], Game1.memoryCard.armor, 100, "Lime");
                         drawAtributeBar(positions["shieldPower"], Game1.memoryCard.shieldPower, 100, "Lime");
