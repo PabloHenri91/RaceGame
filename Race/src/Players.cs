@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MyGame.src
+namespace Race.src
 {
     class Players
     {

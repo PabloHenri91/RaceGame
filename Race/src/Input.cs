@@ -6,7 +6,7 @@ using System;
 using Microsoft.Xna.Framework.Input.Touch;
 #endif
 
-namespace MyGame.src
+namespace Race.src
 {
     class Input
     {

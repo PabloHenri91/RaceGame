@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace MyGame.src
+namespace Race.src
 {
     class Entity
     {

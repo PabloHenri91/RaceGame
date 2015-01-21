@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace MyGame.src
+namespace Race.src
 {
     public class Game1 : Game
     {
@@ -25,7 +25,7 @@ namespace MyGame.src
         internal static states state;
         internal static states nextState;
         private MainMenu mainMenu;
-        private Race race;
+        internal static Race race;
         private Hangar hangar;
 
         //Load

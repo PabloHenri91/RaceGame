@@ -1,4 +1,4 @@
-﻿namespace MyGame.src
+﻿namespace Race.src
 {
     class PlayerType
     {

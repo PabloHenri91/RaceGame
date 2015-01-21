@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyGame.src
+namespace Race.src
 {
 #if WINDOWS || LINUX
     /// <summary>

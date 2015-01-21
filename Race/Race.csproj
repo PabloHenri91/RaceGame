@@ -180,7 +180,9 @@
     <Content Include="Icon.ico" />
     <Content Include="SDL.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="raceTracks\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Content\background.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace MyGame.src
+namespace Race.src
 {
     class Sprite : Entity
     {

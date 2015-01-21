@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Content;
 
-namespace MyGame.src
+namespace Race.src
 {
     class LoadScreen : State
     {

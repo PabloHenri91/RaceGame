@@ -1,4 +1,4 @@
-﻿namespace MyGame.src
+﻿namespace Race.src
 {
     class Config
     {
@@ -19,5 +19,6 @@
         public static int hpPerArmor = 4;
         public static int spPerPower = 3;
         public static int baseWeitght = ((64 * 64) / 10) + 100;//Peso máximo do primeiro carro
+        public static int tileSize;
     }
 }
