@@ -7,8 +7,8 @@ namespace Race.src
     {
         internal int width;
         internal int height;
-        internal int displayWidthOver2;
-        internal int displayHeightOver2;
+        internal int widthOver2;
+        internal int heightOver2;
         internal float scale;
         internal Vector2 translate;
         internal Matrix camera;
@@ -27,8 +27,8 @@ namespace Race.src
             //Resolução virtual
             width = Config.displayWidth;
             height = Config.displayHeight;
-            displayWidthOver2 = width / 2;
-            displayHeightOver2 = height / 2;
+            widthOver2 = width / 2;
+            heightOver2 = height / 2;
 
 #if WINDOWS_PHONE || ANDROID
 
@@ -68,8 +68,8 @@ namespace Race.src
                 graphicsDeviceManager.PreferredBackBufferHeight = Config.displayHeight;
 
                 OpenTK.GameWindow window = (OpenTK.GameWindow)typeof(OpenTKGameWindow).GetField("window", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(Window);
-                window.X = graphicsDeviceManager.GraphicsDevice.DisplayMode.Width / 2 - displayWidthOver2;
-                window.Y = 0;// graphicsDeviceManager.GraphicsDevice.DisplayMode.Height / 2 - displayHeightOver2;
+                window.X = graphicsDeviceManager.GraphicsDevice.DisplayMode.Width / 2 - widthOver2;
+                window.Y = 0;// graphicsDeviceManager.GraphicsDevice.DisplayMode.Height / 2 - heightOver2;
                 window.Title = Config.title;
 
                 Window.IsBorderless = false;

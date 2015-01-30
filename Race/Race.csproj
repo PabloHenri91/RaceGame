@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\WindowsGL\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS; MONOGAME</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -156,14 +156,19 @@
     <Compile Include="Farseer Physics Engine 3.5\Factories\LinkFactory.cs" />
     <Compile Include="Farseer Physics Engine 3.5\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Car.cs" />
+    <Compile Include="src\Chunk.cs" />
     <Compile Include="src\Config.cs" />
     <Compile Include="src\Display.cs" />
     <Compile Include="src\Entity.cs" />
     <Compile Include="src\Game1.cs" />
+    <Compile Include="src\GameBody.cs" />
     <Compile Include="src\Hangar.cs" />
     <Compile Include="src\Input.cs" />
+    <Compile Include="src\Layer.cs" />
     <Compile Include="src\LoadScreen.cs" />
     <Compile Include="src\MainMenu.cs" />
+    <Compile Include="src\MapManager.cs" />
     <Compile Include="src\MemoryCard.cs" />
     <Compile Include="src\Players.cs" />
     <Compile Include="src\PlayerType.cs" />
@@ -171,6 +176,7 @@
     <Compile Include="src\Race.cs" />
     <Compile Include="src\Sprite.cs" />
     <Compile Include="src\State.cs" />
+    <Compile Include="src\Tileset.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -180,9 +186,7 @@
     <Content Include="Icon.ico" />
     <Content Include="SDL.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="raceTracks\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Content\background.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -312,6 +316,9 @@
     </None>
     <None Include="Content\sectorPressed.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Tilesets\world1.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\verdana12.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

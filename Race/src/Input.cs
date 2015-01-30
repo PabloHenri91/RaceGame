@@ -169,6 +169,7 @@ namespace Race.src
                 {
                     lastMouseX = mouseX;
                     lastMouseY = mouseY;
+
                     updateMousePosition();
 
                     if (mouseStartMooving)
@@ -177,8 +178,8 @@ namespace Race.src
                     }
                     else
                     {
-                        dx = mouseX - lastMouseX;
-                        dy = mouseY - lastMouseY;
+                        dx = (int)((mouseState.X / Game1.display.scale) - (lastMouseState.X / Game1.display.scale));
+                        dy = (int)(-(mouseState.Y / Game1.display.scale) - -(lastMouseState.Y / Game1.display.scale));
                         totalDx = totalDx + dx;
                         totalDy = totalDy + dy;
                     }
@@ -213,8 +214,8 @@ namespace Race.src
             float auxY = mouseState.Y;
 #endif
 
-            mouseX = (int)(((auxX / Game1.display.scale) - Game1.display.displayWidthOver2 + -Game1.display.translate.X) - Game1.matrix.X + Game1.display.displayWidthOver2);
-            mouseY = (int)(-((auxY / Game1.display.scale) - Game1.display.displayHeightOver2 + -Game1.display.translate.Y) - Game1.matrix.Y - Game1.display.displayHeightOver2);
+            mouseX = (int)(((auxX / Game1.display.scale) - Game1.display.widthOver2 + -Game1.display.translate.X) - Game1.matrix.X + Game1.display.widthOver2);
+            mouseY = (int)(-((auxY / Game1.display.scale) - Game1.display.heightOver2 + -Game1.display.translate.Y) - Game1.matrix.Y - Game1.display.heightOver2);
 
             onScreenMouseX = (int)((auxX / Game1.display.scale) + -Game1.display.translate.X);
             onScreenMouseY = (int)((auxY / Game1.display.scale) + -Game1.display.translate.Y);

@@ -12,6 +12,13 @@ namespace Race.src
         internal int biggerSide;
         internal Rectangle rectangle;
 
+        /// <summary>
+        /// Objeto simples abstrato que tem posição e tamanho, deve ser instanciado somente para teste
+        /// </summary>
+        /// <param name="x">Posição (do canto superior esquerdo) no eixo x</param>
+        /// <param name="y">Posição (do canto superior esquerdo) no eixo y</param>
+        /// <param name="width">Largura</param>
+        /// <param name="height">Altura</param>
         internal Entity(float x, float y, int width, int height)
         {
             this.width = width;

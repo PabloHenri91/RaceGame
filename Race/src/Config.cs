@@ -1,4 +1,5 @@
-﻿namespace Race.src
+﻿using Microsoft.Xna.Framework;
+namespace Race.src
 {
     class Config
     {
@@ -19,6 +20,14 @@
         public static int hpPerArmor = 4;
         public static int spPerPower = 3;
         public static int baseWeitght = ((64 * 64) / 10) + 100;//Peso máximo do primeiro carro
-        public static int tileSize;
+
+        //Medidas do cenário
+        public static int tileSize = 16;
+        public static float tilesPerChunk = 64;
+        public static float chunksPerMap = 64;
+
+        public static float chunkSize = tilesPerChunk * tileSize;
+        public static float mapSize = chunksPerMap * chunkSize;
+        public static Vector2 scale = new Vector2(4);
     }
 }
